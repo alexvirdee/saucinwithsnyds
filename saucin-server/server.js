@@ -9,6 +9,7 @@ const connectDB = require('./config/db');
 
 // Route files
 const home = require('./routes/index');
+const auth = require('./routes/auth');
 const users = require('./routes/users');
 
 // Load env variables
@@ -37,6 +38,7 @@ if (process.env.NODE_ENV === 'development') {
 
 // Mount routers
 app.use('/api/v1/home', home);
+app.use('/api/v1/auth', auth);
 app.use('/api/v1/users', users);
 
 // error handler
