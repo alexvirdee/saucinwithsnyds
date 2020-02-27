@@ -6,8 +6,10 @@ const colors = require('colors');
 const dotenv = require('dotenv');
 const errorHandler = require('./middleware/error');
 const connectDB = require('./config/db');
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
+
+// Route files
+const home = require('./routes/index');
+const users = require('./routes/users');
 
 // Load env variables
 dotenv.config({ path: './config/config.env' });
@@ -33,8 +35,9 @@ if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+// Mount routers
+app.use('/api/v1/home', home);
+app.use('/api/v1/users', users);
 
 // error handler
 app.use(errorHandler);
