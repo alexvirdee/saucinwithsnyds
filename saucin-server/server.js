@@ -8,9 +8,9 @@ const errorHandler = require('./middleware/error');
 const connectDB = require('./config/db');
 
 // Route files
-const home = require('./routes/index');
-const auth = require('./routes/auth');
-const users = require('./routes/users');
+const home = require('./routes/api/index');
+const auth = require('./routes/api/auth');
+const users = require('./routes/api/users');
 
 // Load env variables
 dotenv.config({ path: './config/config.env' });
