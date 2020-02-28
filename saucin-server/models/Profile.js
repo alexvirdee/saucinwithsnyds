@@ -5,11 +5,22 @@ const ProfileSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'user'
   },
+  username: {
+    type: String,
+    require: true
+  },
+  website: {
+    type: String
+  },
   location: {
     type: String
   },
   bio: {
     type: String
+  },
+  favoriteFoods: {
+    type: [String],
+    required: true
   },
   social: {
     youtube: {
