@@ -29,6 +29,21 @@ exports.register = asyncHandler(async (req, res, next) => {
   sendTokenResponse(user, 200, res);
 });
 
+// @desc    GET /api/v1/auth
+// @route   Test route
+// @access  Public
+exports.getAuthUser = asyncHandler(async (req, res, next) => {
+  const user = await User.findById(req.user.id).select('-password');
+  res.status(200).json({
+    success: true,
+    data: user
+  });
+
+  if (!user) {
+    return next(new ErrorResponse('No user logged in', 401));
+  }
+});
+
 // @desc       Login user
 // @route      POST /api/v1/auth/login
 // @access     Public

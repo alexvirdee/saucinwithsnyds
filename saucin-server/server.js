@@ -8,7 +8,6 @@ const errorHandler = require('./middleware/error');
 const connectDB = require('./config/db');
 
 // Route files
-const home = require('./routes/api/index');
 const auth = require('./routes/api/auth');
 const users = require('./routes/api/users');
 const profile = require('./routes/api/profile');
@@ -38,7 +37,6 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 // Mount routers
-app.use('/api/v1/home', home);
 app.use('/api/v1/auth', auth);
 app.use('/api/v1/users', users);
 app.use('/api/v1/profile', profile);

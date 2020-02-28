@@ -1,12 +1,13 @@
 const ErrorResponse = require('../utils/errorResponse');
 const asyncHandler = require('../middleware/async');
+
 const Profile = require('../models/Profile');
 const User = require('../models/User');
 
-// @route GET api/profile/me
+// @route GET api/v1/profile/me
 // @desc  Retrieve profile information
 // @access Private
-exports.getMe = asyncHandler(async (req, res, next) => {
+exports.getProfile = asyncHandler(async (req, res, next) => {
   const profile = await Profile.findOne({
     user: req.user.id
   }).populate('user', ['name', 'avatar']);
@@ -15,13 +16,10 @@ exports.getMe = asyncHandler(async (req, res, next) => {
     return next(new ErrorResponse('There is no profile for this user'));
   }
 
-  res.status(200).json({
-    success: true,
-    data: profile
-  });
+  res.status(200).json(profile);
 });
 
-// @route POST api/profile
+// @route POST api/v1/profile
 // @desc Create or update a user profile
 // @access Private
 exports.createProfile = asyncHandler(async (req, res, next) => {
@@ -59,17 +57,6 @@ exports.createProfile = asyncHandler(async (req, res, next) => {
   if (instagram) profileFields.social.instagram = instagram;
 
   let profile = await Profile.findOne({ user: req.user.id });
-
-  if (profile) {
-    // Update
-    profile = await Profile.findOneAndUpdate(
-      { user: req.user.id },
-      { $set: profileFields },
-      { new: true }
-    );
-
-    return res.json(profile);
-  }
 
   // Create
   profile = new Profile(profileFields);
