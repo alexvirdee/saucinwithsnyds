@@ -1,12 +1,21 @@
 const ErrorResponse = require('../utils/errorResponse');
 const asyncHandler = require('../middleware/async');
+const gravatar = require('gravatar');
+
 const User = require('../models/User');
 
-// @desc Register user
-// @route GET /api/v1/auth/register
-// @access Public
+// @desc    Register user
+// @route   POST /api/v1/auth/register
+// @access  Public
 exports.register = asyncHandler(async (req, res, next) => {
   const { name, email, password, role } = req.body;
+
+  // Get users gravatar
+  const avatar = gravatar.url(email, {
+    s: '200',
+    r: 'pg',
+    d: 'mm'
+  });
 
   // Create user
   const user = await User.create({
