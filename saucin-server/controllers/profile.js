@@ -13,15 +13,17 @@ exports.getProfile = asyncHandler(async (req, res, next) => {
   }).populate('user', ['name', 'avatar']);
 
   if (!profile) {
-    return next(new ErrorResponse('There is no profile for this user'));
+    return next(
+      new ErrorResponse(`There is no profile for the user ${req.user.name}`)
+    );
   }
 
   res.status(200).json(profile);
 });
 
-// @route POST api/v1/profile
-// @desc Create or update a user profile
-// @access Private
+// @route    POST api/v1/profile
+// @desc     Create or update a user profile
+// @access   Private
 exports.createProfile = asyncHandler(async (req, res, next) => {
   const {
     username,
@@ -38,7 +40,7 @@ exports.createProfile = asyncHandler(async (req, res, next) => {
 
   // Build the profile object
   const profileFields = {};
-  if (username) profileFields.username = username;
+  profileFields.user = req.user.id;
   if (website) profileFields.website = website;
   if (location) profileFields.location = location;
   if (bio) profileFields.bio = bio;
@@ -57,6 +59,21 @@ exports.createProfile = asyncHandler(async (req, res, next) => {
   if (instagram) profileFields.social.instagram = instagram;
 
   let profile = await Profile.findOne({ user: req.user.id });
+
+  if (profile) {
+    // Update
+    profile = await Profile.findOneAndUpdate(
+      { user: req.user.id },
+      { $set: profileFields },
+      { new: true }
+    );
+
+    return res.status(200).json({
+      success: true,
+      message: 'Profile Updated',
+      data: profile
+    });
+  }
 
   // Create
   profile = new Profile(profileFields);
