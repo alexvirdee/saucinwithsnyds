@@ -10,12 +10,10 @@ const User = require('../models/User');
 exports.getProfile = asyncHandler(async (req, res, next) => {
   const profile = await Profile.findOne({
     user: req.user.id
-  }).populate('user', ['name', 'avatar']);
+  }).populate('User', ['name', 'avatar']);
 
   if (!profile) {
-    return next(
-      new ErrorResponse(`There is no profile for the user ${req.user.name}`)
-    );
+    return next(new ErrorResponse(`There is no profile for that user`));
   }
 
   res.status(200).json(profile);
@@ -80,4 +78,43 @@ exports.createProfile = asyncHandler(async (req, res, next) => {
 
   await profile.save();
   res.json(profile);
+});
+
+// @route    GET api/v1/profiles
+// @desc     Get all profiles in db
+// @access   Public
+exports.getProfiles = asyncHandler(async (req, res, next) => {
+  const profiles = await Profile.find().populate('User', ['name', 'avatar']);
+  res.json(profiles);
+});
+
+// @route  GET api/profile/user/:user_id
+// @desc   Get profile by ID
+// @access Public
+exports.getUserProfile = asyncHandler(async (req, res, next) => {
+  const profile = await Profile.findOne({
+    user: req.params.user_id
+  }).populate('User', ['name', 'avatar']);
+
+  if (!profile) {
+    return next(
+      new ErrorResponse(`There is no profile for the user ${req.user.name}`)
+    );
+  }
+
+  res.json(profile);
+});
+
+// @route  DELETE api/profile
+// @desc   Delete profile and user
+// @access Private
+exports.deleteProfile = asyncHandler(async (req, res, next) => {
+  // TODO: Remove the users associated posts
+  // Remove Profile
+  await Profile.findOneAndRemove({ user: req.user.id });
+
+  // Remove User
+  await User.findOneAndRemove({ _id: req.user.id });
+
+  res.json({ msg: 'User Deleted' });
 });
