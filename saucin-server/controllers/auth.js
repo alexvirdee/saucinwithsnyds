@@ -1,3 +1,4 @@
+const crypto = require('crypto');
 const ErrorResponse = require('../utils/errorResponse');
 const asyncHandler = require('../middleware/async');
 const gravatar = require('gravatar');
@@ -34,6 +35,7 @@ exports.register = asyncHandler(async (req, res, next) => {
 // @access  Public
 exports.getAuthUser = asyncHandler(async (req, res, next) => {
   const user = await User.findById(req.user.id).select('-password');
+
   res.status(200).json({
     success: true,
     data: user
@@ -86,6 +88,51 @@ exports.logout = asyncHandler(async (req, res, next) => {
     data: user
   });
 });
+
+// @desc     Update User
+// @route    PUT /api/v1/auth/updateDetails
+// @access   Private
+exports.updateDetails = asyncHandler(async (req, res, next) => {
+  const fieldsToUpdate = {
+    name: req.body.name,
+    email: req.body.email
+  };
+
+  const user = await User.findByIdAndUpdate(req.user.id, fieldsToUpdate, {
+    new: true,
+    runValidators: true
+  });
+
+  res.status(200).json({
+    success: true,
+    data: user
+  });
+});
+
+// @desc       Update password
+// @route      PUT /api/v1/auth/updatepassword
+// @access     Private
+exports.updatePassword = asyncHandler(async (req, res, next) => {
+  const user = await User.findById(req.user.id).select('+password');
+
+  // Check the current password in the db
+  if (!(await user.matchPassword(req.body.currentPassword))) {
+    return next(new ErrorResponse('Password is incorrect', 401));
+  }
+
+  user.password = req.body.newPassword;
+  await user.save();
+
+  sendTokenResponse(user, 200, res);
+});
+
+// @desc      Forgot password
+// @route     POST /api/v1/auth/forgotpassword
+// @access    Public
+
+// @desc       Reset password
+// @route      PUT /api/v1/auth/resetpassword/:resettoken
+// @access     Public
 
 // Get token from model, create cookie and send response
 const sendTokenResponse = (user, statusCode, res) => {
