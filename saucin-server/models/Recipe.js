@@ -10,7 +10,7 @@ const RecipeSchema = new mongoose.Schema({
     trim: true,
     required: [true, 'Please add a title for recipe']
   },
-  descriptions: {
+  description: {
     type: String,
     required: [true, 'Please add a description for recipe']
   },
@@ -18,18 +18,29 @@ const RecipeSchema = new mongoose.Schema({
     type: Number,
     required: [true, 'Please add number of servings recipe will make']
   },
-  time: {
-    type: Date,
+  prepTime: {
+    type: Number,
+    required: true,
+    min: 0,
+    max: 59,
     required: true
+  },
+  cookTime: {
+    type: Number,
+    required: true
+  },
+  image: {
+    type: String,
+    default: ''
   },
   ingredients: [
     {
-      amount: {
-        type: Number,
-        required: true
-      },
       ingredient: {
         type: String,
+        required: true
+      },
+      amount: {
+        type: Number,
         required: true
       }
     }
@@ -51,3 +62,5 @@ const RecipeSchema = new mongoose.Schema({
     default: Date.now
   }
 });
+
+module.exports = mongoose.model('recipe', RecipeSchema);

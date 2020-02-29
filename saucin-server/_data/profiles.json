@@ -1,0 +1,12 @@
+[
+  {
+    "_id": "5d713995b721c3bb38c1f5d0",
+    "user": "5d7a514b5d2c12c7449be045",
+    "username": "John Doe",
+    "website": "johndoe.com",
+    "location": "Miami, Fl",
+    "bio": "Programmer",
+    "image": "https://images.unsplash.com/photo-1503249023995-51b0f3778ccf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=622&q=80",
+    "favoriteFoods": "Steak, Chicken"
+  }
+]
