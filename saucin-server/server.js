@@ -11,6 +11,7 @@ const connectDB = require('./config/db');
 const auth = require('./routes/api/auth');
 const users = require('./routes/api/users');
 const profile = require('./routes/api/profile');
+const blogposts = require('./routes/api/blogposts');
 
 // Load env variables
 dotenv.config({ path: './config/config.env' });
@@ -40,6 +41,7 @@ if (process.env.NODE_ENV === 'development') {
 app.use('/api/v1/auth', auth);
 app.use('/api/v1/users', users);
 app.use('/api/v1/profile', profile);
+app.use('/api/v1/blogposts', blogposts);
 
 // error handler
 app.use(errorHandler);

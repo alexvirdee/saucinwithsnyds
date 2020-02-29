@@ -5,6 +5,13 @@ const RecipeSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'user'
   },
+  name: {
+    type: String,
+    required: true
+  },
+  avatar: {
+    type: String
+  },
   title: {
     type: String,
     trim: true,
@@ -54,6 +61,14 @@ const RecipeSchema = new mongoose.Schema({
       direction: {
         type: String,
         required: true
+      }
+    }
+  ],
+  likes: [
+    {
+      user: {
+        type: Schema.Types.ObjectId,
+        ref: 'users'
       }
     }
   ],
