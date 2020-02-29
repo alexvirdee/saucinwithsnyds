@@ -6,7 +6,8 @@ const {
   logout,
   updateDetails,
   updatePassword,
-  forgotPassword
+  forgotPassword,
+  resetPassword
 } = require('../../controllers/auth');
 
 const router = express.Router();
@@ -20,5 +21,6 @@ router.get('/', protect, getAuthUser);
 router.put('/updatedetails', protect, updateDetails);
 router.put('/updatepassword', protect, updatePassword);
 router.post('/forgotpassword', forgotPassword);
+router.put('/resetpassword/:resettoken', resetPassword);
 
 module.exports = router;
