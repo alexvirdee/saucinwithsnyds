@@ -1,5 +1,5 @@
 const express = require('express');
-const { createBlogpost } = require('../../controllers/blogposts');
+const { createBlogpost, getBlogposts } = require('../../controllers/blogposts');
 
 const Blogpost = require('../../models/Blogpost');
 
@@ -9,7 +9,8 @@ const advancedResults = require('../../middleware/advancedResults');
 const { protect, authorize } = require('../../middleware/auth');
 
 router
-  .route('/blogposts')
+  .route('/')
+  .get(getBlogposts)
   .post(protect, authorize('publisher', 'admin'), createBlogpost);
 
 module.exports = router;
