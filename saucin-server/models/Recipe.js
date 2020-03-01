@@ -39,7 +39,7 @@ const RecipeSchema = new Schema({
   },
   image: {
     type: String,
-    default: ''
+    default: 'no-photo.jpg'
   },
   ingredients: [
     {
@@ -65,11 +65,41 @@ const RecipeSchema = new Schema({
       }
     }
   ],
-  likes: [
+  ratings: [
     {
       user: {
         type: Schema.Types.ObjectId,
         ref: 'users'
+      },
+      rating: {
+        type: Number,
+        min: 1,
+        max: 10
+      }
+    }
+  ],
+  avgRating: {
+    type: Number
+  },
+  comments: [
+    {
+      user: {
+        type: Schema.Types.ObjectId,
+        ref: 'users'
+      },
+      text: {
+        type: String,
+        required: true
+      },
+      name: {
+        type: String
+      },
+      avatar: {
+        type: String
+      },
+      date: {
+        type: Date,
+        default: Date.now
       }
     }
   ],
@@ -77,6 +107,40 @@ const RecipeSchema = new Schema({
     type: Date,
     default: Date.now
   }
+});
+
+// Get the average recipe rating
+RecipeSchema.statics.getAverageRating = async function(recipe) {
+  const obj = await this.aggregate([
+    {
+      $match: { recipe: recipe }
+    },
+    {
+      $project: {
+        avgRating: { $avg: '$ratings.rating' }
+      }
+    }
+  ]);
+
+  try {
+    console.log(
+      `Average Rating for recipe ${obj[0]._id} is: ${obj[0].avgRating}`
+    );
+    await this.model('recipe').findByIdAndUpdate(recipe, {
+      avgRating: obj[0].avgRating
+    });
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+// Call getAverageRating after save
+RecipeSchema.post('save', function() {
+  this.constructor.getAverageRating(this.avgRating);
+});
+
+RecipeSchema.pre('remove', async function() {
+  await this.constructor.getAverageRating(this.avgRating);
 });
 
 module.exports = mongoose.model('recipe', RecipeSchema);

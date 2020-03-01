@@ -12,6 +12,7 @@ const auth = require('./routes/api/auth');
 const users = require('./routes/api/users');
 const profile = require('./routes/api/profile');
 const blogposts = require('./routes/api/blogposts');
+const recipes = require('./routes/api/recipes');
 
 // Load env variables
 dotenv.config({ path: './config/config.env' });
@@ -42,6 +43,7 @@ app.use('/api/v1/auth', auth);
 app.use('/api/v1/users', users);
 app.use('/api/v1/profile', profile);
 app.use('/api/v1/blogposts', blogposts);
+app.use('/api/v1/recipes', recipes);
 
 // error handler
 app.use(errorHandler);

@@ -2,6 +2,7 @@ const express = require('express');
 const {
   createBlogpost,
   updateBlogpost,
+  deleteBlogpost,
   getBlogposts,
   getBlogpost
 } = require('../../controllers/blogposts');
@@ -21,6 +22,7 @@ router
 router
   .route('/:id')
   .get(getBlogpost)
-  .put(protect, authorize('publisher', 'admin'), updateBlogpost);
+  .put(protect, authorize('publisher', 'admin'), updateBlogpost)
+  .delete(protect, authorize('publisher', 'admin'), deleteBlogpost);
 
 module.exports = router;

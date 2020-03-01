@@ -39,6 +39,7 @@ exports.createProfile = asyncHandler(async (req, res, next) => {
   // Build the profile object
   const profileFields = {};
   profileFields.user = req.user.id;
+  if (username) profileFields.username = username;
   if (website) profileFields.website = website;
   if (location) profileFields.location = location;
   if (bio) profileFields.bio = bio;

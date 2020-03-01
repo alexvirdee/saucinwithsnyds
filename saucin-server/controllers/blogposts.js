@@ -80,6 +80,36 @@ exports.updateBlogpost = asyncHandler(async (req, res, next) => {
 // @desc    Delete a Blog Post
 // @route   DELETE /api/v1/blogposts/:id
 // @access  Private
+exports.deleteBlogpost = asyncHandler(async (req, res, next) => {
+  let blogpost = await Blogpost.findById(req.params.id);
+
+  if (!blogpost) {
+    return next(
+      new ErrorResponse(
+        `Blog post with id of ${req.params.id} was not found`,
+        404
+      )
+    );
+  }
+
+  // Owner of post & admin capable to delete post
+  if (blogpost.user.toString() !== req.user.id && req.user.role !== 'admin') {
+    return next(
+      new ErrorResponse(
+        `The user ${req.user.id} is not authorized to delete this post`,
+        401
+      )
+    );
+  }
+
+  blogpost.remove();
+
+  res.status(200).json({
+    success: true,
+    data: {},
+    msg: `Blog post ${req.params.id} has been successfully removed`
+  });
+});
 
 // @route     PUT api/blogposts/like/:id
 // @desc      Like a Blog Post

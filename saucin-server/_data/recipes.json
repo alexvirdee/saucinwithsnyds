@@ -28,6 +28,28 @@
         "step": 3,
         "direction": "add salt & pepper"
       }
+    ],
+    "ratings": [
+      {
+        "user": "5c8a1d5b0190b214360dc033",
+        "rating": 8
+      },
+      {
+        "user": "5c8a1d5b0190b214360dc034",
+        "rating": 7
+      }
+    ],
+    "comments": [
+      {
+        "user": "5c8a1d5b0190b214360dc033",
+        "text": "I really like this recipe, I will use it often thanks!",
+        "name": "Greg Harris"
+      },
+      {
+        "user": "5c8a1d5b0190b214360dc034",
+        "text": "I thought this recipe was okay but not my favorite. Thank you for posting.",
+        "name": "Derek Glover"
+      }
     ]
   }
 ]

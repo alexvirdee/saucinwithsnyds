@@ -19,7 +19,8 @@ const ProfileSchema = new mongoose.Schema({
     type: String
   },
   image: {
-    type: String
+    type: String,
+    default: 'no-photo.jpg'
   },
   favoriteFoods: {
     type: [String],
