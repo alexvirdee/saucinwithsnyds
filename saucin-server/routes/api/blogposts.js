@@ -1,5 +1,10 @@
 const express = require('express');
-const { createBlogpost, getBlogposts } = require('../../controllers/blogposts');
+const {
+  createBlogpost,
+  updateBlogpost,
+  getBlogposts,
+  getBlogpost
+} = require('../../controllers/blogposts');
 
 const Blogpost = require('../../models/Blogpost');
 
@@ -12,5 +17,10 @@ router
   .route('/')
   .get(getBlogposts)
   .post(protect, authorize('publisher', 'admin'), createBlogpost);
+
+router
+  .route('/:id')
+  .get(getBlogpost)
+  .put(protect, authorize('publisher', 'admin'), updateBlogpost);
 
 module.exports = router;

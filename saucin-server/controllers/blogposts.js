@@ -18,6 +18,20 @@ exports.getBlogposts = asyncHandler(async (req, res, next) => {
 // @desc    Get a Single Blog Post
 // @route   get /api/v1/blogposts/:id
 // @access  Public
+exports.getBlogpost = asyncHandler(async (req, res, next) => {
+  const blogpost = await Blogpost.findById(req.params.id);
+
+  if (!blogpost) {
+    return next(
+      new ErrorResponse(
+        `Blog post with if of ${req.params.id} was not found`,
+        404
+      )
+    );
+  }
+
+  res.json(blogpost);
+});
 
 // @desc    Create a New Blog Post
 // @route   POST /api/v1/blogposts
@@ -43,6 +57,25 @@ exports.createBlogpost = asyncHandler(async (req, res, next) => {
 // @desc    Update a Blog Post
 // @route   PUT /api/v1/blogposts/:id
 // @access  Private
+exports.updateBlogpost = asyncHandler(async (req, res, next) => {
+  let blogpost = await Blogpost.findById(req.params.id);
+
+  if (!blogpost) {
+    return next(
+      new ErrorResponse(
+        `Blog post with id of ${req.params.id} was not found`,
+        404
+      )
+    );
+  }
+
+  blogpost = await Blogpost.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+    runValidators: true
+  });
+
+  res.status(200).json({ success: true, data: blogpost });
+});
 
 // @desc    Delete a Blog Post
 // @route   DELETE /api/v1/blogposts/:id
