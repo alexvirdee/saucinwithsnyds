@@ -19,6 +19,23 @@ exports.getRecipes = asyncHandler(async (req, res, next) => {
 // @desc    Get single recipe
 // @route   GET /api/v1/recipes/:id
 // @access  Public
+exports.getRecipe = asyncHandler(async (req, res, next) => {
+  const recipe = await Recipe.findById(req.params.id);
+
+  if (!recipe) {
+    return next(
+      new ErrorResponse(
+        `Recipe with id ${req.params.id} could not be found`,
+        404
+      )
+    );
+  }
+
+  res.status(200).json({
+    success: true,
+    data: recipe
+  });
+});
 
 // @desc    Create a Recipe
 // @route   POST /api/v1/recipes
@@ -29,6 +46,7 @@ exports.createRecipe = asyncHandler(async (req, res, next) => {
   const newRecipe = new Recipe({
     title: req.body.title,
     name: user.name,
+    user: user.id,
     avatar: user.avatar,
     description: req.body.description,
     servings: req.body.servings,
@@ -52,6 +70,39 @@ exports.createRecipe = asyncHandler(async (req, res, next) => {
 // @desc   Update a recipe
 // @route  PUT /api/v1/recipes/:id
 // @access Private
+exports.updateRecipe = asyncHandler(async (req, res, next) => {
+  let recipe = await Recipe.findById(req.params.id);
+
+  console.log(recipe);
+
+  if (!recipe) {
+    return next(
+      new ErrorResponse(`Recipe with id ${req.params.id} could not be found`)
+    );
+  }
+
+  console.log(recipe.user);
+
+  // Make sure user is the owner of the recipe
+  if (recipe.user.toString() !== req.user.id && req.user.role !== 'admin') {
+    return next(
+      new ErrorResponse(
+        `User ${req.user.id} is not authorized to update the recipe ${recipe._id}`,
+        401
+      )
+    );
+  }
+
+  recipe = await Recipe.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+    runValidators: true
+  });
+
+  res.status(200).json({
+    success: true,
+    data: recipe
+  });
+});
 
 // @desc   Delete a recipe
 // @route  DELETE /api/v1/recipe/:id

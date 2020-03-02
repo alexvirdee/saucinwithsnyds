@@ -1,5 +1,10 @@
 const express = require('express');
-const { getRecipes, createRecipe } = require('../../controllers/recipes');
+const {
+  getRecipes,
+  getRecipe,
+  createRecipe,
+  updateRecipe
+} = require('../../controllers/recipes');
 
 const Recipe = require('../../models/Recipe');
 
@@ -11,5 +16,10 @@ router
   .route('/')
   .get(getRecipes)
   .post(protect, createRecipe);
+
+router
+  .route('/:id')
+  .get(getRecipe)
+  .put(protect, updateRecipe);
 
 module.exports = router;
