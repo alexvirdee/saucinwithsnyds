@@ -3,7 +3,8 @@ const {
   getRecipes,
   getRecipe,
   createRecipe,
-  updateRecipe
+  updateRecipe,
+  deleteRecipe
 } = require('../../controllers/recipes');
 
 const Recipe = require('../../models/Recipe');
@@ -20,6 +21,7 @@ router
 router
   .route('/:id')
   .get(getRecipe)
-  .put(protect, updateRecipe);
+  .put(protect, updateRecipe)
+  .delete(protect, deleteRecipe);
 
 module.exports = router;

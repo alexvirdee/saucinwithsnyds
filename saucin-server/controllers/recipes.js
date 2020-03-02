@@ -107,3 +107,31 @@ exports.updateRecipe = asyncHandler(async (req, res, next) => {
 // @desc   Delete a recipe
 // @route  DELETE /api/v1/recipe/:id
 // @access Private
+exports.deleteRecipe = asyncHandler(async (req, res, next) => {
+  const recipe = await Recipe.findById(req.params.id);
+
+  if (!recipe) {
+    return next(
+      new ErrorResponse(
+        `Recipe with id of ${req.params.id} was not found.`,
+        404
+      )
+    );
+  }
+
+  // Make sure user is the recipe owner or admin
+  if (recipe.user.toString() !== req.user.id && req.user.role !== 'admin') {
+    return next(
+      new ErrorResponse(
+        `The user ${req.user.id} is not authorized to delete this recipe.`,
+        401
+      )
+    );
+  }
+
+  recipe.remove();
+
+  res
+    .status(200)
+    .json({ success: true, data: {}, msg: 'Recipe has been deleted' });
+});
