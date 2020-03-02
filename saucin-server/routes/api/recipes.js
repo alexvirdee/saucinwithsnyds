@@ -4,7 +4,8 @@ const {
   getRecipe,
   createRecipe,
   updateRecipe,
-  deleteRecipe
+  deleteRecipe,
+  recipePhotoUpload
 } = require('../../controllers/recipes');
 
 const Recipe = require('../../models/Recipe');
@@ -23,5 +24,7 @@ router
   .get(getRecipe)
   .put(protect, updateRecipe)
   .delete(protect, deleteRecipe);
+
+router.route('/:id/photo').put(protect, recipePhotoUpload);
 
 module.exports = router;

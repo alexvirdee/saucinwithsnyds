@@ -3,6 +3,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const colors = require('colors');
+const fileupload = require('express-fileupload');
 const dotenv = require('dotenv');
 const errorHandler = require('./middleware/error');
 const connectDB = require('./config/db');
@@ -37,6 +38,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
+
+// File Uploading
+app.use(fileupload());
 
 // Mount routers
 app.use('/api/v1/auth', auth);
