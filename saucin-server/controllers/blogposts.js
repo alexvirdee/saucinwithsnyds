@@ -41,6 +41,7 @@ exports.createBlogpost = asyncHandler(async (req, res, next) => {
 
   const newPost = new Blogpost({
     title: req.body.title,
+    user: user.id,
     name: user.name,
     avatar: user.avatar,
     body: req.body.body
@@ -56,7 +57,7 @@ exports.createBlogpost = asyncHandler(async (req, res, next) => {
 
 // @desc    Update a Blog Post
 // @route   PUT /api/v1/blogposts/:id
-// @access  Private
+// @access  Private * Only a Publisher or Admin account can update a blog post *
 exports.updateBlogpost = asyncHandler(async (req, res, next) => {
   let blogpost = await Blogpost.findById(req.params.id);
 
@@ -79,7 +80,7 @@ exports.updateBlogpost = asyncHandler(async (req, res, next) => {
 
 // @desc    Delete a Blog Post
 // @route   DELETE /api/v1/blogposts/:id
-// @access  Private
+// @access  Private * Only a Publisher or Admin account can delete a blog post *
 exports.deleteBlogpost = asyncHandler(async (req, res, next) => {
   let blogpost = await Blogpost.findById(req.params.id);
 
@@ -111,18 +112,48 @@ exports.deleteBlogpost = asyncHandler(async (req, res, next) => {
   });
 });
 
-// @route     PUT api/blogposts/like/:id
+// @route     PUT api/v1/blogposts/like/:id
 // @desc      Like a Blog Post
 // @access    Private
+exports.likeBlogpost = asyncHandler(async (req, res, next) => {
+  let blogpost = await Blogpost.findById(req.params.id);
 
-// @route     PUT api/blogposts/unlike/:id
+  if (!blogpost) {
+    return next(
+      new ErrorResponse(
+        `Blog post with id of ${req.params.id} was not found`,
+        404
+      )
+    );
+  }
+
+  // Check if post has already been liked
+  if (
+    blogpost.likes.filter(like => like.user.toString() === req.user.id).length >
+    0
+  ) {
+    return res.status(400).json({ msg: 'Post has already been liked' });
+  }
+
+  blogpost.likes.unshift({ user: req.user.id, name: req.user.name });
+
+  await blogpost.save();
+
+  res.json(blogpost.likes);
+});
+
+// @route     PUT api/v1/blogposts/unlike/:id
 // @desc      Unlike a Blog post
 // @access    Private
 
-// @route     POST api/blogposts/comment/:id
+// @route     POST api/v1/blogposts/comment/:id
 // @desc      Add a Comment to a Blog Post
 // @access    Private
 
-// @route     DELETE api/blogposts/comment/:id
+// @route     DELETE api/v1/blogposts/comment/:id
 // @desc      Remove Comment from a Blog Post
 // @access    Private
+
+// @desc       Upload photo for blogpost
+// @route      PUT /api/v1/blogposts/:id/photo
+// @access     Private * Only a Publisher or Admin account can upload photo to a blog post *

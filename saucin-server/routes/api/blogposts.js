@@ -4,7 +4,8 @@ const {
   updateBlogpost,
   deleteBlogpost,
   getBlogposts,
-  getBlogpost
+  getBlogpost,
+  likeBlogpost
 } = require('../../controllers/blogposts');
 
 const Blogpost = require('../../models/Blogpost');
@@ -18,6 +19,8 @@ router
   .route('/')
   .get(getBlogposts)
   .post(protect, authorize('publisher', 'admin'), createBlogpost);
+
+router.route('/like/:id').put(protect, likeBlogpost);
 
 router
   .route('/:id')
