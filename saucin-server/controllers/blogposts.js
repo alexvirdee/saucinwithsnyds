@@ -145,14 +145,101 @@ exports.likeBlogpost = asyncHandler(async (req, res, next) => {
 // @route     PUT api/v1/blogposts/unlike/:id
 // @desc      Unlike a Blog post
 // @access    Private
+exports.unlikeBlogpost = asyncHandler(async (req, res, next) => {
+  let blogpost = await Blogpost.findById(req.params.id);
+
+  if (!blogpost) {
+    return next(
+      new ErrorResponse(
+        `Blog post with id of ${req.params.id} was not found`,
+        404
+      )
+    );
+  }
+
+  // Check if the post has already been liked
+  if (
+    blogpost.likes.filter(like => like.user.toString() === req.user.id)
+      .length === 0
+  ) {
+    return res.status(400).json({ msg: 'Post has not yet been liked' });
+  }
+
+  // Get remove index
+  const removeIndex = blogpost.likes
+    .map(like => like.user.toString())
+    .indexOf(req.user.id);
+
+  blogpost.likes.splice(removeIndex, 1);
+
+  await blogpost.save();
+
+  res.json(blogpost.likes);
+});
 
 // @route     POST api/v1/blogposts/comment/:id
 // @desc      Add a Comment to a Blog Post
 // @access    Private
+exports.commentBlogpost = asyncHandler(async (req, res, next) => {
+  const user = await User.findById(req.user.id).select('-password');
+  const blogpost = await Blogpost.findById(req.params.id);
+
+  if (!blogpost) {
+    return next(
+      new ErrorResponse(
+        `Blog post with id of ${req.params.id} was not found`,
+        404
+      )
+    );
+  }
+
+  const newComment = {
+    text: req.body.text,
+    name: user.name,
+    avatar: user.avatar,
+    user: req.user.id
+  };
+
+  blogpost.comments.unshift(newComment);
+
+  await blogpost.save();
+
+  res.json(blogpost.comments);
+});
 
 // @route     DELETE api/v1/blogposts/comment/:id
 // @desc      Remove Comment from a Blog Post
 // @access    Private
+exports.deleteComment = asyncHandler(async (req, res, next) => {
+  const blogpost = await Blogpost.findById(req.params.id);
+
+  // Pull out comment
+  const comment = blogpost.comments.find(
+    comment => comment.id === req.params.comment_id
+  );
+
+  // Does the comment exist
+  if (!comment) {
+    return res.status(404).json({ msg: 'The comment does not exist' });
+  }
+
+  // Check the user
+  if (comment.user.toString() !== req.user.id) {
+    return res
+      .status(401)
+      .json({ msg: 'User is not authorized to remove comment' });
+  }
+
+  const removeIndex = blogpost.comments
+    .map(comment => comment.user.toString())
+    .indexOf(req.user.id);
+
+  blogpost.comments.splice(removeIndex, 1);
+
+  await blogpost.save();
+
+  res.json(blogpost.comments);
+});
 
 // @desc       Upload photo for blogpost
 // @route      PUT /api/v1/blogposts/:id/photo
