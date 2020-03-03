@@ -5,7 +5,9 @@
   "scripts": {
     "start": "NODE_ENV=production node server",
     "clean": "rm -rf node_modules tmp dist",
-    "dev": "nodemon server"
+    "dev": "nodemon server",
+    "client": "npm start --prefix ../saucin-client",
+    "reactandnode": "concurrently \"npm run dev\" \"npm run client\""
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -28,6 +30,7 @@
     "slugify": "^1.3.6"
   },
   "devDependencies": {
+    "concurrently": "^5.1.0",
     "nodemon": "^2.0.2"
   }
 }
