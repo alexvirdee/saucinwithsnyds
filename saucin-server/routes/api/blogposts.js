@@ -8,7 +8,8 @@ const {
   likeBlogpost,
   unlikeBlogpost,
   commentBlogpost,
-  deleteComment
+  deleteComment,
+  uploadBlogPhoto
 } = require('../../controllers/blogposts');
 
 const Blogpost = require('../../models/Blogpost');
@@ -36,5 +37,10 @@ router
   .get(getBlogpost)
   .put(protect, authorize('publisher', 'admin'), updateBlogpost)
   .delete(protect, authorize('publisher', 'admin'), deleteBlogpost);
+
+// Upload Photo
+router
+  .route('/:id/photo')
+  .put(protect, authorize('publisher', 'admin'), uploadBlogPhoto);
 
 module.exports = router;

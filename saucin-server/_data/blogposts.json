@@ -3,7 +3,9 @@
     "_id": "5d7a514b5d2c12c747291281",
     "user": "5d7a514b5d2c12c7449be043",
     "title": "My First Blog Post",
-    "image": "https://images.unsplash.com/photo-1519337265831-281ec6cc8514?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
+    "photos": [
+      "https://images.unsplash.com/photo-1519337265831-281ec6cc8514?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
+    ],
     "body": "Fusce porta, nulla et volutpat fringilla, ex nulla lacinia mauris, sed pharetra arcu urna id magna. Phasellus vestibulum placerat consequat. Vivamus auctor eget erat ac auctor. Aenean euismod nec lorem at hendrerit. Phasellus gravida luctus iaculis. Duis eleifend erat at nisi tincidunt consectetur.",
     "name": "Publisher Account",
     "avatar": "https://res.cloudinary.com/techsnips/image/fetch/w_2000,f_auto,q_auto,c_fit/https://adamtheautomator.com/content/images/size/w2000/2019/10/user-1633249_1280.png"
@@ -12,7 +14,9 @@
     "_id": "5d7a514b5d2c12c747291282",
     "user": "5d7a514b5d2c12c7449be043",
     "title": "My Second Blog Post",
-    "image": "https://images.unsplash.com/photo-1519337265831-281ec6cc8514?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
+    "photos": [
+      "https://images.unsplash.com/photo-1519337265831-281ec6cc8514?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
+    ],
     "body": "Fusce porta, nulla et volutpat fringilla, ex nulla lacinia mauris, sed pharetra arcu urna id magna. Phasellus vestibulum placerat consequat. Vivamus auctor eget erat ac auctor. Aenean euismod nec lorem at hendrerit. Phasellus gravida luctus iaculis. Duis eleifend erat at nisi tincidunt consectetur.",
     "name": "Publisher Account",
     "avatar": "https://res.cloudinary.com/techsnips/image/fetch/w_2000,f_auto,q_auto,c_fit/https://adamtheautomator.com/content/images/size/w2000/2019/10/user-1633249_1280.png"
@@ -21,7 +25,9 @@
     "_id": "5d7a514b5d2c12c747291283",
     "user": "5d7a514b5d2c12c7449be043",
     "title": "My Third Blog Post",
-    "image": "https://images.unsplash.com/photo-1519337265831-281ec6cc8514?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
+    "photos": [
+      "https://images.unsplash.com/photo-1519337265831-281ec6cc8514?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
+    ],
     "body": "Fusce porta, nulla et volutpat fringilla, ex nulla lacinia mauris, sed pharetra arcu urna id magna. Phasellus vestibulum placerat consequat. Vivamus auctor eget erat ac auctor. Aenean euismod nec lorem at hendrerit. Phasellus gravida luctus iaculis. Duis eleifend erat at nisi tincidunt consectetur.",
     "name": "Publisher Account",
     "avatar": "https://res.cloudinary.com/techsnips/image/fetch/w_2000,f_auto,q_auto,c_fit/https://adamtheautomator.com/content/images/size/w2000/2019/10/user-1633249_1280.png"

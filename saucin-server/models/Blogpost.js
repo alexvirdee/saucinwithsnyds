@@ -10,13 +10,16 @@ const BlogpostSchema = new Schema({
     type: String,
     required: true
   },
-  image: {
-    type: String
-  },
   body: {
     type: String,
     required: true
   },
+  photos: [
+    {
+      type: String,
+      default: 'no-photo.jpg'
+    }
+  ],
   name: {
     type: String
   },

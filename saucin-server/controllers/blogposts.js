@@ -244,3 +244,65 @@ exports.deleteComment = asyncHandler(async (req, res, next) => {
 // @desc       Upload photo for blogpost
 // @route      PUT /api/v1/blogposts/:id/photo
 // @access     Private * Only a Publisher or Admin account can upload photo to a blog post *
+exports.uploadBlogPhoto = asyncHandler(async (req, res, next) => {
+  const blogpost = await Blogpost.findById(req.params.id);
+
+  if (!blogpost) {
+    return next(
+      new ErrorResponse(
+        `Blog post with id of ${req.params.id} was not found`,
+        404
+      )
+    );
+  }
+
+  // Make sure the user is owner of blogpost
+  if (blogpost.user.toString() !== req.user.id && req.user.role !== 'admin') {
+    return next(
+      new ErrorResponse(
+        `User ${req.user.id} is not authorized to update this post`,
+        401
+      )
+    );
+  }
+
+  if (!req.files) {
+    return next(new ErrorResponse(`Please upload a file`, 400));
+  }
+
+  const file = req.files.file;
+
+  // Make sure the file being uploaded is an image
+  if (!file.mimetype.startsWith('image')) {
+    return next(new ErrorResponse(`Please upload an image`, 400));
+  }
+
+  // Check the filesize
+  if (!file.size > process.env.MAX_FILE_UPLOAD) {
+    return next(
+      new ErrorResponse(
+        `Please upload an image less than ${process.env.MAX_FILE_UPLOAD}`,
+        400
+      )
+    );
+  }
+
+  // Create a custom filename
+  file.name = `photo_${blogpost._id}${path.parse(file.name).ext}`;
+
+  file.mv(`${process.env.FILE_UPLOAD_PATH}/${file.name}`, async err => {
+    if (err) {
+      console.error(err);
+      return next(new ErrorResponse(`Problem with file upload`, 500));
+    }
+
+    await Blogpost.findByIdAndUpdate(req.params.id, {
+      $push: { photos: file.name }
+    });
+
+    res.status(200).json({
+      success: true,
+      data: file.name
+    });
+  });
+});
