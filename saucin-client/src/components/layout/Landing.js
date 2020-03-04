@@ -6,35 +6,30 @@ import {
   faShoppingCart
 } from '@fortawesome/free-solid-svg-icons';
 
+import landingImage from '../../img/emerson-vieira-cpkPJ-U9eUM-unsplash.jpg';
+
 const Landing = () => {
   return (
-    <div className="flex landing">
-      <div className="w-1/2 flex content-center bg-gray-100 mt-6 px-6">
-        <div className="container mx-auto px-4 py-6">
-          <div>
-            <FontAwesomeIcon className="fa-lg inline mr-2" icon={faUsers} />
-            <div className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl inline">
-              Join the community
-            </div>
-          </div>
-          <div>
-            <FontAwesomeIcon className="fa-lg inline mr-4" icon={faUtensils} />
-            <div className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl inline">
-              Share Recipes
-            </div>
-          </div>
-          <div>
-            <FontAwesomeIcon
-              className="fa-lg inline mr-2"
-              icon={faShoppingCart}
-            />
-            <div className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl inline">
-              Buy Cooking Gear
-            </div>
+    <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
+      <div className="inline-flex lg:h-screen md:h-screen text-white">
+        <img
+          className="bg-scroll bg-center sm:bg-top md:bg-right lg:bg-bottom xl:bg-left"
+          src={landingImage}
+        ></img>
+        <div className="absolute flex container">
+          <div className="sm:my-4 md:my-6 my-2 px-6 text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl">
+            <FontAwesomeIcon className="fa-sm mr-2 mb-1" icon={faUsers} />
+            <div className="inline">Join the community</div>
+            <br></br>
+            <FontAwesomeIcon className="fa-sm mr-4 mb-1" icon={faUtensils} />
+            <div className="inline">Share Recipes</div>
+            <br></br>
+            <FontAwesomeIcon className="fa-sm mr-2 " icon={faShoppingCart} />
+            <div className="inline">Buy Cooking Gear</div>
           </div>
         </div>
       </div>
-      <div className="w-1/2 h-8 sm:h-12 md:h-16 lg:h-20 xl:h-24 px-6 mt-6">
+      <div className="px-6">
         <div className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl mb-4 py-6">
           Welcome to Saucinwithsnyds
           <p className="italic text-sm">No more tummy aches</p>
