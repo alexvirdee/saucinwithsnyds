@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faUsers,
@@ -10,11 +11,12 @@ import landingImage from '../../img/emerson-vieira-cpkPJ-U9eUM-unsplash.jpg';
 
 const Landing = () => {
   return (
-    <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
-      <div className="inline-flex lg:h-screen md:h-screen text-white">
+    <div className="landing grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
+      <div className="inline-flex text-white">
         <img
           className="bg-scroll bg-center sm:bg-top md:bg-right lg:bg-bottom xl:bg-left"
           src={landingImage}
+          alt="hero"
         ></img>
         <div className="absolute flex container">
           <div className="sm:my-4 md:my-6 my-2 px-6 text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl">
@@ -35,13 +37,19 @@ const Landing = () => {
           <p className="italic text-sm">No more tummy aches</p>
         </div>
         <p className="text-md mb-2">Join saucinwithsnyds today.</p>
-        <div className="container grid gap-2 mt-4 w-3/4">
-          <button className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded shadow rounded shadow">
+        <div className="container grid gap-2 mt-4 w-3/4 py-4">
+          <Link
+            to="/login"
+            className="text-center bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded shadow rounded shadow"
+          >
             Log in
-          </button>
-          <button className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+          </Link>
+          <Link
+            to="/signup"
+            className="text-center bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+          >
             Sign up
-          </button>
+          </Link>
         </div>
       </div>
     </div>

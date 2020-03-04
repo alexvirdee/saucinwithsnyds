@@ -1,13 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import logo from '../../img/logo-sm.png';
 
 const Navbar = () => {
   return (
     <header className="lg:px-16 mb-6 px-6 sm:pt-4 bg-white flex flex-wrap items-center lg:py-0 py-2 h-min-full lg:h-10">
       <div className="flex-1 flex justify-between items-center">
-        <a href="#">
+        <Link to="/">
           <img className="logo w-10" src={logo} alt="saucinwithsnyds logo" />
-        </a>
+        </Link>
       </div>
 
       <label htmlFor="menu-toggle" className="cursor-pointer lg:hidden block">
@@ -31,49 +32,49 @@ const Navbar = () => {
         <nav>
           <ul className="lg:flex items-center justify-between text-base text-gray-700 pt-4 lg:pt-1">
             <li>
-              <a
+              <Link
                 className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-black"
-                href="#"
+                to="/about"
               >
                 About
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-black"
-                href="#"
+                to="recipes"
               >
                 Recipes
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-black"
-                href="#"
+                to="/store"
               >
                 Store
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-black"
-                href="#"
+                to="/login"
               >
                 Login
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-black"
-                href="#"
+                to="/signup"
               >
                 Register
-              </a>
+              </Link>
             </li>
           </ul>
         </nav>
-        {/* <a
-          href="#"
+        {/* <Link
+          to="!#"
           className="lg:ml-4 flex items-center justify-start lg:mb-0 mb-4 cursor-pointer"
         >
           Logged in user gravatar
@@ -82,7 +83,7 @@ const Navbar = () => {
             src="https://pbs.twimg.com/profile_images/1128143121475342337/e8tkhRaz_normal.jpg"
             alt="Andy Leverenz"
           ></img>
-        </a> */}
+        </Link> */}
       </div>
     </header>
   );
