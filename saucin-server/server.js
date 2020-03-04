@@ -54,6 +54,8 @@ app.use(errorHandler);
 
 const PORT = process.env.PORT || 8080;
 
+app.get('/', (req, res) => res.send('API is running'));
+
 const server = app.listen(
   PORT,
   console.log(
