@@ -81,6 +81,18 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
     </Link>
   );
 
+  const logoLinkGuest = (
+    <Link to="/">
+      <img className="logo w-10" src={logo} alt="saucinwithsnyds logo" />
+    </Link>
+  );
+
+  const logoLinkAuthorized = (
+    <Link to="/dashboard">
+      <img className="logo w-10" src={logo} alt="saucinwithsnyds logo" />
+    </Link>
+  );
+
   const visitorLinks = (
     <ul className="lg:flex items-center justify-between text-base text-gray-700 pt-4 lg:pt-1">
       <li>
@@ -123,9 +135,11 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   return (
     <header className="lg:px-16 mb-6 px-6 sm:pt-4 bg-white flex flex-wrap items-center lg:py-0 py-2 h-min-full lg:h-10">
       <div className="flex-1 flex justify-between items-center">
-        <Link to="/">
-          <img className="logo w-10" src={logo} alt="saucinwithsnyds logo" />
-        </Link>
+        {!loading && (
+          <Fragment>
+            {isAuthenticated ? logoLinkAuthorized : logoLinkGuest}
+          </Fragment>
+        )}
       </div>
 
       <label htmlFor="menu-toggle" className="cursor-pointer lg:hidden block">

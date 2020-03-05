@@ -1,5 +1,7 @@
 import React, { Fragment } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { PropTypes } from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faUsers,
@@ -9,7 +11,7 @@ import {
 
 import landingImage from '../../img/emerson-vieira-cpkPJ-U9eUM-unsplash.jpg';
 
-const Landing = () => {
+const Landing = ({ isAuthenticated }) => {
   return (
     <Fragment>
       <div className="landing grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
@@ -58,4 +60,12 @@ const Landing = () => {
   );
 };
 
-export default Landing;
+Landing.propTypes = {
+  isAuthenticated: PropTypes.bool
+};
+
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(mapStateToProps)(Landing);
