@@ -22,12 +22,12 @@ const Landing = ({ isAuthenticated }) => {
             alt="hero"
           ></img>
         </div>
-        <div className="px-10">
+        <div className="m-10">
           <div className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl mb-4 py-6">
-            <div className="pacifico">Welcome to Saucinwithsnyds</div>
+            <div className="pacifico text-3xl">Welcome to Saucinwithsnyds</div>
             <p className="italic text-sm">No more tummy aches</p>
           </div>
-          <div className="container grid gap-2 mt-4 w-full py-4">
+          <div className="container grid gap-2 mt-2 w-full py-2">
             <Link
               to="/login"
               className="text-center bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded shadow rounded shadow"

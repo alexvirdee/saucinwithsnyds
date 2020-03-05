@@ -33,7 +33,9 @@ const Login = ({ login, isAuthenticated }) => {
             onSubmit={e => onSubmit(e)}
             className="p-12 m-1 bg-white rounded sm:shadow-none lg:shadow"
           >
-            <div className="text-4xl pb-4">Login to Saucinwithsnyds</div>
+            <div className="text-4xl pb-4 mb-3 text-center">
+              <span className="pacifico"> Saucinwithsnyds</span>{' '}
+            </div>
             <div className="flex flex-wrap -mx-3">
               <div className="w-full px-3 md:mb-0">
                 <label

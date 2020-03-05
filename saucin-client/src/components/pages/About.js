@@ -18,7 +18,8 @@ const About = () => {
               Here at Saucinwithsnyds, I can show you just how to make some of
               my favorite meals step by step. Also, please feel free to create
               your own recipes to my site. I'd love to see what you guys are
-              making! You can share, comment, and favorite your recipes.
+              making! You can share, comment, and favorite your recipes. Let's
+              get cooking woo!
             </div>
           </div>
         </div>

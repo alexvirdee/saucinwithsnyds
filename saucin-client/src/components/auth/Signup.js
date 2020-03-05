@@ -39,7 +39,9 @@ const Signup = ({ setAlert, register, isAuthenticated }) => {
             onSubmit={e => onSubmit(e)}
             className="p-12 m-1 bg-white rounded sm:shadow-none lg:shadow"
           >
-            <div className="text-4xl pb-4">Create your account today</div>
+            <div className="text-4xl pb-4 text-center pacifico mb-3">
+              Create your account
+            </div>
             <div className="flex flex-wrap -mx-3 mb-2">
               <div className="w-full px-3 md:mb-0">
                 <label

@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getCurrentProfile } from '../../actions/profile';
@@ -19,9 +20,45 @@ const Dashboard = ({
     <Spinner />
   ) : (
     <Fragment>
-      <div>
+      <div className="container mx-auto ml-4">
         <div className="text-2xl">Dashboard</div>
-        <div className="text-2xl">Welcome {user && user.data.name}</div>
+        <div className="text-2xl">Welcome, {user && user.data.name}</div>
+        <div>
+          {profile != null ? (
+            <Fragment>User has a profile TODO: BUILD DASHBOARD</Fragment>
+          ) : (
+            <Fragment>
+              <div
+                class="bg-indigo-100 border-t-4 border-indigo-500 rounded-b text-indigo-900 px-4 py-3 shadow-md mb-6 mt-2 w-5/6 lg:w-full"
+                role="alert"
+              >
+                <div class="flex">
+                  <div class="py-1">
+                    <svg
+                      class="fill-current h-6 w-6 text-indigo-500 mr-4"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                    >
+                      <path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p class="font-bold">
+                      You do not have a profile setup yet.
+                    </p>
+                    <p class="text-sm">Please add some info.</p>
+                  </div>
+                </div>
+              </div>
+              <Link
+                to="/create-profile"
+                className="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded"
+              >
+                Create Profile
+              </Link>
+            </Fragment>
+          )}
+        </div>
       </div>
     </Fragment>
   );
