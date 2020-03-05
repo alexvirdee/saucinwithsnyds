@@ -39,7 +39,7 @@ export default function(state = initialState, action) {
     case AUTH_ERROR:
     case LOGIN_FAIL:
     case LOGOUT:
-      localStorage.setItem('token', '');
+      localStorage.removeItem('token');
       return {
         ...state,
         token: null,
@@ -47,6 +47,7 @@ export default function(state = initialState, action) {
         loading: false,
         user: null
       };
+
     default:
       return state;
   }

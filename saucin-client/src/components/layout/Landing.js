@@ -19,7 +19,7 @@ const Landing = () => {
             src={landingImage}
             alt="hero"
           ></img>
-          <div className="absolute flex container">
+          {/* <div className="absolute flex container">
             <div className="sm:my-4 md:my-6 my-2 px-6 text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl">
               <FontAwesomeIcon className="fa-sm mr-2 mb-1" icon={faUsers} />
               <div className="inline">Join the community</div>
@@ -30,7 +30,7 @@ const Landing = () => {
               <FontAwesomeIcon className="fa-sm mr-2 " icon={faShoppingCart} />
               <div className="inline">Buy Cooking Gear</div>
             </div>
-          </div>
+          </div> */}
         </div>
         <div className="px-6">
           <div className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl mb-4 py-6">
