@@ -1,9 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
 #menu-toggle:checked + #menu {
   display: block;
 }
 
 .landing {
   height: 90vh;
+}
+
+.pacifico {
+  font-family: 'Pacifico', cursive;
 }
 
 @media only screen and (max-width: 768px) {

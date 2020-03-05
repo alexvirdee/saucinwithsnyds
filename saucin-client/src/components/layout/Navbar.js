@@ -17,7 +17,7 @@ import {
   faShoppingCart
 } from '@fortawesome/free-solid-svg-icons';
 
-const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
+const Navbar = ({ auth: { user, isAuthenticated, loading }, logout }) => {
   const authLinks = (
     <ul className="lg:flex items-center justify-between text-base text-gray-700 pt-4 lg:pt-1">
       <li>
@@ -75,8 +75,8 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
     >
       <img
         className="rounded-full w-10 h-10 border-2 border-transparent hover:border-indigo-400"
-        src="https://pbs.twimg.com/profile_images/1128143121475342337/e8tkhRaz_normal.jpg"
-        alt="Andy Leverenz"
+        src={user && user.data.avatar}
+        alt="Avatar"
       ></img>
     </Link>
   );
