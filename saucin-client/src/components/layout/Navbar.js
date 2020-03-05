@@ -9,10 +9,8 @@ import logo from '../../img/logo-sm.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faSignOutAlt,
-  faAt,
   faSignInAlt,
   faUserPlus,
-  faInfo,
   faUtensils,
   faHashtag,
   faVideo,

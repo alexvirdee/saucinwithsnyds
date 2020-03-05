@@ -5,6 +5,8 @@ import Landing from './components/layout/Landing';
 import Login from './components/auth/Login';
 import Signup from './components/auth/Signup';
 import Alert from './components/layout/Alert';
+import Dashboard from './components/dashboard/Dashboard';
+import PrivateRoute from './components/routing/PrivateRoute';
 import Footer from './components/layout/Footer';
 import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
@@ -35,6 +37,7 @@ const App = () => {
             <Switch>
               <Route exact path="/signup" component={Signup} />
               <Route exact path="/login" component={Login} />
+              <PrivateRoute exact path="/dashboard" component={Dashboard} />
             </Switch>
           </section>
           <Route exact path="/" component={Footer} />
