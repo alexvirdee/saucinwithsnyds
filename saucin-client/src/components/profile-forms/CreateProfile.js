@@ -1,26 +1,28 @@
 import React, { Fragment, useState } from 'react';
+import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { createProfile } from '../../actions/profile';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {} from '@fortawesome/free-solid-svg-icons';
+import { prefix } from '@fortawesome/free-solid-svg-icons';
 import {
   faFacebookF,
   faTwitter,
   faInstagram,
-  faLinkedin
+  faYoutube
 } from '@fortawesome/free-brands-svg-icons';
 
-const CreateProfile = props => {
+const CreateProfile = ({ createProfile, history }) => {
   const [formData, setFormData] = useState({
     website: '',
     location: '',
     image: '',
-    favoriteFoods: '',
+    favoriteMeal: '',
     nickname: '',
     bio: '',
     youtube: '',
     twitter: '',
     facebook: '',
-    linkedin: '',
     instagram: ''
   });
 
@@ -30,18 +32,22 @@ const CreateProfile = props => {
     website,
     location,
     image,
-    favoriteFoods,
+    favoriteMeal,
     nickname,
     bio,
     youtube,
     twitter,
     facebook,
-    linkedin,
     instagram
   } = formData;
 
   const onChange = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  const onSubmit = e => {
+    e.preventDefault();
+    createProfile(formData, history);
+  };
 
   return (
     <Fragment>
@@ -53,7 +59,20 @@ const CreateProfile = props => {
           <p className="text-lg text-center mb-4">
             Add some information to get started
           </p>
-          <form>
+          <form onSubmit={e => onSubmit(e)} encType="multipart/form-data">
+            <div className="ml-2 mb-2 p-1">
+              <select
+                value={favoriteMeal}
+                onChange={e => onChange(e)}
+                name="favoriteMeal"
+              >
+                <option value="0">* Select Your Favorite Meal</option>
+                <option value="Breakfast">Breakfast</option>
+                <option value="Lunch">Lunch</option>
+                <option value="Dinner">Dinner</option>
+                <option value="Dessert">Dessert</option>
+              </select>
+            </div>
             <div className="md:flex mb-8">
               <div className="md:flex-1 mt-2 mb:mt-0 md:px-3">
                 <div className="mb-4">
@@ -62,7 +81,7 @@ const CreateProfile = props => {
                   </label>
                   <input
                     className="w-full shadow-inner p-4 border-0"
-                    type="url"
+                    type="text"
                     value={website}
                     onChange={e => onChange(e)}
                     name="website"
@@ -177,22 +196,22 @@ const CreateProfile = props => {
                       </div>
                       <div className="md:flex-1 md:pl-3 mt-2 md:mt-0">
                         <label className="block uppercase tracking-wide text-charcoal-darker text-xs font-bold mb-2">
-                          linkedIn
+                          YouTube
                         </label>
                         <div className="w-full flex">
                           <span className="text-md py-4 px-2 bg-grey-light text-grey-dark">
                             <FontAwesomeIcon
                               className="text-indigo-600"
-                              icon={faLinkedin}
+                              icon={faYoutube}
                             />
                           </span>
                           <input
                             className="flex-1 shadow-inner p-4 border-0"
                             type="text"
-                            name="linkedin"
-                            value={linkedin}
+                            name="youtube"
+                            value={youtube}
                             onChange={e => onChange(e)}
-                            placeholder="LinkedIn"
+                            placeholder="YouTube"
                           ></input>
                         </div>
                       </div>
@@ -209,23 +228,28 @@ const CreateProfile = props => {
                 <textarea
                   className="w-full shadow-inner p-4 border-0 no-resize border-2 resize-none"
                   placeholder="Tell us about you..."
+                  value={bio}
+                  name="bio"
+                  onChange={e => onChange(e)}
                   rows="6"
                 ></textarea>
               </div>
             </div>
             <div className="md:flex mb-6 mt-4 ml-2">
               <div className="md:flex-1">
-                <div className="text-cream mx-auto">
-                  <button
-                    type="button"
-                    className="bg-indigo-500 text-white font-semibold py-2 px-4 border border-gray-400 rounded shadow"
-                  >
-                    Add Cover Image
-                  </button>
-                </div>
+                <label className="block uppercase tracking-wide text-charcoal-darker text-sm font-bold mb-2 ml-2">
+                  Add Cover Image
+                </label>
+                <input
+                  type="file"
+                  className="bg-gray-500 text-white font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+                  value={image}
+                  name="image"
+                  onChange={e => onChange(e)}
+                ></input>
               </div>
             </div>
-            <div className="md:flex mb-6 ml-2 mt-4">
+            <div className="md:flex mb-6 ml-2 mt-8">
               <button
                 type="submit"
                 className="bg-green-500 text-white font-semibold py-2 px-4 border border-gray-400 rounded shadow"
@@ -240,6 +264,8 @@ const CreateProfile = props => {
   );
 };
 
-CreateProfile.propTypes = {};
+CreateProfile.propTypes = {
+  createProfile: PropTypes.func.isRequired
+};
 
-export default CreateProfile;
+export default connect(null, { createProfile })(withRouter(CreateProfile));

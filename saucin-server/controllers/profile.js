@@ -1,6 +1,5 @@
 const ErrorResponse = require('../utils/errorResponse');
 const asyncHandler = require('../middleware/async');
-
 const Profile = require('../models/Profile');
 const User = require('../models/User');
 
@@ -27,8 +26,9 @@ exports.createProfile = asyncHandler(async (req, res, next) => {
     username,
     website,
     location,
+    image,
     bio,
-    favoriteFoods,
+    favoriteMeal,
     youtube,
     facebook,
     twitter,
@@ -42,11 +42,12 @@ exports.createProfile = asyncHandler(async (req, res, next) => {
   if (username) profileFields.username = username;
   if (website) profileFields.website = website;
   if (location) profileFields.location = location;
+  if (image) profileFields.image = image || '';
   if (bio) profileFields.bio = bio;
-  if (favoriteFoods) {
-    profileFields.favoriteFoods = favoriteFoods
+  if (favoriteMeal) {
+    profileFields.favoriteMeal = favoriteMeal
       .split(',')
-      .map(favoriteFoods => favoriteFoods.trim());
+      .map(favoriteMeal => favoriteMeal.trim());
   }
 
   // Build the social object
@@ -56,6 +57,10 @@ exports.createProfile = asyncHandler(async (req, res, next) => {
   if (facebook) profileFields.social.facebook = facebook;
   if (linkedin) profileFields.social.linkedin = linkedin;
   if (instagram) profileFields.social.instagram = instagram;
+
+  if (req.file) {
+    profileFields.image = '/uploads/' + req.file.filename;
+  }
 
   let profile = await Profile.findOne({ user: req.user.id });
 
