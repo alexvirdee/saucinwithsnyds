@@ -4,7 +4,7 @@ import { setAlert } from '../../actions/alert';
 import { sendMessage } from '../../actions/contact';
 import PropTypes from 'prop-types';
 
-const Contact = ({ sendMessage }) => {
+const Contact = ({ sendMessage, setAlert }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -19,12 +19,17 @@ const Contact = ({ sendMessage }) => {
   const onSubmit = e => {
     e.preventDefault();
     sendMessage({ name, email, message });
+    setAlert('Message Sent!', 'bg-green-600 text-white');
   };
 
   return (
     <Fragment>
       <div className="flex justify-center">
-        <form onSubmit={e => onSubmit(e)} className="flex-1 w-full max-w-lg">
+        <form
+          id="create-message-form"
+          onSubmit={e => onSubmit(e)}
+          className="flex-1 w-full max-w-lg"
+        >
           <div className="lg:text-4xl md:text-3xl sm:text-xl pacifico text-center mt-4">
             Get in Touch
           </div>
