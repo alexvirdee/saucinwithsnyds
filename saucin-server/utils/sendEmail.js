@@ -1,4 +1,5 @@
 const nodemailer = require('nodemailer');
+const mailgun = require('nodemailer-mailgun-transport');
 
 const sendEmail = async options => {
   // create reusable transporter object using the default SMTP transport
@@ -19,9 +20,11 @@ const sendEmail = async options => {
     text: options.message
   };
 
-  const info = await transporter.sendMail(message);
-
-  console.log('Message sent: %s', info.messageId);
+  const info = await transporter.sendMail(message, function(err, data) {
+    if (err) {
+      console.log('Error Sending Email');
+    }
+  });
 };
 
 module.exports = sendEmail;
