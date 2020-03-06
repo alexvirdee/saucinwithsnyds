@@ -29,7 +29,7 @@ const Dashboard = ({
           ) : (
             <Fragment>
               <div
-                className="bg-indigo-100 border-t-4 border-indigo-500 rounded-b text-indigo-900 px-4 py-3 shadow-md mb-6 mt-2 w-5/6 lg:w-full"
+                className="bg-indigo-100 border-t-4 border-indigo-500 rounded-b text-indigo-900 px-4 py-3 shadow-md mb-6 mt-2 w-5/6"
                 role="alert"
               >
                 <div className="flex">

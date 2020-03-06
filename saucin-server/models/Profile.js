@@ -15,6 +15,9 @@ const ProfileSchema = new mongoose.Schema({
   location: {
     type: String
   },
+  nickname: {
+    type: String
+  },
   bio: {
     type: String
   },
