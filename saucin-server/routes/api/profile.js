@@ -4,7 +4,8 @@ const {
   createProfile,
   getProfiles,
   getUserProfile,
-  deleteProfile
+  deleteProfile,
+  profilePhotoUpload
 } = require('../../controllers/profile');
 
 const router = express.Router();
@@ -16,5 +17,8 @@ router.post('/', protect, createProfile);
 router.get('/', getProfiles);
 router.get('/user/:user_id', getUserProfile);
 router.delete('/', protect, deleteProfile);
+
+// Upload Photo
+router.route('/:id/photo').put(protect, profilePhotoUpload);
 
 module.exports = router;
