@@ -235,7 +235,7 @@ const CreateProfile = ({ createProfile, history }) => {
                 ></textarea>
               </div>
             </div>
-            <div className="md:flex mb-6 mt-4 ml-2">
+            {/* <div className="md:flex mb-6 mt-4 ml-2">
               <div className="md:flex-1">
                 <label className="block uppercase tracking-wide text-charcoal-darker text-sm font-bold mb-2 ml-2">
                   Add Cover Image
@@ -248,7 +248,7 @@ const CreateProfile = ({ createProfile, history }) => {
                   onChange={e => onChange(e)}
                 ></input>
               </div>
-            </div>
+            </div> */}
             <div className="md:flex mb-6 ml-2 mt-8">
               <button
                 type="submit"

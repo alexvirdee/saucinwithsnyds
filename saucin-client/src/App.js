@@ -8,6 +8,7 @@ import Login from './components/auth/Login';
 import Signup from './components/auth/Signup';
 import Alert from './components/layout/Alert';
 import Dashboard from './components/dashboard/Dashboard';
+import AdminDashboard from './components/dashboard/AdminDashboard';
 import CreateProfile from './components/profile-forms/CreateProfile';
 import PrivateRoute from './components/routing/PrivateRoute';
 import Footer from './components/layout/Footer';
@@ -43,6 +44,11 @@ const App = () => {
               <Route exact path="/signup" component={Signup} />
               <Route exact path="/login" component={Login} />
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              <PrivateRoute
+                exact
+                path="/admin-dashboard"
+                component={AdminDashboard}
+              />
               <PrivateRoute
                 exact
                 path="/create-profile"
