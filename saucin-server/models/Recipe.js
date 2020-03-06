@@ -41,6 +41,9 @@ const RecipeSchema = new Schema({
     type: String,
     default: 'no-photo.jpg'
   },
+  category: {
+    type: String
+  },
   ingredients: [
     {
       ingredient: {

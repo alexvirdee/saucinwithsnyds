@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getCurrentProfile } from '../../actions/profile';
 import Spinner from '../layout/Spinner';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 const Dashboard = ({
   getCurrentProfile,
@@ -29,13 +29,13 @@ const Dashboard = ({
           ) : (
             <Fragment>
               <div
-                class="bg-indigo-100 border-t-4 border-indigo-500 rounded-b text-indigo-900 px-4 py-3 shadow-md mb-6 mt-2 w-5/6 lg:w-full"
+                className="bg-indigo-100 border-t-4 border-indigo-500 rounded-b text-indigo-900 px-4 py-3 shadow-md mb-6 mt-2 w-5/6 lg:w-full"
                 role="alert"
               >
-                <div class="flex">
-                  <div class="py-1">
+                <div className="flex">
+                  <div className="py-1">
                     <svg
-                      class="fill-current h-6 w-6 text-indigo-500 mr-4"
+                      className="fill-current h-6 w-6 text-indigo-500 mr-4"
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 20 20"
                     >
@@ -43,10 +43,10 @@ const Dashboard = ({
                     </svg>
                   </div>
                   <div>
-                    <p class="font-bold">
+                    <p className="font-bold">
                       You do not have a profile setup yet.
                     </p>
-                    <p class="text-sm">Please add some info.</p>
+                    <p className="text-sm">Please add some info.</p>
                   </div>
                 </div>
               </div>

@@ -15,11 +15,11 @@ const About = () => {
             <div className="about-txt">
               Shalom, welcome to my website saucinwithsnyds! I'm excited to have
               you here. I wanted to create a platform to interact with my fans.
-              Here at Saucinwithsnyds, I can show you just how to make some of
-              my favorite meals step by step. Also, please feel free to create
-              your own recipes to my site. I'd love to see what you guys are
-              making! You can share, comment, and favorite your recipes. Let's
-              get cooking woo!
+              Here at Saucinwithsnyds, I can show you just how to make my
+              favorite meals step by step. Also, please feel free to create your
+              own recipes to my site. I'd love to see what you guys are making!
+              You can share, comment, and favorite your recipes. Let's get
+              cooking woo!
             </div>
           </div>
         </div>

@@ -124,9 +124,6 @@ const Signup = ({ setAlert, register, isAuthenticated }) => {
                   onChange={e => onChange(e)}
                   minLength="6"
                 ></input>
-                {/* <p className="text-gray-600 text-xs italic">
-                  Password must be 6 characters or longer
-                </p> */}
               </div>
             </div>
             <button

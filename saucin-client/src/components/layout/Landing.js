@@ -2,8 +2,8 @@ import React, { Fragment } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {} from '@fortawesome/free-solid-svg-icons';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import {} from '@fortawesome/free-solid-svg-icons';
 
 import landingImage from '../../img/emerson-vieira-cpkPJ-U9eUM-unsplash.jpg';
 
