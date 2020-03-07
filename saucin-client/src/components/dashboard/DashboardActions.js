@@ -18,15 +18,8 @@ const DashboardActions = () => {
             Edit Profile
           </Link>
         </div>
-        {/* <div className="text-center ml-1 mt-2 edit-profile bg-indigo-500 text-white font-semibold py-2 px-4 border border-gray-400 rounded shadow hover:bg-indigo-400">
-          <Link to="/upload-profile-photo">
-            <FontAwesomeIcon icon={faImages}></FontAwesomeIcon>
-            <span className="m-1"></span>
-            Upload Cover Image
-          </Link>
-        </div> */}
         <div className="text-center ml-1 mt-2 edit-profile bg-indigo-500 text-white font-semibold py-2 px-4 border border-gray-400 rounded shadow hover:bg-indigo-400">
-          <Link to="/create-recipe">
+          <Link to="/create-community-post">
             <FontAwesomeIcon icon={faHamburger}></FontAwesomeIcon>
             <span className="m-1"></span>
             Post to Community

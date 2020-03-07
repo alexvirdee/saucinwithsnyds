@@ -24,7 +24,7 @@ const Navbar = ({ auth: { user, isAuthenticated, loading }, logout }) => {
       <li>
         <Link
           className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-black"
-          to="recipes"
+          to="/community"
         >
           <FontAwesomeIcon className="fa-md mr-1" icon={faUsers} />
           Saucin Community
@@ -33,7 +33,7 @@ const Navbar = ({ auth: { user, isAuthenticated, loading }, logout }) => {
       <li>
         <Link
           className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-black"
-          to="recipes"
+          to="/recipes"
         >
           <FontAwesomeIcon className="fa-md mr-1" icon={faUtensils} />
           Recipes
@@ -42,7 +42,7 @@ const Navbar = ({ auth: { user, isAuthenticated, loading }, logout }) => {
       <li>
         <Link
           className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-black"
-          to="recipes"
+          to="/blog"
         >
           <FontAwesomeIcon className="fa-md mr-1" icon={faBlog} />
           Blog

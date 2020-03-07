@@ -9,8 +9,11 @@ import Signup from './components/auth/Signup';
 import Alert from './components/layout/Alert';
 import Dashboard from './components/dashboard/Dashboard';
 import AdminDashboard from './components/dashboard/AdminDashboard';
+import Blog from './components/blog/Blog';
+import Community from './components/community/Community';
 import CreateProfile from './components/profile-forms/CreateProfile';
 import EditProfile from './components/profile-forms/EditProfile';
+import CreateCommunityPost from './components/profile-forms/CreateCommunityPost';
 import Instagram from './components/socials/Instagram';
 import YouTube from './components/socials/YouTube';
 import Recipes from './components/recipes/Recipes';
@@ -49,6 +52,8 @@ const App = () => {
               <Route exact path="/signup" component={Signup} />
               <Route exact path="/login" component={Login} />
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              <PrivateRoute exact path="/blog" component={Blog} />
+              <PrivateRoute exact path="/community" component={Community} />
               <PrivateRoute exact path="/instagram" component={Instagram} />
               <PrivateRoute exact path="/youtube" component={YouTube} />
               <PrivateRoute exact path="/recipes" component={Recipes} />
@@ -67,6 +72,11 @@ const App = () => {
                 exact
                 path="/edit-profile"
                 component={EditProfile}
+              />
+              <PrivateRoute
+                exact
+                path="/create-community-post"
+                component={CreateCommunityPost}
               />
             </Switch>
           </section>
