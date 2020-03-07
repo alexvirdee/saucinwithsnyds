@@ -47,11 +47,12 @@ exports.createProfile = asyncHandler(async (req, res, next) => {
   if (location) profileFields.location = location;
   if (image) profileFields.image = image;
   if (bio) profileFields.bio = bio;
-  if (favoriteMeal) {
-    profileFields.favoriteMeal = favoriteMeal
-      .split(',')
-      .map(favoriteMeal => favoriteMeal.trim());
-  }
+  if (favoriteMeal) profileFields.favoriteMeal = favoriteMeal;
+  // if (favoriteMeal) {
+  //   profileFields.favoriteMeal = favoriteMeal
+  //     .split(',')
+  //     .map(favoriteMeal => favoriteMeal.trim());
+  // }
 
   // Build the social object
   profileFields.social = {};

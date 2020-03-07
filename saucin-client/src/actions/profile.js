@@ -47,9 +47,7 @@ export const createProfile = (
       )
     );
 
-    if (!edit) {
-      history.push('/dashboard');
-    }
+    history.push('/dashboard');
   } catch (error) {
     const errors = error.response.data.errors;
 

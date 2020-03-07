@@ -78,14 +78,14 @@ const EditProfile = ({
 
   const onSubmit = e => {
     e.preventDefault();
-    createProfile(formData, history);
+    createProfile(formData, history, true);
   };
 
   return (
     <Fragment>
       <div>
         <div className="container mx-auto p-6">
-          <div className="lg:text-2xl md:text-3xl sm:text-2xl font-bold underline text-center text-indigo-500 pacifico">
+          <div className="lg:text-2xl md:text-3xl sm:text-2xl font-bold underline text-center pacifico">
             Edit your Profile
           </div>
           <p className="text-lg text-center mb-4">Update your information</p>
@@ -266,20 +266,6 @@ const EditProfile = ({
                 ></textarea>
               </div>
             </div>
-            {/* <div className="md:flex mb-6 mt-4 ml-2">
-              <div className="md:flex-1">
-                <label className="block uppercase tracking-wide text-charcoal-darker text-sm font-bold mb-2 ml-2">
-                  Add Cover Image
-                </label>
-                <input
-                  type="file"
-                  className="bg-gray-500 text-white font-semibold py-2 px-4 border border-gray-400 rounded shadow"
-                  value={image}
-                  name="image"
-                  onChange={e => onChange(e)}
-                ></input>
-              </div>
-            </div> */}
             <div className="md:flex mb-6 ml-2 mt-8">
               <button
                 type="submit"
@@ -287,6 +273,13 @@ const EditProfile = ({
               >
                 Update Profile
               </button>
+              <Link
+                to="/dashboard"
+                type="button"
+                className="ml-4 bg-gray-500 text-white font-semibold py-2 px-4 border border-gray-400 rounded shadow  hover:bg-gray-400"
+              >
+                Go Back
+              </Link>
             </div>
           </form>
         </div>

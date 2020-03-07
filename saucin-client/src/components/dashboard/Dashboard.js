@@ -21,13 +21,23 @@ const Dashboard = ({
     <Spinner />
   ) : (
     <Fragment>
-      <div className="container mx-auto ml-4">
-        <div className="text-2xl">Dashboard</div>
-        <div className="text-2xl">Welcome, {user && user.data.name}</div>
+      <div className="container mx-auto m-8 px-4">
+        <div className="text-center text-2xl mb-2">
+          Welcome, {user && user.data.name}
+        </div>
+        <div className="text-center">
+          <img
+            className="rounded-full w-32 h-32 border-2 border-transparent hover:border-indigo-400 inline"
+            src={user && user.data.avatar}
+            alt="Avatar"
+          ></img>
+        </div>
         <div>
           {profile != null ? (
             <Fragment>
-              <DashboardActions />
+              <div className="container mx-auto text-center">
+                <DashboardActions />
+              </div>
             </Fragment>
           ) : (
             <Fragment>
