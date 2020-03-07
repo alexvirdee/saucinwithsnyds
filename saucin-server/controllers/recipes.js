@@ -17,6 +17,25 @@ exports.getRecipes = asyncHandler(async (req, res, next) => {
   });
 });
 
+// @desc     Get all users recipes
+// @route    GET /api/v1/recipes
+// @access   Public
+exports.getMyRecipes = asyncHandler(async (req, res, next) => {
+  const recipes = await Recipe.find({
+    id: req.params.id
+  });
+
+  console.log(recipes);
+
+  if (!recipes) {
+    return next(new ErrorResponse(`This user does not have any recipes`));
+  }
+
+  res.status(200).json({
+    data: recipes
+  });
+});
+
 // @desc    Get single recipe
 // @route   GET /api/v1/recipes/:id
 // @access  Public

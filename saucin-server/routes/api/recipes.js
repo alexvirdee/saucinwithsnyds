@@ -1,6 +1,7 @@
 const express = require('express');
 const {
   getRecipes,
+  getMyRecipes,
   getRecipe,
   createRecipe,
   updateRecipe,
@@ -18,6 +19,8 @@ router
   .route('/')
   .get(getRecipes)
   .post(protect, createRecipe);
+
+router.route('/me').get(getMyRecipes);
 
 router
   .route('/:id')

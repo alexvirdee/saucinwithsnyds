@@ -8,7 +8,7 @@ const axios = require('axios');
 exports.getInstagram = asyncHandler(async (req, res, next) => {
   axios
     .get(
-      `https://graph.instagram.com/17841401482270651?fields=id,username&access_token=IGQVJWRzV5RU5aRUgxR3dldldrUEZAUWlBHdE9qazJpUDJYUURHWkMwX3FTM0hvYVhVUFBBd0RaSU1wWkwxWGxPRDVIZATh3ZATVKTzd6ZAjl2cHlsQWFaMHk4WUw0Xy04aHJZAQkxhZAmJiX29uNXh0R212RW9tSXlUeERpQVE0`
+      `https://graph.instagram.com/17841401482270651?fields=id,username&access_token=IGQVJXa3p0NEwyZA2ZA4U05NbzJLQlhDQ1N3eHlXaS1jSFBEcEI3SWh4N0ZAOQXp0ZAFlrbFBoSEV1OVNvUEZAORl9vVnZALM1F1QXg2QXhMM3ZAlMHVyUUVqdFBSUzRweUdCZAV9ITzJTQTNHejh6YXZAiYW5HZAEZAXdnBDTGo4MVpz`
     )
     .then(res => {
       console.log(res.data);
