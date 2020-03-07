@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 const Community = props => {
   return (
-    <div className="container mx-auto text-4xl">
-      Saucinwithsnyds Community Page
-    </div>
+    <Fragment>
+      <div className="h-40 grid grid-cols-4 gap-1">
+        <div className="bg-gray-400">Create Posts</div>
+        <div className="bg-gray-400">Discuss Cooking Tips</div>
+        <div className="bg-gray-400">Be part of a community</div>
+        <div className="bg-gray-400">Welcome</div>
+      </div>
+    </Fragment>
   );
 };
 
