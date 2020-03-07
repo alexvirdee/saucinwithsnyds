@@ -1,13 +1,15 @@
 import React, { Fragment, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getCurrentProfile } from '../../actions/profile';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faUser,
-  faImages,
-  faHamburger
+  faBlog,
+  faHamburger,
+  faPencilAlt,
+  faUtensils
 } from '@fortawesome/free-solid-svg-icons';
 
 const DashboardActions = ({
@@ -30,14 +32,29 @@ const DashboardActions = ({
         </div>
         <div className="text-center ml-1 mt-2 edit-profile bg-indigo-500 text-white font-semibold py-2 px-4 border border-gray-400 rounded shadow hover:bg-indigo-400">
           <Link to="/create-community-post">
-            <FontAwesomeIcon icon={faHamburger}></FontAwesomeIcon>
+            <FontAwesomeIcon icon={faPencilAlt}></FontAwesomeIcon>
             <span className="m-1"></span>
             Post to Community
           </Link>
         </div>
         {(user && user.data.role === 'admin') ||
         (user && user.data.role === 'publisher') ? (
-          <Fragment>Admin or publisher Dashboard Actions</Fragment>
+          <Fragment>
+            <div className="text-center ml-1 mt-2 edit-profile bg-red-500 text-white font-semibold py-2 px-4 border border-gray-400 rounded shadow hover:bg-red-400">
+              <Link to="/create-recipe">
+                <FontAwesomeIcon icon={faUtensils}></FontAwesomeIcon>
+                <span className="m-1"></span>
+                Create Recipe
+              </Link>
+            </div>
+            <div className="text-center ml-1 mt-2 edit-profile bg-red-500 text-white font-semibold py-2 px-4 border border-gray-400 rounded shadow hover:bg-red-400">
+              <Link to="/create-blog-post">
+                <FontAwesomeIcon icon={faBlog}></FontAwesomeIcon>
+                <span className="m-1"></span>
+                Create Blog Post
+              </Link>
+            </div>
+          </Fragment>
         ) : (
           <Fragment></Fragment>
         )}

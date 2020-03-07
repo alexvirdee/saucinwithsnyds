@@ -23,7 +23,7 @@ const Dashboard = ({
     <Fragment>
       <div className="container mx-auto m-8 px-4">
         <div className="text-center text-2xl mb-2">
-          Welcome, {user && user.data.name} {user && user.data.role}
+          Welcome, {user && user.data.name}
         </div>
         <div className="text-center">
           <img

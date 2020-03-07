@@ -12,6 +12,8 @@ import Blog from './components/blog/Blog';
 import Community from './components/community/Community';
 import CreateProfile from './components/profile-forms/CreateProfile';
 import EditProfile from './components/profile-forms/EditProfile';
+import CreateRecipe from './components/profile-forms/CreateRecipe';
+import CreateBlogPost from './components/profile-forms/CreateBlogPost';
 import CreateCommunityPost from './components/profile-forms/CreateCommunityPost';
 import Instagram from './components/socials/Instagram';
 import YouTube from './components/socials/YouTube';
@@ -69,8 +71,18 @@ const App = () => {
               />
               <PrivateRoute
                 exact
+                path="/create-recipe"
+                component={CreateRecipe}
+              />
+              <PrivateRoute
+                exact
                 path="/create-community-post"
                 component={CreateCommunityPost}
+              />
+              <PrivateRoute
+                exact
+                path="/create-blog-post"
+                component={CreateBlogPost}
               />
             </Switch>
           </section>
