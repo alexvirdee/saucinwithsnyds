@@ -12,6 +12,9 @@ import AdminDashboard from './components/dashboard/AdminDashboard';
 import CreateProfile from './components/profile-forms/CreateProfile';
 import EditProfile from './components/profile-forms/EditProfile';
 import Instagram from './components/socials/Instagram';
+import YouTube from './components/socials/YouTube';
+import Recipes from './components/recipes/Recipes';
+import Store from './components/e-commerce/Store';
 import PrivateRoute from './components/routing/PrivateRoute';
 import Footer from './components/layout/Footer';
 
@@ -47,6 +50,9 @@ const App = () => {
               <Route exact path="/login" component={Login} />
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
               <PrivateRoute exact path="/instagram" component={Instagram} />
+              <PrivateRoute exact path="/youtube" component={YouTube} />
+              <PrivateRoute exact path="/recipes" component={Recipes} />
+              <PrivateRoute exact path="/store" component={Store} />
               <PrivateRoute
                 exact
                 path="/admin-dashboard"

@@ -12,10 +12,9 @@ import {
   faSignInAlt,
   faUserPlus,
   faUtensils,
-  faHashtag,
-  faVideo,
   faShoppingCart
 } from '@fortawesome/free-solid-svg-icons';
+import { faInstagram, faYoutube } from '@fortawesome/free-brands-svg-icons';
 
 const Navbar = ({ auth: { user, isAuthenticated, loading }, logout }) => {
   const authLinks = (
@@ -34,16 +33,16 @@ const Navbar = ({ auth: { user, isAuthenticated, loading }, logout }) => {
           to="/instagram"
           className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-black"
         >
-          <FontAwesomeIcon className="fa-md mr-1" icon={faHashtag} />
+          <FontAwesomeIcon className="fa-md mr-1" icon={faInstagram} />
           Instagram
         </Link>
       </li>
       <li>
         <Link
           className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-black"
-          to="/videos"
+          to="/youtube"
         >
-          <FontAwesomeIcon className="fa-md mr-1" icon={faVideo} />
+          <FontAwesomeIcon className="fa-md mr-1" icon={faYoutube} />
           Videos
         </Link>
       </li>
