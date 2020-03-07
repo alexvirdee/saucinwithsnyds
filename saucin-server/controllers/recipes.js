@@ -17,7 +17,7 @@ exports.getRecipes = asyncHandler(async (req, res, next) => {
   });
 });
 
-// @desc     Get all users recipes
+// @desc     Get all logged in users recipes
 // @route    GET /api/v1/recipes
 // @access   Public
 exports.getMyRecipes = asyncHandler(async (req, res, next) => {
@@ -59,7 +59,7 @@ exports.getRecipe = asyncHandler(async (req, res, next) => {
 
 // @desc    Create a Recipe
 // @route   POST /api/v1/recipes
-// @access  Private
+// @access  Private only admin or publisher should create a recipe
 exports.createRecipe = asyncHandler(async (req, res, next) => {
   const user = await User.findById(req.user.id).select('-password');
 
@@ -89,7 +89,7 @@ exports.createRecipe = asyncHandler(async (req, res, next) => {
 
 // @desc   Update a recipe
 // @route  PUT /api/v1/recipes/:id
-// @access Private
+// @access Private only admin or publisher should update a recipe
 exports.updateRecipe = asyncHandler(async (req, res, next) => {
   let recipe = await Recipe.findById(req.params.id);
 
@@ -126,7 +126,7 @@ exports.updateRecipe = asyncHandler(async (req, res, next) => {
 
 // @desc   Delete a recipe
 // @route  DELETE /api/v1/recipe/:id
-// @access Private
+// @access Private only admin or publisher should update a recipe
 exports.deleteRecipe = asyncHandler(async (req, res, next) => {
   const recipe = await Recipe.findById(req.params.id);
 
@@ -158,7 +158,7 @@ exports.deleteRecipe = asyncHandler(async (req, res, next) => {
 
 // @desc       Upload photo for recipe
 // @route      PUT /api/v1/recipes/:id/photo
-// @access     Private
+// @access     Private only admin or publisher should upload photo for recipe
 exports.recipePhotoUpload = asyncHandler(async (req, res, next) => {
   const recipe = await Recipe.findById(req.params.id);
 

@@ -60,9 +60,6 @@ const Signup = ({ setAlert, register, isAuthenticated }) => {
                   placeholder="Jane"
                   required
                 ></input>
-                {/* <p className="text-red-500 text-xs italic">
-                  Please fill out this field.
-                </p> */}
               </div>
             </div>
             <div className="flex flex-wrap -mx-3">
@@ -83,6 +80,10 @@ const Signup = ({ setAlert, register, isAuthenticated }) => {
                   placeholder="Jane@example.com"
                   required
                 ></input>
+                <small class="italic text-gray-500">
+                  This site uses Gravatar so if you want a profile image, use a
+                  Gravatar email
+                </small>
               </div>
             </div>
             <div className="flex flex-wrap -mx-3 mb-6">

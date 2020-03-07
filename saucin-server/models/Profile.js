@@ -23,8 +23,7 @@ const ProfileSchema = new mongoose.Schema({
     required: true
   },
   image: {
-    type: String,
-    default: 'no-photo.jpg'
+    type: String
   },
   favoriteMeal: {
     type: [String],

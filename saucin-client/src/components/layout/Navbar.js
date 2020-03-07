@@ -11,6 +11,8 @@ import {
   faSignOutAlt,
   faSignInAlt,
   faUserPlus,
+  faUsers,
+  faBlog,
   faUtensils,
   faShoppingCart
 } from '@fortawesome/free-solid-svg-icons';
@@ -24,8 +26,26 @@ const Navbar = ({ auth: { user, isAuthenticated, loading }, logout }) => {
           className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-black"
           to="recipes"
         >
+          <FontAwesomeIcon className="fa-md mr-1" icon={faUsers} />
+          Saucin Community
+        </Link>
+      </li>
+      <li>
+        <Link
+          className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-black"
+          to="recipes"
+        >
           <FontAwesomeIcon className="fa-md mr-1" icon={faUtensils} />
           Recipes
+        </Link>
+      </li>
+      <li>
+        <Link
+          className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-black"
+          to="recipes"
+        >
+          <FontAwesomeIcon className="fa-md mr-1" icon={faBlog} />
+          Blog
         </Link>
       </li>
       <li>
