@@ -8,7 +8,7 @@ const Community = props => {
         <div className="bg-gray-400">Create Posts</div>
         <div className="bg-gray-400">Discuss Cooking Tips</div>
         <div className="bg-gray-400">Be part of a community</div>
-        <div className="bg-gray-400">Welcome</div>
+        <div className="bg-gray-400">Welcome to saucinwithsnyds</div>
       </div>
     </Fragment>
   );
