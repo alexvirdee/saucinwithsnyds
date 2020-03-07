@@ -10,6 +10,7 @@
     "reactandnode": "concurrently \"npm run dev\" \"npm run client\""
   },
   "dependencies": {
+    "axios": "^0.19.2",
     "bcryptjs": "^2.4.3",
     "colors": "^1.4.0",
     "cookie-parser": "~1.4.4",
