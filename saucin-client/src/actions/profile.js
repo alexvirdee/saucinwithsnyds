@@ -50,16 +50,18 @@ export const createProfile = (
     if (!edit) {
       history.push('/dashboard');
     }
-  } catch (err) {
-    const errors = err.response.data.errors;
+  } catch (error) {
+    const errors = error.response.data.errors;
 
     if (errors) {
-      errors.forEach(error => dispatch(setAlert(error.msg, 'bg-red-500')));
+      errors.forEach(error =>
+        dispatch(setAlert(error.msg, 'bg-red-500 text-white'))
+      );
     }
 
     dispatch({
       type: PROFILE_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status }
+      payload: { msg: error.response.statusText, status: error.response.status }
     });
   }
 };

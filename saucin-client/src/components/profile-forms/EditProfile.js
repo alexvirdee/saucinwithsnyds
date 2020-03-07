@@ -1,8 +1,8 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { createProfile } from '../../actions/profile';
+import { createProfile, getCurrentProfile } from '../../actions/profile';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { prefix } from '@fortawesome/free-solid-svg-icons';
 import {
@@ -12,7 +12,25 @@ import {
   faYoutube
 } from '@fortawesome/free-brands-svg-icons';
 
-const CreateProfile = ({ createProfile, history }) => {
+const initialState = {
+  website: '',
+  location: '',
+  image: '',
+  favoriteMeal: '',
+  nickname: '',
+  bio: '',
+  youtube: '',
+  twitter: '',
+  facebook: '',
+  instagram: ''
+};
+
+const EditProfile = ({
+  profile: { profile, loading },
+  createProfile,
+  getCurrentProfile,
+  history
+}) => {
   const [formData, setFormData] = useState({
     website: '',
     location: '',
@@ -27,6 +45,20 @@ const CreateProfile = ({ createProfile, history }) => {
   });
 
   const [displaySocialInputs, toggleSocialInputs] = useState(false);
+
+  useEffect(() => {
+    if (!profile) getCurrentProfile();
+    if (!loading) {
+      const profileData = { ...initialState };
+      for (const key in profile) {
+        if (key in profileData) profileData[key] = profile[key];
+      }
+      for (const key in profile.social) {
+        if (key in profileData) profileData[key] = profile.social[key];
+      }
+      setFormData(profileData);
+    }
+  }, [loading, getCurrentProfile, profile]);
 
   const {
     website,
@@ -54,11 +86,9 @@ const CreateProfile = ({ createProfile, history }) => {
       <div>
         <div className="container mx-auto p-6">
           <div className="lg:text-2xl md:text-3xl sm:text-2xl font-bold underline text-center text-indigo-500 pacifico">
-            Create your Profile
+            Edit your Profile
           </div>
-          <p className="text-lg text-center mb-4">
-            Add some information to get started
-          </p>
+          <p className="text-lg text-center mb-4">Update your information</p>
           <form onSubmit={e => onSubmit(e)} encType="multipart/form-data">
             <div className="ml-2 mb-2 p-1">
               <select
@@ -66,7 +96,7 @@ const CreateProfile = ({ createProfile, history }) => {
                 onChange={e => onChange(e)}
                 name="favoriteMeal"
               >
-                <option value="0"> Select Your Favorite Meal </option>
+                <option value="0">* Select Your Favorite Meal</option>
                 <option value="Breakfast">Breakfast</option>
                 <option value="Lunch">Lunch</option>
                 <option value="Dinner">Dinner</option>
@@ -107,6 +137,7 @@ const CreateProfile = ({ createProfile, history }) => {
                   <input
                     className="w-full shadow-inner p-4 border-0"
                     placeholder="Please add a nickname"
+                    type="text"
                     name="nickname"
                     value={nickname}
                     onChange={e => onChange(e)}
@@ -119,9 +150,9 @@ const CreateProfile = ({ createProfile, history }) => {
                 <button
                   onClick={() => toggleSocialInputs(!displaySocialInputs)}
                   type="button"
-                  className="bg-indigo-500 text-white font-semibold py-2 px-4 border border-gray-400 rounded shadow hover:bg-indigo-400"
+                  className="bg-indigo-500 text-white font-semibold py-2 px-4 border border-gray-400 rounded shadow  hover:bg-indigo-400"
                 >
-                  Add Social Networks
+                  Update Social Networks
                 </button>
               </div>
               {displaySocialInputs && (
@@ -222,7 +253,7 @@ const CreateProfile = ({ createProfile, history }) => {
             </div>
             <div>
               <label className="block uppercase tracking-wide text-charcoal-darker text-sm font-bold mb-2 ml-4">
-                Bio *
+                Bio
               </label>
               <div className="md:flex-1 mt-2 mb:mt-0 md:px-3">
                 <textarea
@@ -252,9 +283,9 @@ const CreateProfile = ({ createProfile, history }) => {
             <div className="md:flex mb-6 ml-2 mt-8">
               <button
                 type="submit"
-                className="bg-green-500 text-white font-semibold py-2 px-4 border border-gray-400 rounded shadow hover:bg-green-400"
+                className="bg-green-500 text-white font-semibold py-2 px-4 border border-gray-400 rounded shadow  hover:bg-green-400"
               >
-                Create Profile
+                Update Profile
               </button>
             </div>
           </form>
@@ -264,8 +295,16 @@ const CreateProfile = ({ createProfile, history }) => {
   );
 };
 
-CreateProfile.propTypes = {
-  createProfile: PropTypes.func.isRequired
+EditProfile.propTypes = {
+  createProfile: PropTypes.func.isRequired,
+  getCurrentProfile: PropTypes.func.isRequired,
+  profile: PropTypes.object.isRequired
 };
 
-export default connect(null, { createProfile })(withRouter(CreateProfile));
+const mapStateToProps = state => ({
+  profile: state.profile
+});
+
+export default connect(mapStateToProps, { createProfile, getCurrentProfile })(
+  withRouter(EditProfile)
+);

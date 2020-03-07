@@ -11,7 +11,7 @@ const About = () => {
           alt="Profile"
         ></img>
         <div className="text-gray-600">
-          <div className="container mx-auto text-center pt-12 w-8/12">
+          <div className="container mx-auto text-center pt-12 w-8/12 pb-8">
             <div className="about-txt">
               Shalom, welcome to my website saucinwithsnyds! I'm excited to have
               you here. I wanted to create a platform to interact with my fans.

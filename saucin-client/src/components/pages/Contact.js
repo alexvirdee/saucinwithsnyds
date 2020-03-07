@@ -19,12 +19,13 @@ const Contact = ({ sendMessage, setAlert }) => {
   const onSubmit = e => {
     e.preventDefault();
     sendMessage({ name, email, message });
+
     setAlert('Message Sent!', 'bg-green-600 text-white');
   };
 
   return (
     <Fragment>
-      <div className="flex justify-center">
+      <div className="flex justify-center mb-10">
         <form
           id="create-message-form"
           onSubmit={e => onSubmit(e)}

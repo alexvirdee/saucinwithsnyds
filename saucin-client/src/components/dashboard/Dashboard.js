@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getCurrentProfile } from '../../actions/profile';
 import Spinner from '../layout/Spinner';
+import DashboardActions from './DashboardActions';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faUser } from '@fortawesome/free-solid-svg-icons';
 
@@ -25,7 +26,9 @@ const Dashboard = ({
         <div className="text-2xl">Welcome, {user && user.data.name}</div>
         <div>
           {profile != null ? (
-            <Fragment>User has a profile TODO: BUILD DASHBOARD</Fragment>
+            <Fragment>
+              <DashboardActions />
+            </Fragment>
           ) : (
             <Fragment>
               <div

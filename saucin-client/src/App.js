@@ -10,6 +10,8 @@ import Alert from './components/layout/Alert';
 import Dashboard from './components/dashboard/Dashboard';
 import AdminDashboard from './components/dashboard/AdminDashboard';
 import CreateProfile from './components/profile-forms/CreateProfile';
+import EditProfile from './components/profile-forms/EditProfile';
+import Instagram from './components/socials/Instagram';
 import PrivateRoute from './components/routing/PrivateRoute';
 import Footer from './components/layout/Footer';
 
@@ -44,6 +46,7 @@ const App = () => {
               <Route exact path="/signup" component={Signup} />
               <Route exact path="/login" component={Login} />
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              <PrivateRoute exact path="/instagram" component={Instagram} />
               <PrivateRoute
                 exact
                 path="/admin-dashboard"
@@ -53,6 +56,11 @@ const App = () => {
                 exact
                 path="/create-profile"
                 component={CreateProfile}
+              />
+              <PrivateRoute
+                exact
+                path="/edit-profile"
+                component={EditProfile}
               />
             </Switch>
           </section>

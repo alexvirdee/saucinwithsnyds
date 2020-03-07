@@ -29,6 +29,7 @@ exports.createProfile = asyncHandler(async (req, res, next) => {
     location,
     image,
     bio,
+    nickname,
     favoriteMeal,
     youtube,
     facebook,
@@ -41,6 +42,7 @@ exports.createProfile = asyncHandler(async (req, res, next) => {
   const profileFields = {};
   profileFields.user = req.user.id;
   if (username) profileFields.username = username;
+  if (nickname) profileFields.nickname = nickname;
   if (website) profileFields.website = website;
   if (location) profileFields.location = location;
   if (image) profileFields.image = image;
