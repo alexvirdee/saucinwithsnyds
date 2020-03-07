@@ -8,7 +8,6 @@ import Login from './components/auth/Login';
 import Signup from './components/auth/Signup';
 import Alert from './components/layout/Alert';
 import Dashboard from './components/dashboard/Dashboard';
-import AdminDashboard from './components/dashboard/AdminDashboard';
 import Blog from './components/blog/Blog';
 import Community from './components/community/Community';
 import CreateProfile from './components/profile-forms/CreateProfile';
@@ -58,11 +57,6 @@ const App = () => {
               <PrivateRoute exact path="/youtube" component={YouTube} />
               <PrivateRoute exact path="/recipes" component={Recipes} />
               <PrivateRoute exact path="/store" component={Store} />
-              <PrivateRoute
-                exact
-                path="/admin-dashboard"
-                component={AdminDashboard}
-              />
               <PrivateRoute
                 exact
                 path="/create-profile"

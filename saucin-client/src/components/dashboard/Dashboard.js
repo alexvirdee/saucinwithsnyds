@@ -21,12 +21,9 @@ const Dashboard = ({
     <Spinner />
   ) : (
     <Fragment>
-      {/* <div className="cover-image-section w-full h-56 bg-gray-600 border-dashed border-4 border-white">
-        <div className="text-white text-center">Cover Image</div>
-      </div> */}
       <div className="container mx-auto m-8 px-4">
         <div className="text-center text-2xl mb-2">
-          Welcome, {user && user.data.name}
+          Welcome, {user && user.data.name} {user && user.data.role}
         </div>
         <div className="text-center">
           <img
