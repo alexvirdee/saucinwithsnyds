@@ -17,7 +17,7 @@ const About = () => {
               you here. I wanted to create a platform to interact with my fans.
               Here at Saucinwithsnyds, I can show you just how to make my
               favorite meals step by step. Also, please feel free to create your
-              own post to my website. I'd love to see what you guys are making!
+              own posts to my website. I'd love to see what you guys are making!
               You can share, comment, and favorite your recipes. Let's get
               cooking woo!
             </div>

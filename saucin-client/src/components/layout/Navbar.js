@@ -79,7 +79,6 @@ const Navbar = ({ auth: { user, isAuthenticated, loading }, logout }) => {
         onClick={logout}
         href="#!"
         className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-black"
-        to="/login"
       >
         <FontAwesomeIcon className="fa-md mr-1" icon={faSignOutAlt} />
         Logout
