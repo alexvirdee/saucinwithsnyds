@@ -21,16 +21,19 @@ const DashboardActions = ({
     getCurrentProfile();
   }, []);
   return (
-    <div>
+    <Fragment>
+      <Fragment>
+        <div className="mt-4 mb-2 bg-gray-400 h-48"></div>
+      </Fragment>
       <div className="sm:flex sm:flex-col md:flex md:flex-col lg:flex lg:flex-row justify-center dashboard-actions mt-4">
-        <div className="text-center ml-1 mt-2 edit-profile bg-indigo-500 text-white font-semibold py-2 px-4 border border-gray-400 rounded shadow hover:bg-indigo-400">
+        <div className="text-center ml-1 mt-2 edit-profile bg-indigo-600 text-white font-semibold py-2 px-4 border border-gray-400 rounded shadow hover:bg-indigo-500">
           <Link to="/edit-profile">
             <FontAwesomeIcon icon={faUser}></FontAwesomeIcon>
             <span className="m-1"></span>
             Edit Profile
           </Link>
         </div>
-        <div className="text-center ml-1 mt-2 edit-profile bg-indigo-500 text-white font-semibold py-2 px-4 border border-gray-400 rounded shadow hover:bg-indigo-400">
+        <div className="text-center ml-1 mt-2 edit-profile bg-indigo-600 text-white font-semibold py-2 px-4 border border-gray-400 rounded shadow hover:bg-indigo-500">
           <Link to="/create-community-post">
             <FontAwesomeIcon icon={faPencilAlt}></FontAwesomeIcon>
             <span className="m-1"></span>
@@ -40,14 +43,14 @@ const DashboardActions = ({
         {(user && user.data.role === 'admin') ||
         (user && user.data.role === 'publisher') ? (
           <Fragment>
-            <div className="text-center ml-1 mt-2 edit-profile bg-red-500 text-white font-semibold py-2 px-4 border border-gray-400 rounded shadow hover:bg-red-400">
+            <div className="text-center ml-1 mt-2 edit-profile bg-indigo-600 text-white font-semibold py-2 px-4 border border-gray-400 rounded shadow hover:bg-indigo-500">
               <Link to="/create-recipe">
                 <FontAwesomeIcon icon={faUtensils}></FontAwesomeIcon>
                 <span className="m-1"></span>
                 Create Recipe
               </Link>
             </div>
-            <div className="text-center ml-1 mt-2 edit-profile bg-red-500 text-white font-semibold py-2 px-4 border border-gray-400 rounded shadow hover:bg-red-400">
+            <div className="text-center ml-1 mt-2 edit-profile bg-indigo-600 text-white font-semibold py-2 px-4 border border-gray-400 rounded shadow hover:bg-gindigo500">
               <Link to="/create-blog-post">
                 <FontAwesomeIcon icon={faBlog}></FontAwesomeIcon>
                 <span className="m-1"></span>
@@ -59,7 +62,7 @@ const DashboardActions = ({
           <Fragment></Fragment>
         )}
       </div>
-    </div>
+    </Fragment>
   );
 };
 
