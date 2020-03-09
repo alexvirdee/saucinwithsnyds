@@ -22,9 +22,6 @@ const DashboardActions = ({
   }, []);
   return (
     <Fragment>
-      <Fragment>
-        <div className="mt-4 mb-2 bg-gray-400 h-48"></div>
-      </Fragment>
       <div className="sm:flex sm:flex-col md:flex md:flex-col lg:flex lg:flex-row justify-center dashboard-actions mt-4">
         <div className="text-center ml-1 mt-2 edit-profile bg-indigo-600 text-white font-semibold py-2 px-4 border border-gray-400 rounded shadow hover:bg-indigo-500">
           <Link to="/edit-profile">

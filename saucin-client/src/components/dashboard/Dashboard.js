@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { getCurrentProfile } from '../../actions/profile';
 import Spinner from '../layout/Spinner';
 import DashboardActions from './DashboardActions';
+import Profile from './Profile';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faUser } from '@fortawesome/free-solid-svg-icons';
 
@@ -36,6 +37,7 @@ const Dashboard = ({
           {profile != null ? (
             <Fragment>
               <div className="container mx-auto text-center">
+                <Profile profile={profile} />
                 <DashboardActions />
               </div>
             </Fragment>
