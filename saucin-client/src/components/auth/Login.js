@@ -82,7 +82,7 @@ const Login = ({ login, isAuthenticated, setAlert }) => {
             </div>
             <button
               type="submit"
-              value="Login"
+              value="login"
               className="text-center bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded shadow rounded shadow"
             >
               Login

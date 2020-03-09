@@ -111,8 +111,8 @@ exports.getUserProfile = asyncHandler(async (req, res, next) => {
   res.json(profile);
 });
 
-// @route  DELETE api/profile
-// @desc   Delete profile and user
+// @route  DELETE api/v1/profile
+// @desc   Delete profile and user {Account Deletion}
 // @access Private
 exports.deleteProfile = asyncHandler(async (req, res, next) => {
   // TODO: Remove the users associated posts

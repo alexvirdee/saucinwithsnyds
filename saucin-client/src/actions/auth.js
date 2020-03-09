@@ -84,13 +84,11 @@ export const login = (email, password) => async dispatch => {
 
     dispatch(loadUser());
   } catch (err) {
-    const errors = err.response.data.errors;
+    const errors = err.response.data.error;
 
-    if (errors) {
-      errors.forEach(error =>
-        dispatch(setAlert(error.msg, 'bg-red-200 text-white'))
-      );
-    }
+    dispatch(setAlert(errors, 'bg-red-500 text-white'));
+
+    console.log(errors);
 
     dispatch({
       type: LOGIN_FAIL

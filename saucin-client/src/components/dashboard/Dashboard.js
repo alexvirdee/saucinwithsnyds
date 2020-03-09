@@ -2,7 +2,7 @@ import React, { Fragment, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getCurrentProfile } from '../../actions/profile';
+import { getCurrentProfile, deleteAccount } from '../../actions/profile';
 import Spinner from '../layout/Spinner';
 import DashboardActions from './DashboardActions';
 import Profile from './Profile';
@@ -11,6 +11,7 @@ import Profile from './Profile';
 
 const Dashboard = ({
   getCurrentProfile,
+  deleteAccount,
   auth: { user },
   profile: { profile, loading }
 }) => {
@@ -39,6 +40,14 @@ const Dashboard = ({
               <div className="container mx-auto text-center">
                 <Profile profile={profile} />
                 <DashboardActions />
+                <div className="m-4">
+                  <button
+                    onClick={() => deleteAccount()}
+                    className="bg-red-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded"
+                  >
+                    Delete Account
+                  </button>
+                </div>
               </div>
             </Fragment>
           ) : (
