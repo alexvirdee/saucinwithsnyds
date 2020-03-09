@@ -36,7 +36,7 @@ const CreateRecipe = ({ createCommunityPost, history }) => {
             Create a Recipe
           </div>
           <p className="text-lg text-center mb-4 mt-2">
-            Add necessary steps to make meal
+            Add necessary steps to make a meal
           </p>
           <form encType="multipart/form-data">
             <div className="md:flex mb-8">
