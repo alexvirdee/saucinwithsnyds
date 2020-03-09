@@ -41,6 +41,19 @@ const CreateRecipe = ({ createCommunityPost, history }) => {
           <form encType="multipart/form-data">
             <div className="md:flex mb-8">
               <div className="md:flex-1 mt-2 mb:mt-0 md:px-3">
+                <div className="ml-2 mb-2 p-1">
+                  <select
+                    // value={category}
+                    // onChange={e => onChange(e)}
+                    name="category"
+                  >
+                    <option value="0"> Select a category </option>
+                    <option value="Breakfast">Breakfast</option>
+                    <option value="Lunch">Lunch</option>
+                    <option value="Dinner">Dinner</option>
+                    <option value="Dessert">Dessert</option>
+                  </select>
+                </div>
                 <div className="mb-4">
                   <label className="block uppercase tracking-wide text-charcoal-darker text-sm font-bold">
                     Title:

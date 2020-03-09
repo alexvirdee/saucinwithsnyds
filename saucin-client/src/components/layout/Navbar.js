@@ -75,28 +75,34 @@ const Navbar = ({ auth: { user, isAuthenticated, loading }, logout }) => {
           Store
         </Link>
       </li>
-      <a
-        onClick={logout}
-        href="#!"
-        className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-black"
-      >
-        <FontAwesomeIcon className="fa-md mr-1" icon={faSignOutAlt} />
-        Logout
-      </a>
     </ul>
   );
 
   const profileAuthLink = (
-    <Link
-      to="/dashboard"
-      className="lg:ml-4 flex items-center justify-start lg:mb-0 mb-4 cursor-pointer"
-    >
-      <img
-        className="rounded-full w-10 h-10 border-2 border-transparent hover:border-indigo-400"
-        src={user && user.data.avatar}
-        alt="Avatar"
-      ></img>
-    </Link>
+    <Fragment>
+      <Link
+        to="/dashboard"
+        className="lg:ml-4 flex items-center justify-start lg:mb-0 mb-4 cursor-pointer"
+      >
+        <img
+          className="rounded-full w-10 h-10 border-2 border-transparent hover:border-indigo-400"
+          src={user && user.data.avatar}
+          alt="Avatar"
+        ></img>
+      </Link>
+      <Fragment>
+        <div className="mt-2 py-2 w-48 bg-white rounded-lg shadow-xl">
+          <a
+            onClick={logout}
+            href="#!"
+            className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-black"
+          >
+            <FontAwesomeIcon className="fa-md mr-1" icon={faSignOutAlt} />
+            Logout
+          </a>
+        </div>
+      </Fragment>
+    </Fragment>
   );
 
   const logoLinkGuest = (

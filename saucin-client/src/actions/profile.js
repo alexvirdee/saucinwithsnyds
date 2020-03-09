@@ -71,13 +71,15 @@ export const createProfile = (
 
     history.push('/dashboard');
   } catch (error) {
-    const errors = error.response.data.errors;
+    const errors = error.response.data.error;
 
-    if (errors) {
-      errors.forEach(error =>
-        dispatch(setAlert(error.msg, 'bg-red-500 text-white'))
-      );
-    }
+    dispatch(setAlert(errors, 'bg-red-500 text-white'));
+
+    // if (errors) {
+    //   errors.forEach(error =>
+    //     dispatch(setAlert(error.msg, 'bg-red-500 text-white'))
+    //   );
+    // }
 
     dispatch({
       type: PROFILE_ERROR,
