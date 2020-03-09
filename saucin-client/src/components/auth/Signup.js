@@ -80,7 +80,7 @@ const Signup = ({ setAlert, register, isAuthenticated }) => {
                   placeholder="Jane@example.com"
                   required
                 ></input>
-                <small class="italic text-gray-500">
+                <small className="italic text-gray-500">
                   This site uses Gravatar so if you want a profile image, use a
                   Gravatar email
                 </small>

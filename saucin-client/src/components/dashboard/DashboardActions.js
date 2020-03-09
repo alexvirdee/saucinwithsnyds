@@ -47,7 +47,7 @@ const DashboardActions = ({
                 Create Recipe
               </Link>
             </div>
-            <div className="text-center ml-1 mt-2 edit-profile bg-indigo-600 text-white font-semibold py-2 px-4 border border-gray-400 rounded shadow hover:bg-gindigo500">
+            <div className="text-center ml-1 mt-2 edit-profile bg-indigo-600 text-white font-semibold py-2 px-4 border border-gray-400 rounded shadow hover:bg-indigo-500">
               <Link to="/create-blog-post">
                 <FontAwesomeIcon icon={faBlog}></FontAwesomeIcon>
                 <span className="m-1"></span>

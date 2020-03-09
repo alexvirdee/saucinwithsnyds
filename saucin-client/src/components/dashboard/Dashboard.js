@@ -43,7 +43,7 @@ const Dashboard = ({
                 <div className="m-4">
                   <button
                     onClick={() => deleteAccount()}
-                    className="bg-red-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded"
+                    className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
                   >
                     Delete Account
                   </button>
@@ -90,6 +90,7 @@ const Dashboard = ({
 
 Dashboard.propTypes = {
   getCurrentProfile: PropTypes.func.isRequired,
+  deleteAccount: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   profile: PropTypes.object.isRequired
 };
@@ -99,4 +100,6 @@ const mapStateToProps = state => ({
   profile: state.profile
 });
 
-export default connect(mapStateToProps, { getCurrentProfile })(Dashboard);
+export default connect(mapStateToProps, { getCurrentProfile, deleteAccount })(
+  Dashboard
+);
