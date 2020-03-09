@@ -40,14 +40,6 @@ const Dashboard = ({
               <div className="container mx-auto text-center">
                 <Profile profile={profile} />
                 <DashboardActions />
-                <div className="m-4">
-                  <button
-                    onClick={() => deleteAccount()}
-                    className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-                  >
-                    Delete Account
-                  </button>
-                </div>
               </div>
             </Fragment>
           ) : (

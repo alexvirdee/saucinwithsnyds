@@ -1,6 +1,7 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { getCurrentProfile, deleteAccount } from '../../actions/profile';
 import PropTypes from 'prop-types';
 import { logout } from '../../actions/auth';
 
@@ -11,6 +12,7 @@ import {
   faSignOutAlt,
   faSignInAlt,
   faUserPlus,
+  faUser,
   faUsers,
   faBlog,
   faUtensils,
@@ -18,7 +20,17 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { faInstagram, faYoutube } from '@fortawesome/free-brands-svg-icons';
 
-const Navbar = ({ auth: { user, isAuthenticated, loading }, logout }) => {
+const Navbar = ({
+  auth: { user, isAuthenticated, loading },
+  getCurrentProfile,
+  deleteAccount,
+  logout
+}) => {
+  useEffect(() => {
+    getCurrentProfile();
+  }, []);
+  const [displayDropdown, toggleDropdown] = useState(false);
+
   const authLinks = (
     <ul className="lg:flex items-center justify-between text-base text-gray-700 pt-4 lg:pt-1">
       <li>
@@ -82,26 +94,37 @@ const Navbar = ({ auth: { user, isAuthenticated, loading }, logout }) => {
     <Fragment>
       <Link
         to="/dashboard"
-        className="lg:ml-4 flex items-center justify-start lg:mb-0 mb-4 cursor-pointer"
+        onClick={() => toggleDropdown(!displayDropdown)}
+        className="block rounded-full w-10 h-10 border-2 border-transparent hover:border-indigo-400 overflow-hidden cursor-pointer"
       >
         <img
-          className="rounded-full w-10 h-10 border-2 border-transparent hover:border-indigo-400"
+          className="h-full w-full object-cover"
           src={user && user.data.avatar}
           alt="Avatar"
         ></img>
       </Link>
-      <Fragment>
-        <div className="mt-2 py-2 w-48 bg-white rounded-lg shadow-xl">
-          <a
-            onClick={logout}
-            href="#!"
-            className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-black"
-          >
-            <FontAwesomeIcon className="fa-md mr-1" icon={faSignOutAlt} />
-            Logout
-          </a>
-        </div>
-      </Fragment>
+      {displayDropdown && (
+        <Fragment>
+          <div className="absolute right-0 mt-16 py-2 bg-white rounded-lg shadow-xl w-48">
+            <a
+              onClick={logout}
+              href="#!"
+              className="block py-1 px-4 border-b-2 border-transparent hover:underline text-gray-600"
+            >
+              <FontAwesomeIcon className="fa-md mr-1" icon={faSignOutAlt} />
+              Logout
+            </a>
+            <a
+              onClick={() => deleteAccount()}
+              href="#!"
+              className="block py-1 px-4 border-b-2 border-transparent hover:underline text-gray-600 hover:text-red-600"
+            >
+              <FontAwesomeIcon className="fa-md mr-1" icon={faUser} />
+              Delete Account
+            </a>
+          </div>
+        </Fragment>
+      )}
     </Fragment>
   );
 
@@ -196,6 +219,8 @@ const Navbar = ({ auth: { user, isAuthenticated, loading }, logout }) => {
 };
 
 Navbar.propTypes = {
+  getCurrentProfile: PropTypes.func.isRequired,
+  deleteAccount: PropTypes.func.isRequired,
   logout: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired
 };
@@ -204,4 +229,8 @@ const mapStateToProps = state => ({
   auth: state.auth
 });
 
-export default connect(mapStateToProps, { logout })(Navbar);
+export default connect(mapStateToProps, {
+  getCurrentProfile,
+  deleteAccount,
+  logout
+})(Navbar);
