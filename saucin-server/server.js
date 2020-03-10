@@ -17,6 +17,7 @@ const communityposts = require('./routes/api/communityposts');
 const recipes = require('./routes/api/recipes');
 const contact = require('./routes/api/contact');
 const instagram = require('./routes/api/instagram');
+const youtube = require('./routes/api/youtube');
 
 // Load env variables
 dotenv.config({ path: './config/config.env' });
@@ -54,6 +55,7 @@ app.use('/api/v1/communityposts', communityposts);
 app.use('/api/v1/recipes', recipes);
 app.use('/api/v1/contact', contact);
 app.use('/api/v1/instagram', instagram);
+app.use('/api/v1/youtube', youtube);
 
 // error handler
 app.use(errorHandler);
