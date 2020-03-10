@@ -7,8 +7,6 @@ export const getYoutube = () => async dispatch => {
   try {
     const res = await axios.get(`/api/v1/youtube`);
 
-    console.log(res);
-
     dispatch({
       type: GET_YOUTUBE,
       payload: res.data

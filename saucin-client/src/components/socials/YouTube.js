@@ -3,7 +3,7 @@ import { getYoutube } from '../../actions/youtube';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-const YouTube = ({ getYoutube }) => {
+const YouTube = ({ getYoutube, youtube: { videos } }) => {
   useEffect(() => {
     getYoutube();
   }, []);
@@ -16,7 +16,12 @@ const YouTube = ({ getYoutube }) => {
 };
 
 YouTube.propTypes = {
-  getYoutube: PropTypes.func.isRequired
+  getYoutube: PropTypes.func.isRequired,
+  youtube: PropTypes.object.isRequired
 };
 
-export default connect(null, { getYoutube })(YouTube);
+const mapStateToProps = state => ({
+  youtube: state.youtube
+});
+
+export default connect(mapStateToProps, { getYoutube })(YouTube);
