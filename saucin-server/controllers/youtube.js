@@ -8,14 +8,15 @@ const axios = require('axios');
 exports.getYoutube = asyncHandler(async (req, res, next) => {
   let channelId = 'UCpTcPmCRuve81pg-5s4tapg';
 
-  axios
-    .get(
-      `https://www.googleapis.com/youtube/v3/search?key=${process.env.YOUTUBE_API_KEY}&channelId=${channelId}&part=snippet,id&order=date&maxResults=20`
-    )
-    .then(res => {
-      console.log(res.data);
-    })
-    .catch(err => {
-      console.log(err);
-    });
+  let youtube_res = await axios.get(
+    `https://www.googleapis.com/youtube/v3/search?key=${process.env.YOUTUBE_API_KEY}&channelId=${channelId}&part=snippet,id&order=date&maxResults=20`
+  );
+
+  res.status(200).json({
+    success: true,
+    data: youtube_res.data
+  });
 });
+
+// Construct video URL
+// http://www.youtube.com/watch?v={video_id_here}
