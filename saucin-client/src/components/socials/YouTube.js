@@ -1,10 +1,22 @@
-import React from 'react';
+import React, { Fragment, useEffect } from 'react';
+import { getYoutube } from '../../actions/youtube';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-const YouTube = props => {
-  return <div className="container mx-auto text-4xl">YouTube API Display</div>;
+const YouTube = ({ getYoutube }) => {
+  useEffect(() => {
+    getYoutube();
+  }, []);
+
+  return (
+    <Fragment>
+      <div className="text-4xl container mx-auto">YouTube Data</div>
+    </Fragment>
+  );
 };
 
-YouTube.propTypes = {};
+YouTube.propTypes = {
+  getYoutube: PropTypes.func.isRequired
+};
 
-export default YouTube;
+export default connect(null, { getYoutube })(YouTube);
