@@ -88,8 +88,6 @@ export const login = (email, password) => async dispatch => {
 
     dispatch(setAlert(errors, 'bg-red-500 text-white'));
 
-    console.log(errors);
-
     dispatch({
       type: LOGIN_FAIL
     });

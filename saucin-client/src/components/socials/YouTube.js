@@ -10,7 +10,29 @@ const YouTube = ({ getYoutube, youtube: { videos } }) => {
 
   return (
     <Fragment>
-      <div className="text-4xl container mx-auto">YouTube Data</div>
+      <div className="text-2xl">
+        <div className="flex justify-center mb-10 pt-4">
+          Saucingwithsnyds YouTube Channel
+        </div>
+        {videos.data !== undefined &&
+          videos.data !== null &&
+          videos.data.items.map((vid, index) => {
+            return (
+              <div className="container mx-auto flex" key={index}>
+                <div className="youtube-title flex-1 mt-10">
+                  {vid.snippet.title}
+                </div>{' '}
+                <br></br>
+                <iframe
+                  className="flex-1 mb-8"
+                  width="600"
+                  height="315"
+                  src={`http://www.youtube.com/embed/${vid.id.videoId}`}
+                ></iframe>{' '}
+              </div>
+            );
+          })}
+      </div>
     </Fragment>
   );
 };

@@ -12,6 +12,10 @@ exports.getYoutube = asyncHandler(async (req, res, next) => {
     `https://www.googleapis.com/youtube/v3/search?key=${process.env.YOUTUBE_API_KEY}&channelId=${channelId}&part=snippet,id&order=date&maxResults=20`
   );
 
+  if (!youtube_res) {
+    return next(new ErrorResponse(`Could not make youtube request`));
+  }
+
   res.status(200).json({
     success: true,
     data: youtube_res.data
