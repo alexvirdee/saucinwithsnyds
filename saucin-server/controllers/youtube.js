@@ -6,13 +6,13 @@ const axios = require('axios');
 // @route GET https://www.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=UCpTcPmCRuve81pg-5s4tapg&key=[YOUR_API_KEY]
 // @access Public
 exports.getYoutube = asyncHandler(async (req, res, next) => {
-  let channelId = 'UCpTcPmCRuve81pg-5s4tapg';
+  const channelId = 'UCpTcPmCRuve81pg-5s4tapg';
 
-  let youtube_res = await axios.get(
+  const youtube_res = await axios.get(
     `https://www.googleapis.com/youtube/v3/search?key=${process.env.YOUTUBE_API_KEY}&channelId=${channelId}&part=snippet,id&order=date&maxResults=20`
   );
 
-  if (!youtube_res) {
+  if (req.err) {
     return next(new ErrorResponse(`Could not make youtube request`));
   }
 
