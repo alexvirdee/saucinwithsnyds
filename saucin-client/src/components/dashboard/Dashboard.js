@@ -12,7 +12,7 @@ import Profile from './Profile';
 const Dashboard = ({
   getCurrentProfile,
   deleteAccount,
-  auth: { user },
+  auth: { user, _id },
   profile: { profile, loading }
 }) => {
   useEffect(() => {
@@ -28,11 +28,13 @@ const Dashboard = ({
           Welcome, {user && user.data.name}
         </div>
         <div className="text-center">
-          <img
-            className="rounded-full w-32 h-32 border-2 border-transparent hover:border-indigo-400 inline"
-            src={user && user.data.avatar}
-            alt="Avatar"
-          ></img>
+          <Link to={`/profile/me`}>
+            <img
+              className="rounded-full w-32 h-32 border-2 border-transparent hover:border-indigo-400 inline"
+              src={user && user.data.avatar}
+              alt="Avatar"
+            ></img>
+          </Link>
         </div>
         <div>
           {profile != null ? (

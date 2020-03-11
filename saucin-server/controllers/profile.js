@@ -39,51 +39,37 @@ exports.createProfile = asyncHandler(async (req, res, next) => {
   } = req.body;
 
   // Build the profile object
-  const profileFields = {};
-  profileFields.user = req.user.id;
-  if (username) profileFields.username = username;
-  if (nickname) profileFields.nickname = nickname;
-  if (website) profileFields.website = website;
-  if (location) profileFields.location = location;
-  if (image) profileFields.image = image;
-  if (bio) profileFields.bio = bio;
-  if (favoriteMeal) profileFields.favoriteMeal = favoriteMeal;
-  // if (favoriteMeal) {
-  //   profileFields.favoriteMeal = favoriteMeal
-  //     .split(',')
-  //     .map(favoriteMeal => favoriteMeal.trim());
-  // }
+  const profileFields = {
+    user: req.user.id,
+    website: website === '' ? '' : normalize(website, { forceHttps: true }),
+    location,
+    image,
+    bio,
+    favoriteMeal
+  };
 
   // Build the social object
-  profileFields.social = {};
-  if (youtube) profileFields.social.youtube = youtube;
-  if (twitter) profileFields.social.twitter = twitter;
-  if (facebook) profileFields.social.facebook = facebook;
-  if (linkedin) profileFields.social.linkedin = linkedin;
-  if (instagram) profileFields.social.instagram = instagram;
+  const socialFields = { youtube, twitter, facebook, linkedin, instagram };
 
-  let profile = await Profile.findOne({ user: req.user.id });
-
-  if (profile) {
-    // Update
-    profile = await Profile.findOneAndUpdate(
-      { user: req.user.id },
-      { $set: profileFields },
-      { new: true }
-    );
-
-    return res.status(200).json({
-      success: true,
-      message: 'Profile Updated',
-      data: profile
-    });
+  for (const [key, value] of Object.entries(socialFields)) {
+    if (value.length > 0)
+      socialFields[key] = normalize(value, { forceHttps: true });
   }
 
-  // Create
-  profile = new Profile(profileFields);
+  profileFields.social = socialFields;
 
-  await profile.save();
-  res.json(profile);
+  try {
+    // Use upsert (Creates a new doc if no match is found):
+    let profile = await Profile.findOneAndUpdate(
+      { user: req.user.id },
+      { $set: profileFields },
+      { new: true, upsert: true }
+    );
+    res.json(profile);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
 });
 
 // @route    GET api/v1/profiles
