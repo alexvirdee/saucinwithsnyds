@@ -4,6 +4,8 @@ const asyncHandler = require('../middleware/async');
 const Profile = require('../models/Profile');
 const User = require('../models/User');
 
+const normalize = require('normalize-url');
+
 // @route GET api/v1/profile/me
 // @desc  Retrieve profile information
 // @access Private
@@ -43,20 +45,20 @@ exports.createProfile = asyncHandler(async (req, res, next) => {
     user: req.user.id,
     website: website === '' ? '' : normalize(website, { forceHttps: true }),
     location,
+    nickname,
     image,
     bio,
     favoriteMeal
   };
 
-  // Build the social object
-  const socialFields = { youtube, twitter, facebook, linkedin, instagram };
+  // Build social object and add to profileFields
+  const socialfields = { youtube, twitter, instagram, linkedin, facebook };
 
-  for (const [key, value] of Object.entries(socialFields)) {
-    if (value.length > 0)
-      socialFields[key] = normalize(value, { forceHttps: true });
+  for (let [key, value] of Object.entries(socialfields)) {
+    if (value !== undefined && value.length > 0)
+      socialfields[key] = normalize(value, { forceHttps: true });
   }
-
-  profileFields.social = socialFields;
+  profileFields.social = socialfields;
 
   try {
     // Use upsert (Creates a new doc if no match is found):
@@ -65,7 +67,10 @@ exports.createProfile = asyncHandler(async (req, res, next) => {
       { $set: profileFields },
       { new: true, upsert: true }
     );
-    res.json(profile);
+    res.status(200).json({
+      success: true,
+      data: profile
+    });
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error');
