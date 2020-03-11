@@ -8,6 +8,7 @@ import Login from './components/auth/Login';
 import Signup from './components/auth/Signup';
 import Alert from './components/layout/Alert';
 import Dashboard from './components/dashboard/Dashboard';
+import Profile from './components/profile/Profile';
 import Blog from './components/blog/Blog';
 import Community from './components/community/Community';
 import CreateProfile from './components/profile-forms/CreateProfile';
@@ -53,6 +54,11 @@ const App = () => {
               <Route exact path="/signup" component={Signup} />
               <Route exact path="/login" component={Login} />
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              <PrivateRoute
+                exact
+                path="/profile/user/:id"
+                component={Profile}
+              />
               <PrivateRoute exact path="/blog" component={Blog} />
               <PrivateRoute exact path="/community" component={Community} />
               <PrivateRoute exact path="/instagram" component={Instagram} />
