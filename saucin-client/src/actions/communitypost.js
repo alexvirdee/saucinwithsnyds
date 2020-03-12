@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { setAlert } from './alert';
-import { GET_COMMUNTIY_POSTS, COMMUNITY_POST_ERROR } from './types';
+import { GET_COMMUNITY_POSTS, COMMUNITY_POST_ERROR } from './types';
 
 // Get all community posts
 export const getCommunityPosts = () => async dispatch => {
@@ -8,7 +8,7 @@ export const getCommunityPosts = () => async dispatch => {
     const res = await axios.get('/api/v1/communityposts');
 
     dispatch({
-      type: GET_COMMUNTIY_POSTS,
+      type: GET_COMMUNITY_POSTS,
       payload: res.data
     });
   } catch (err) {
