@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faUser,
   faBlog,
-  faHamburger,
+  // faHamburger,
   faPencilAlt,
   faUtensils
 } from '@fortawesome/free-solid-svg-icons';

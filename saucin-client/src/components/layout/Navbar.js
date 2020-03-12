@@ -15,8 +15,8 @@ import {
   faUser,
   faUsers,
   faBlog,
-  faUtensils,
-  faShoppingCart
+  faUtensils
+  // faShoppingCart
 } from '@fortawesome/free-solid-svg-icons';
 import { faInstagram, faYoutube } from '@fortawesome/free-brands-svg-icons';
 
