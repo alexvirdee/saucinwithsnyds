@@ -5,7 +5,21 @@ import { connect } from 'react-redux';
 import { getBlogPosts } from '../../actions/blogpost';
 
 const Blog = ({ getBlogPosts, blogpost: { posts, loading } }) => {
-  return <div className="container mx-auto text-4xl">Blog Page</div>;
+  useEffect(() => {
+    getBlogPosts();
+  }, [getBlogPosts]);
+
+  return (
+    <Fragment>
+      <div className="search-blogposts">
+        <input
+          className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"
+          type="text"
+          placeholder="Search Blog Posts..."
+        ></input>
+      </div>
+    </Fragment>
+  );
 };
 
 Blog.propTypes = {

@@ -6,6 +6,7 @@ import { GET_BLOG_POSTS, BLOG_POST_ERROR } from './types';
 export const getBlogPosts = () => async dispatch => {
   try {
     const res = await axios.get('/api/v1/blogposts');
+    console.log(res.data);
 
     dispatch({
       type: GET_BLOG_POSTS,
