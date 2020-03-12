@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import { getCommunityPosts } from '../../actions/communitypost';
+import CommunityPostItem from './CommunityPostItem';
 
 import Cooking from '../../img/vegetables.jpg';
 import Lifestyle from '../../img/lifestyle.jpg';
@@ -51,6 +52,13 @@ const CommunityPosts = ({
               </div>
             </Fragment>
           </div>
+        </div>
+      </Fragment>
+      <Fragment>
+        <div className="cpmmunity-posts">
+          {posts.map(post => (
+            <CommunityPostItem key={post._id} post={post} />
+          ))}
         </div>
       </Fragment>
     </Fragment>
