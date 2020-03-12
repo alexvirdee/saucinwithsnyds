@@ -46,7 +46,7 @@ const CommunityPostItem = ({
               </button>
             </div>
             <div className="unlike">
-              <button type="button" className="text-gray-500 ml-4 mt-3 hover:text-blue-600">
+              <button type="button" className="text-gray-500 ml-4 mt-3 hover:text-red-600">
                 <FontAwesomeIcon icon={faThumbsDown}></FontAwesomeIcon>
               </button>
             </div>

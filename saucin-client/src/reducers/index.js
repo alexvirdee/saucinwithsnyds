@@ -7,6 +7,7 @@ import instagram from './instagram';
 import youtube from './youtube';
 import communitypost from './communitypost';
 import blogpost from './blogpost';
+import recipe from './recipe';
 
 export default combineReducers({
   alert,
@@ -16,5 +17,6 @@ export default combineReducers({
   youtube,
   contact,
   communitypost,
-  blogpost
+  blogpost,
+  recipe
 });

@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
+import { getRecipes } from '../../actions/recipe';
 
 // Category Images
 import Breakfast from '../../img/breakfast.jpeg';
@@ -9,7 +10,7 @@ import Lunch from '../../img/lunch.jpeg';
 import Dinner from '../../img/dinner.jpg';
 import Dessert from '../../img/dessert.jpg';
 
-const Recipes = props => {
+const Recipes = ({ getRecipes, recipe: { recipes, loading } }) => {
   return ( null ? (
     <Spinner />
   ) : (
@@ -61,6 +62,13 @@ const Recipes = props => {
   );
 };
 
-Recipes.propTypes = {};
+Recipes.propTypes = {
+  getRecipes: PropTypes.func.isRequired,
+  recipe: PropTypes.object.isRequired,
+};
 
-export default Recipes;
+const mapStateToProps = state => ({
+  recipe: state.recipe
+})
+
+export default connect(mapStateToProps, { getRecipes })(Recipes);
