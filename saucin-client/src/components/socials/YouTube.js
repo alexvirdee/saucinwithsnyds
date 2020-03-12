@@ -26,7 +26,7 @@ const YouTube = ({ getYoutube, youtube: { videos } }) => {
                   ></iframe>{' '}
                 </div>
               );
-            })}
+            }).slice(0, -1)}
         </div>
       </div>
     </Fragment>

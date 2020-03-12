@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
@@ -11,6 +11,10 @@ import Dinner from '../../img/dinner.jpg';
 import Dessert from '../../img/dessert.jpg';
 
 const Recipes = ({ getRecipes, recipe: { recipes, loading } }) => {
+  useEffect(() => {
+    getRecipes();
+  }, [getRecipes]); 
+
   return ( null ? (
     <Spinner />
   ) : (
