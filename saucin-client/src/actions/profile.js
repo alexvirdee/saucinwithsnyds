@@ -11,7 +11,7 @@ import {
 // Get current users profile
 export const getCurrentProfile = () => async dispatch => {
   try {
-    const res = await axios.get('api/v1/profile/me');
+    const res = await axios.get('/api/v1/profile/me');
 
     dispatch({
       type: GET_PROFILE,
@@ -28,7 +28,7 @@ export const getCurrentProfile = () => async dispatch => {
 // Get profile by ID
 export const getProfileById = userId => async dispatch => {
   try {
-    const res = await axios.get(`api/v1/profile/user/${userId}`);
+    const res = await axios.get(`/api/v1/profile/user/${userId}`);
 
     console.log(res);
 

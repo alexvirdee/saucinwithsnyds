@@ -23,11 +23,13 @@ const CommunityPostItem = ({
             <p className="text-gray-700 text-base">{body}</p>
           </div>
           <div className="flex items-center">
+            <Link to={`/profile/user/${user}`}>
             <img
               className="w-10 h-10 rounded-full mr-4"
               src={avatar}
               alt="Avatar of {name}"
             ></img>
+            </Link>
             <div className="text-sm">
               <p className="text-gray-900 leading-none">{name}</p>
               <p className="text-gray-600">
