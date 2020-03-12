@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 const YouTube = ({ getYoutube, youtube: { videos } }) => {
   useEffect(() => {
     getYoutube();
-  }, []);
+  }, [getYoutube]);
 
   return (
     <Fragment>

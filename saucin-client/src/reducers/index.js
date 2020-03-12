@@ -5,6 +5,7 @@ import profile from './profile';
 import contact from './contact';
 import instagram from './instagram';
 import youtube from './youtube';
+import communitypost from './communitypost';
 
 export default combineReducers({
   alert,
@@ -12,5 +13,6 @@ export default combineReducers({
   profile,
   instagram,
   youtube,
-  contact
+  contact,
+  communitypost
 });
