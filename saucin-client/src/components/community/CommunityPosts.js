@@ -1,16 +1,26 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import Spinner from '../layout/Spinner';
+import { getCommunityPosts } from '../../actions/communitypost';
 
 import Cooking from '../../img/vegetables.jpg';
 import Lifestyle from '../../img/lifestyle.jpg';
 import General from '../../img/general.jpg';
 
-const Community = props => {
+const Community = ({
+  getCommunityPosts,
+  post: { communityposts, loading }
+}) => {
+  useEffect(() => {
+    getCommunityPosts();
+  }, [getCommunityPosts]);
+
   return (
     <Fragment>
       <div className="search-recipes">
         <input
-          class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"
+          className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"
           type="text"
           placeholder="Search community posts..."
         ></input>
@@ -45,6 +55,13 @@ const Community = props => {
   );
 };
 
-Community.propTypes = {};
+Community.propTypes = {
+  getCommunityPosts: PropTypes.func.isRequired,
+  post: PropTypes.object.isRequired
+};
 
-export default Community;
+const mapStateToProps = state => ({
+  post: state.post
+});
+
+export default connect(mapStateToProps, getCommunityPosts)(Community);

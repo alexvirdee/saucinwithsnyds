@@ -36,7 +36,7 @@ const Navbar = ({
       <li>
         <Link
           className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-black"
-          to="/community"
+          to="/communityposts"
         >
           <FontAwesomeIcon className="fa-md mr-1" icon={faUsers} />
           Saucin Community
@@ -78,7 +78,7 @@ const Navbar = ({
           Videos
         </Link>
       </li>
-      <li>
+      {/* <li>
         <Link
           className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-black"
           to="/store"
@@ -86,7 +86,7 @@ const Navbar = ({
           <FontAwesomeIcon className="fa-md mr-1" icon={faShoppingCart} />
           Store
         </Link>
-      </li>
+      </li> */}
     </ul>
   );
 
