@@ -1,5 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import Spinner from '../layout/Spinner';
 
 // Category Images
 import Breakfast from '../../img/breakfast.jpeg';
@@ -8,7 +10,9 @@ import Dinner from '../../img/dinner.jpg';
 import Dessert from '../../img/dessert.jpg';
 
 const Recipes = props => {
-  return (
+  return ( null ? (
+    <Spinner />
+  ) : (
     <Fragment>
       <div className="search-recipes">
         <input
@@ -52,6 +56,8 @@ const Recipes = props => {
         </div>
       </div>
     </Fragment>
+  )
+    
   );
 };
 

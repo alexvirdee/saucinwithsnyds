@@ -18,7 +18,10 @@ const CommunityPosts = ({
   }, [getCommunityPosts]);
 
   return (
-    <Fragment>
+    loading ? (
+      <Spinner />
+    ) : (
+      <Fragment>
       <Fragment>
         <div className="search-recipes">
           <input
@@ -62,6 +65,8 @@ const CommunityPosts = ({
         </div>
       </Fragment>
     </Fragment>
+    )
+    
   );
 };
 
