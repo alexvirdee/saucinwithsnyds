@@ -4,10 +4,7 @@ import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
 import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faThumbsUp,
-  faThumbsDown
-} from '@fortawesome/free-solid-svg-icons';
+import { faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
 
 // {videos.data !== undefined &&
 //   videos.data !== null &&
@@ -38,16 +35,29 @@ const CommunityPostItem = ({
               </p>
             </div>
             <div className="like">
-            <button type="button" className="text-gray-500 ml-4 mt-2 hover:text-blue-600">
-        <FontAwesomeIcon icon={faThumbsUp}></FontAwesomeIcon>
-        {likes.length > 0 && <span className="ml-1">{likes.length}</span>}
-      </button>
+              <button
+                type="button"
+                className="text-gray-500 ml-4 mt-2 hover:text-blue-600"
+              >
+                <FontAwesomeIcon icon={faThumbsUp}></FontAwesomeIcon>
+                {likes.length > 0 && (
+                  <span className="ml-1">{likes.length}</span>
+                )}
+              </button>
             </div>
-            {/* <div className="unlike">
-            <button type="button" className="">
-        <FontAwesomeIcon icon={faThumbsDown}></FontAwesomeIcon>
-      </button>
-            </div> */}
+            <div className="unlike">
+              <button type="button" className="text-gray-500 ml-4 mt-3 hover:text-blue-600">
+                <FontAwesomeIcon icon={faThumbsDown}></FontAwesomeIcon>
+              </button>
+            </div>
+            <div className="discussion-btn">
+            <Link
+                to={`/communityposts/${_id}`}
+                className="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-1 px-4 rounded ml-6 mt-2 border-b-4 rounded"
+              >
+                View
+              </Link>
+            </div>
             <div className="delete-btn ml-8">
               {!auth.loading && user === auth.user._id && (
                 <button className="bg-red-500 hover:bg-red-400 text-white font-bold py-1 px-4 border-b-4 border-red-700 hover:border-red-500 rounded">
