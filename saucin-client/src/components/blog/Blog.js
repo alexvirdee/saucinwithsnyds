@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Spinner from '../layout/Spinner';
 import { connect } from 'react-redux';
 import { getBlogPosts } from '../../actions/blogpost';
+import BlogItem from './BlogItem';
 
 const Blog = ({ getBlogPosts, blogpost: { posts, loading } }) => {
   useEffect(() => {
@@ -17,6 +18,11 @@ const Blog = ({ getBlogPosts, blogpost: { posts, loading } }) => {
           type="text"
           placeholder="Search Blog Posts..."
         ></input>
+      </div>
+      <div className="blog-posts">
+        {posts.map(post => (
+          <BlogItem key={post._id} post={post} />
+        ))}
       </div>
     </Fragment>
   );
