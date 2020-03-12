@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import { getBlogPosts } from '../../actions/blogpost';
 import BlogItem from './BlogItem';
 
+import Steak from '../../img/blog-steak.jpg';
+
 const Blog = ({ getBlogPosts, blogpost: { posts, loading } }) => {
   useEffect(() => {
     getBlogPosts();

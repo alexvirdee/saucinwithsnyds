@@ -9,7 +9,7 @@ const Profile = ({ getProfileById, profile: { profile, loading } }, auth) => {
     getProfileById();
   }, [getProfileById]);
 
-  return <div>Profile hello</div>;
+  return <div>User Profile Page</div>;
 };
 
 Profile.propTypes = {

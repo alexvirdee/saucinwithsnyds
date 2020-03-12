@@ -30,7 +30,7 @@ const BlogItem = ({
               </div>
               <div className="discussion-btn">
               <Link
-                  to={`/communityposts/${_id}`}
+                  to={`/blogposts/${_id}`}
                   className="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-1 px-4 rounded ml-6 mt-2 border-b-4 rounded"
                 >
                   View

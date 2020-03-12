@@ -92,7 +92,8 @@ const Navbar = ({
 
   const profileAuthLink = (
     <Fragment>
-      <a
+      <Link
+        to="/dashboard"
         onClick={() => toggleDropdown(!displayDropdown)}
         className="block rounded-full w-10 h-10 border-2 border-transparent hover:border-indigo-400 overflow-hidden cursor-pointer"
       >
@@ -101,7 +102,7 @@ const Navbar = ({
           src={user && user.data.avatar}
           alt="Avatar"
         ></img>
-      </a>
+      </Link>
       {displayDropdown && (
         <Fragment>
           <div className="absolute right-0 mt-16 py-2 bg-white rounded-lg shadow-xl w-48 z-10">
@@ -113,14 +114,14 @@ const Navbar = ({
               <FontAwesomeIcon className="fa-md mr-1" icon={faSignOutAlt} />
               Logout
             </a>
-            <a
+            {/* <a
               onClick={() => deleteAccount()}
               href="#!"
               className="block py-1 px-4 border-b-2 border-transparent hover:underline text-gray-600 hover:text-red-600"
             >
               <FontAwesomeIcon className="fa-md mr-1" icon={faUser} />
               Delete Account
-            </a>
+            </a> */}
           </div>
         </Fragment>
       )}
