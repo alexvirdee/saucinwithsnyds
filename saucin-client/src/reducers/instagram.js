@@ -1,4 +1,4 @@
-import { GET_INSTAGRAM } from '../actions/types';
+import { GET_INSTAGRAM, INSTAGRAM_ERROR } from '../actions/types';
 
 const initialState = {
   photos: [],
@@ -13,6 +13,12 @@ export default function(state = initialState, action) {
       return {
         ...state,
         photos: payload,
+        loading: false
+      };
+    case INSTAGRAM_ERROR:
+      return {
+        ...state,
+        error: payload,
         loading: false
       };
     default:

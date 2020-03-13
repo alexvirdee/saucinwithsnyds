@@ -11,6 +11,7 @@ export const getInstagram = username => async dispatch => {
       type: GET_INSTAGRAM,
       payload: res.data
     });
+    
   } catch (err) {
     console.log('Error getting instagram account');
   }

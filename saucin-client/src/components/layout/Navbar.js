@@ -94,7 +94,8 @@ const Navbar = ({
     <Fragment>
       <Link
         to="/dashboard"
-        onClick={() => toggleDropdown(!displayDropdown)}
+        onMouseEnter={() => toggleDropdown(!displayDropdown)}
+        onMouseLeave={() => toggleDropdown(!displayDropdown)}
         className="block rounded-full w-10 h-10 border-2 border-transparent hover:border-indigo-400 overflow-hidden cursor-pointer"
       >
         <img

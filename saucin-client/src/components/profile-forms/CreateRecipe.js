@@ -2,31 +2,29 @@ import React, { Fragment, useState } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { createProfile } from '../../actions/profile';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { prefix } from '@fortawesome/free-solid-svg-icons';
-import {} from '@fortawesome/free-brands-svg-icons';
+import { addRecipe } from '../../actions/recipe';
 
-const CreateRecipe = ({ createCommunityPost, history }) => {
-  //   const [formData, setFormData] = useState({
-  //     category,
-  //     title,
-  //     body,
-  //     image,
-  //     avatar
-  //   });
+const CreateRecipe = ({ addRecipe, history }) => {
+    const [formData, setFormData] = useState('');
 
-  //   const [displaySocialInputs, toggleSocialInputs] = useState(false);
+    const {
+      category,
+      title,
+      description,
+      servings,
+      prepTime,
+      cookTime,
+      ingredients,
+      directions,
+     } = formData;
 
-  //   const { category, title, body, image, avatar } = formData;
+    const onChange = e =>
+      setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  //   const onChange = e =>
-  //     setFormData({ ...formData, [e.target.name]: e.target.value });
-
-  //   const onSubmit = e => {
-  //     e.preventDefault();
-  //     createProfile(formData, history);
-  //   };
+    const onSubmit = e => {
+      e.preventDefault();
+      addRecipe(formData, history)
+    };
 
   return (
     <Fragment>
@@ -38,13 +36,13 @@ const CreateRecipe = ({ createCommunityPost, history }) => {
           <p className="text-lg text-center mb-4 mt-2">
             Add necessary steps to make a meal
           </p>
-          <form encType="multipart/form-data">
+          <form onSubmit={e => onSubmit(e)} encType="multipart/form-data">
             <div className="md:flex mb-8">
               <div className="md:flex-1 mt-2 mb:mt-0 md:px-3">
                 <div className="ml-2 mb-2 p-1">
                   <select
-                    // value={category}
-                    // onChange={e => onChange(e)}
+                    value={category}
+                    onChange={e => onChange(e)}
                     name="category"
                   >
                     <option value="0"> Select a category </option>
@@ -61,8 +59,8 @@ const CreateRecipe = ({ createCommunityPost, history }) => {
                   <input
                     className="w-full shadow-inner p-4 border-0"
                     type="text"
-                    // value={title}
-                    // onChange={e => onChange(e)}
+                    value={title}
+                    onChange={e => onChange(e)}
                     name="title"
                     placeholder="How I make use of my new air fryer"
                   ></input>
@@ -74,17 +72,17 @@ const CreateRecipe = ({ createCommunityPost, history }) => {
                   <input
                     className="w-full shadow-inner p-4 border-0"
                     type="text"
-                    // value={website}
-                    // onChange={e => onChange(e)}
-                    name="website"
+                    value={description}
+                    onChange={e => onChange(e)}
+                    name="description"
                     placeholder="A short description of the recipe"
                   ></input>
                 </div>
                 <div className="ml-2 mb-2 p-1">
                   <select
-                  // value={favoriteMeal}
-                  // onChange={e => onChange(e)}
-                  // name="favoriteMeal"
+                  value={servings}
+                  onChange={e => onChange(e)}
+                  name="servings"
                   >
                     <option value="0"> Number of Servings</option>
                     <option value="1">1</option>
@@ -106,9 +104,9 @@ const CreateRecipe = ({ createCommunityPost, history }) => {
                   <input
                     className="w-full shadow-inner p-4 border-0"
                     type="text"
-                    // value={website}
-                    // onChange={e => onChange(e)}
-                    name="website"
+                    value={prepTime}
+                    onChange={e => onChange(e)}
+                    name="prepTime"
                     placeholder="10 minutes"
                   ></input>
                 </div>
@@ -119,42 +117,28 @@ const CreateRecipe = ({ createCommunityPost, history }) => {
                   <input
                     className="w-full shadow-inner p-4 border-0"
                     type="text"
-                    // value={website}
-                    // onChange={e => onChange(e)}
-                    name="website"
+                    value={cookTime}
+                    onChange={e => onChange(e)}
+                    name="cookTime"
                     placeholder="35 minutes"
                   ></input>
                 </div>
               </div>
             </div>
             <div>
-              <label className="block uppercase tracking-wide text-charcoal-darker text-sm font-bold mb-2 ml-4">
-                Ingredients *
-              </label>
+       
               <div className="md:flex-1 mt-2 mb:mt-0 md:px-3">
-                <textarea
-                  className="w-full shadow-inner p-4 border-0 no-resize border-2 resize-none"
-                  placeholder="Ingredients needed to make recipe..."
-                  //   value={body}
-                  name="body"
-                  //   onChange={e => onChange(e)}
-                  rows="4"
-                ></textarea>
+                <button className=" bg-indigo-500 text-white font-semibold py-2 px-4 border border-gray-400 rounded shadow  hover:bg-indigo-400">
+                  Add Ingredient
+                </button>
               </div>
             </div>
-            <div>
-              <label className="block uppercase tracking-wide text-charcoal-darker text-sm font-bold mb-2 ml-4">
-                Directions *
-              </label>
+            <div className="mt-4">
+           
               <div className="md:flex-1 mt-2 mb:mt-0 md:px-3">
-                <textarea
-                  className="w-full shadow-inner p-4 border-0 no-resize border-2 resize-none"
-                  placeholder="Step by step directions to make recipe..."
-                  //   value={body}
-                  name="body"
-                  //   onChange={e => onChange(e)}
-                  rows="4"
-                ></textarea>
+                <button className=" bg-indigo-500 text-white font-semibold py-2 px-4 border border-gray-400 rounded shadow  hover:bg-indigo-400">
+                  Add Direction
+                </button>
               </div>
             </div>
             <div className="md:flex mb-6 ml-2 mt-8">
@@ -180,7 +164,7 @@ const CreateRecipe = ({ createCommunityPost, history }) => {
 };
 
 CreateRecipe.propTypes = {
-  CreateRecipe: PropTypes.func.isRequired
+  addRecipe: PropTypes.func.isRequired,
 };
 
-export default connect(null, { CreateRecipe })(withRouter(CreateRecipe));
+export default connect(null, { addRecipe })(withRouter(CreateRecipe));
