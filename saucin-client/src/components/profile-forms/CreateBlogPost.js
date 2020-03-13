@@ -2,31 +2,21 @@ import React, { Fragment, useState } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { createProfile } from '../../actions/profile';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { prefix } from '@fortawesome/free-solid-svg-icons';
-import {} from '@fortawesome/free-brands-svg-icons';
+import { addBlogPost } from '../../actions/blogpost'
 
-const CreateBlogPost = ({ createCommunityPost, history }) => {
-  //   const [formData, setFormData] = useState({
-  //     category,
-  //     title,
-  //     body,
-  //     image,
-  //     avatar
-  //   });
+const CreateBlogPost = ({ addBlogPost, history }) => {
+    const [formData, setFormData] = useState('');
 
-  //   const [displaySocialInputs, toggleSocialInputs] = useState(false);
+    const { title, body } = formData;
 
-  //   const { category, title, body, image, avatar } = formData;
+    const onChange = e =>
+      setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  //   const onChange = e =>
-  //     setFormData({ ...formData, [e.target.name]: e.target.value });
-
-  //   const onSubmit = e => {
-  //     e.preventDefault();
-  //     createProfile(formData, history);
-  //   };
+    const onSubmit = e => {
+      e.preventDefault();
+      addBlogPost(formData, history)
+      setFormData('');
+    };
 
   return (
     <Fragment>
@@ -38,7 +28,7 @@ const CreateBlogPost = ({ createCommunityPost, history }) => {
           <p className="text-lg text-center mb-4 mt-2">
             Add some information to post
           </p>
-          <form encType="multipart/form-data">
+          <form onSubmit={e => onSubmit(e)} encType="multipart/form-data">
             <div className="md:flex mb-8">
               <div className="md:flex-1 mt-2 mb:mt-0 md:px-3">
                 <div className="mb-4 ml-2">
@@ -47,11 +37,11 @@ const CreateBlogPost = ({ createCommunityPost, history }) => {
                   </label>
                   <input
                     className="w-full shadow-inner p-4 border-0"
+                    value={title}
+                    onChange={e => onChange(e)}
                     type="text"
-                    // value={title}
-                    // onChange={e => onChange(e)}
                     name="title"
-                    placeholder="How I make use of my new air fryer"
+                    placeholder="Blog post title..."
                   ></input>
                 </div>
                 <div>
@@ -61,10 +51,10 @@ const CreateBlogPost = ({ createCommunityPost, history }) => {
                   <div className="md:flex-1 mt-2 mb:mt-0 md:px-3">
                     <textarea
                       className="w-full shadow-inner p-4 border-0 no-resize border-2 resize-none"
-                      placeholder="Tell us about you..."
-                      //   value={bio}
-                      name="bio"
-                      //   onChange={e => onChange(e)}
+                      placeholder="Blog post information..."
+                      value={body}
+                      name="body"
+                      onChange={e => onChange(e)}
                       rows="6"
                     ></textarea>
                   </div>
@@ -94,7 +84,7 @@ const CreateBlogPost = ({ createCommunityPost, history }) => {
 };
 
 CreateBlogPost.propTypes = {
-  CreateBlogPost: PropTypes.func.isRequired
+  addBlogPost: PropTypes.func.isRequired,
 };
 
-export default connect(null, { CreateBlogPost })(withRouter(CreateBlogPost));
+export default connect(null, { addBlogPost })(withRouter(CreateBlogPost));

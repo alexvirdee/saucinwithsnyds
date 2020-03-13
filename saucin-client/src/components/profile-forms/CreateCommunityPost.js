@@ -10,7 +10,7 @@ const CreateCommunityPost = ({ addCommunityPost, history }) => {
   const { category, title, body, image } = formData;
 
   const onChange = e =>
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData({...formData, [e.target.name]: e.target.value });
 
   const onSubmit = e => {
     e.preventDefault();

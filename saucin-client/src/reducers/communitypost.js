@@ -17,12 +17,6 @@ export default function(state = initialState, action) {
         posts: payload,
         loading: false
       };
-    case ADD_COMMUNITY_POST:
-      return {
-        ...state,
-        posts: [...state.post, payload],
-        loading: false
-      };
     case COMMUNITY_POST_ERROR:
       return {
         ...state,

@@ -20,7 +20,7 @@ export default function(state = initialState, action) {
     case ADD_BLOG_POST:
       return {
         ...state,
-        posts: [...state.post, payload],
+        posts: [payload, ...state.posts],
         loading: false
       };
     case BLOG_POST_ERROR:
