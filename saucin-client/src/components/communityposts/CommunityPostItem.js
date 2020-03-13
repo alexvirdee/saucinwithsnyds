@@ -5,12 +5,15 @@ import Moment from 'react-moment';
 import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
+import { addLike, removeLike } from '../../actions/communitypost';
 
 // {videos.data !== undefined &&
 //   videos.data !== null &&
 //   videos.data.items.map((vid, index) => {
 
 const CommunityPostItem = ({
+  addLike,
+  removeLike,
   auth,
   post: { _id, title, body, name, avatar, user, likes, comments, date }
 }) => {
@@ -23,13 +26,11 @@ const CommunityPostItem = ({
             <p className="text-gray-700 text-base">{body}</p>
           </div>
           <div className="flex items-center">
-            <Link to={`/profile/user/${user}`}>
             <img
               className="w-10 h-10 rounded-full mr-4"
               src={avatar}
               alt="Avatar of {name}"
             ></img>
-            </Link>
             <div className="text-sm">
               <p className="text-gray-900 leading-none">{name}</p>
               <p className="text-gray-600">
@@ -38,6 +39,7 @@ const CommunityPostItem = ({
             </div>
             <div className="like">
               <button
+                onClick={e => addLike(_id)}
                 type="button"
                 className="text-gray-500 ml-4 mt-2 hover:text-blue-600"
               >
@@ -48,7 +50,7 @@ const CommunityPostItem = ({
               </button>
             </div>
             <div className="unlike">
-              <button type="button" className="text-gray-500 ml-4 mt-3 hover:text-red-600">
+              <button onClick={e => removeLike(_id)} type="button" className="text-gray-500 ml-4 mt-3 hover:text-red-600">
                 <FontAwesomeIcon icon={faThumbsDown}></FontAwesomeIcon>
               </button>
             </div>
@@ -83,4 +85,4 @@ const mapStateToProps = state => ({
   auth: state.auth
 });
 
-export default connect(mapStateToProps, {})(CommunityPostItem);
+export default connect(mapStateToProps, { addLike, removeLike })(CommunityPostItem);

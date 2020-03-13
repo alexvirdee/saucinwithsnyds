@@ -22,3 +22,4 @@ export const GET_BLOG_POSTS = 'GET_BLOG_POSTS';
 export const BLOG_POST_ERROR = 'BLOG_POST_ERROR';
 export const GET_RECIPES = 'GET_RECIPES';
 export const RECIPE_ERROR = 'RECIPE_ERROR';
+export const UPDATE_LIKES = 'UPDATE_LIKES';
