@@ -23,3 +23,4 @@ export const BLOG_POST_ERROR = 'BLOG_POST_ERROR';
 export const GET_RECIPES = 'GET_RECIPES';
 export const RECIPE_ERROR = 'RECIPE_ERROR';
 export const UPDATE_LIKES = 'UPDATE_LIKES';
+export const ADD_COMMUNITY_POST = 'ADD_COMMUNITY_POST';

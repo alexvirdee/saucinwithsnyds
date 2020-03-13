@@ -21,6 +21,7 @@ const Contact = ({ sendMessage, setAlert }) => {
     sendMessage({ name, email, message });
 
     setAlert('Message Sent!', 'bg-green-600 text-white');
+    
   };
 
   return (

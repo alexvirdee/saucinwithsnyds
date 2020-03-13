@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { setAlert } from './alert';
-import { GET_COMMUNITY_POSTS, COMMUNITY_POST_ERROR, UPDATE_LIKES } from './types';
+import { GET_COMMUNITY_POSTS, COMMUNITY_POST_ERROR, UPDATE_LIKES, ADD_COMMUNITY_POST } from './types';
 
 // Get all community posts
 export const getCommunityPosts = () => async dispatch => {
@@ -52,4 +52,34 @@ export const removeLike = id => async dispatch => {
       payload: { msg: err.response.statusText, status: err.response.status }
     })
   }
+}
+
+// Function to add community post
+export const addCommunityPost = (formData, history) => async dispatch => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }
+
+  try {
+    const res = await axios.post(`/api/v1/communityposts`, formData, config);
+
+    dispatch({
+      type: ADD_COMMUNITY_POST,
+      payload: res.data
+    });
+
+    dispatch(setAlert('Post Added to saucin feed', 'bg-green-500 text-white'))
+
+    history.push('/communityposts')
+    
+  } catch (err) {
+      dispatch({
+        type: COMMUNITY_POST_ERROR,
+        payload: { msg: err.response.statusTetx, status: err.response.status }
+      })
+  }
+
+
 }

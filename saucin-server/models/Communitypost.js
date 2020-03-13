@@ -15,7 +15,8 @@ const CommunitypostSchema = new Schema({
     required: true
   },
   image: {
-    type: String
+    type: String,
+    default: 'no-photo.jpg'
   },
   name: {
     type: String

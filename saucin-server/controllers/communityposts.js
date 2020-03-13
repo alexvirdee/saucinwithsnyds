@@ -6,7 +6,7 @@ const Communitypost = require('../models/Communitypost');
 const Profile = require('../models/Profile');
 const User = require('../models/User');
 
-// @desc    Get All Blog Posts
+// @desc    Get All Community Posts
 // @route   get /api/v1/communityposts
 // @access  Public
 exports.getCommunityposts = asyncHandler(async (req, res, next) => {
@@ -15,7 +15,7 @@ exports.getCommunityposts = asyncHandler(async (req, res, next) => {
   res.json(communityposts);
 });
 
-// @desc    Get a Single Blog Post
+// @desc    Get a Single Community Post
 // @route   get /api/v1/communityposts/:id
 // @access  Public
 exports.getCommunitypost = asyncHandler(async (req, res, next) => {
@@ -242,7 +242,7 @@ exports.uploadCommunityPostPhoto = asyncHandler(async (req, res, next) => {
     );
   }
 
-  // Make sure the user is owner of blogpost
+  // Make sure the user is owner of post
   if (
     communitypost.user.toString() !== req.user.id &&
     req.user.role !== 'admin'
@@ -286,7 +286,7 @@ exports.uploadCommunityPostPhoto = asyncHandler(async (req, res, next) => {
     }
 
     await Communitypost.findByIdAndUpdate(req.params.id, {
-      $push: { photos: file.name }
+      $push: { image: file.name }
     });
 
     res.status(200).json({
