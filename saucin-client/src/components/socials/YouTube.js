@@ -1,15 +1,19 @@
 import React, { Fragment, useEffect } from 'react';
 import { getYoutube } from '../../actions/youtube';
 import { connect } from 'react-redux';
+import Spinner from '../layout/Spinner';
 import PropTypes from 'prop-types';
 
-const YouTube = ({ getYoutube, youtube: { videos } }) => {
+const YouTube = ({ getYoutube, youtube: { videos, loading } }) => {
   useEffect(() => {
     getYoutube();
   }, [getYoutube]);
 
   return (
-    <Fragment>
+    loading? (
+      <Spinner />
+    ) : (
+      <Fragment>
       <div className="youtube-page">
         <div className="heading text-4xl pacifico m-8">YouTube</div>
         <div className="videos">
@@ -30,6 +34,7 @@ const YouTube = ({ getYoutube, youtube: { videos } }) => {
         </div>
       </div>
     </Fragment>
+    )
   );
 };
 

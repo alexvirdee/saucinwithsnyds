@@ -13,7 +13,10 @@ const Blog = ({ getBlogPosts, blogpost: { posts, loading } }) => {
   }, [getBlogPosts]);
 
   return (
-    <Fragment>
+    loading? (
+      <Spinner />
+    ) : (
+      <Fragment>
       <div className="search-blogposts">
         <input
           className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"
@@ -27,6 +30,7 @@ const Blog = ({ getBlogPosts, blogpost: { posts, loading } }) => {
         ))}
       </div>
     </Fragment>
+    )
   );
 };
 

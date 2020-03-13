@@ -16,7 +16,7 @@ const Recipes = ({ getRecipes, recipe: { recipes, loading } }) => {
     getRecipes();
   }, [getRecipes]); 
 
-  return ( null ? (
+  return ( loading ? (
     <Spinner />
   ) : (
     <Fragment>
@@ -60,8 +60,9 @@ const Recipes = ({ getRecipes, recipe: { recipes, loading } }) => {
             </div>
           </Fragment>
         </div>
-        <Fragment>
-          <div className="recipes">
+      </div>
+      <Fragment>
+          <div className="recipes mt-1">
             {recipes.data !== undefined &&
              recipes.data !== null && 
              recipes.data.map((recipe, index) => {
@@ -70,7 +71,6 @@ const Recipes = ({ getRecipes, recipe: { recipes, loading } }) => {
             }
           </div>
         </Fragment>
-      </div>
     </Fragment>
   )
     

@@ -1,4 +1,5 @@
 import React from 'react';
+import Spinner from '../layout/Spinner';
 import PropTypes from 'prop-types';
 
 const Instagram = props => {
