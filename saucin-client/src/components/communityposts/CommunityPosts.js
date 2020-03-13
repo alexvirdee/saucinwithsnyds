@@ -58,7 +58,7 @@ const CommunityPosts = ({
         </div>
       </Fragment>
       <Fragment>
-        <div className="cpmmunity-posts">
+        <div className="community-posts">
           {posts.map(post => (
             <CommunityPostItem key={post._id} post={post} />
           ))}

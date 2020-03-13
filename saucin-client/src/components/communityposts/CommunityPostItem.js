@@ -7,10 +7,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
 import { addLike, removeLike } from '../../actions/communitypost';
 
-// {videos.data !== undefined &&
-//   videos.data !== null &&
-//   videos.data.items.map((vid, index) => {
-
 const CommunityPostItem = ({
   addLike,
   removeLike,

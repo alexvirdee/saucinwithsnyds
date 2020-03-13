@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import { getRecipes } from '../../actions/recipe';
+import RecipeItem from './RecipeItem';
 
 // Category Images
 import Breakfast from '../../img/breakfast.jpeg';
@@ -59,6 +60,17 @@ const Recipes = ({ getRecipes, recipe: { recipes, loading } }) => {
             </div>
           </Fragment>
         </div>
+        <Fragment>
+          <div className="recipes">
+            {recipes.count > 0 ? (
+                 recipes.map(recipe => (
+                  <RecipeItem key={recipe._id} recipe={recipe} />
+                ))
+            ) : ( 
+              <h4>No recipes found...</h4>
+            ) }
+          </div>
+        </Fragment>
       </div>
     </Fragment>
   )
