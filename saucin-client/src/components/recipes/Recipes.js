@@ -62,13 +62,12 @@ const Recipes = ({ getRecipes, recipe: { recipes, loading } }) => {
         </div>
         <Fragment>
           <div className="recipes">
-            {recipes.count > 0 ? (
-                 recipes.map(recipe => (
-                  <RecipeItem key={recipe._id} recipe={recipe} />
-                ))
-            ) : ( 
-              <h4>No recipes found...</h4>
-            ) }
+            {recipes.data !== undefined &&
+             recipes.data !== null && 
+             recipes.data.map((recipe, index) => {
+               return <RecipeItem key={recipe._id} recipe={recipe} />
+             })
+            }
           </div>
         </Fragment>
       </div>
@@ -77,6 +76,7 @@ const Recipes = ({ getRecipes, recipe: { recipes, loading } }) => {
     
   );
 };
+
 
 Recipes.propTypes = {
   getRecipes: PropTypes.func.isRequired,
