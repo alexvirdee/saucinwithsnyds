@@ -1,4 +1,4 @@
-import { GET_COMMUNITY_POSTS, COMMUNITY_POST_ERROR, UPDATE_LIKES } from '../actions/types';
+import { GET_COMMUNITY_POSTS, COMMUNITY_POST_ERROR, UPDATE_LIKES, ADD_COMMUNITY_POST } from '../actions/types';
 
 const initialState = {
   posts: [],
@@ -15,6 +15,12 @@ export default function(state = initialState, action) {
       return {
         ...state,
         posts: payload,
+        loading: false
+      };
+    case ADD_COMMUNITY_POST:
+      return {
+        ...state,
+        posts: [...state.post, payload],
         loading: false
       };
     case COMMUNITY_POST_ERROR:

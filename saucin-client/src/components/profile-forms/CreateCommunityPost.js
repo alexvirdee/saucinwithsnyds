@@ -2,20 +2,19 @@ import React, { Fragment, useState } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { addCommunityPost, addCommunityImage } from '../../actions/communitypost';
+import { addCommunityPost } from '../../actions/communitypost';
 
 const CreateCommunityPost = ({ addCommunityPost, history }) => {
-  const [formData, setFormData, file, setFile] = useState('');
+  const [formData, setFormData] = useState('');
 
   const { category, title, body, image } = formData;
 
   const onChange = e =>
-    setFormData({ setFile, ...formData, [e.target.name]: e.target.value });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onSubmit = e => {
     e.preventDefault();
     addCommunityPost(formData, history);
-    addCommunityImage(formData.image)
     setFormData('');
   };
 
@@ -74,7 +73,7 @@ const CreateCommunityPost = ({ addCommunityPost, history }) => {
                 ></textarea>
               </div>
             </div>
-            <div class="mt-2 lg:ml-3">
+            {/* <div class="mt-2 lg:ml-3">
               <label class="w-full flex flex-col items-center px-4 py-6 bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue hover:text-green-500">
                 <svg
                   class="w-8 h-8"
@@ -89,7 +88,7 @@ const CreateCommunityPost = ({ addCommunityPost, history }) => {
                 </span>
                 <input value={image} onChange={e => onChange(e)} type="file" class="hidden" />
               </label>
-            </div>
+            </div> */}
             <div className="md:flex mb-6 ml-2 mt-8">
               <button
                 type="submit"
@@ -113,7 +112,7 @@ const CreateCommunityPost = ({ addCommunityPost, history }) => {
 };
 
 CreateCommunityPost.propTypes = {
-  addCommunityPost: PropTypes.func.isRequired
+  addCommunityPost: PropTypes.func.isRequired,
 };
 
 export default connect(null, { addCommunityPost })(

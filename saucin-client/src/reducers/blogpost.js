@@ -1,4 +1,4 @@
-import { GET_BLOG_POSTS, BLOG_POST_ERROR } from '../actions/types';
+import { GET_BLOG_POSTS, BLOG_POST_ERROR, ADD_BLOG_POST } from '../actions/types';
 
 const initialState = {
   posts: [],
@@ -15,6 +15,12 @@ export default function(state = initialState, action) {
       return {
         ...state,
         posts: payload,
+        loading: false
+      };
+    case ADD_BLOG_POST:
+      return {
+        ...state,
+        posts: [...state.post, payload],
         loading: false
       };
     case BLOG_POST_ERROR:
