@@ -7,6 +7,10 @@ import { addRecipe } from '../../actions/recipe';
 const CreateRecipe = ({ addRecipe, history }) => {
     const [formData, setFormData] = useState('');
 
+    const [ingredientState, setIngredientState] = useState([
+      { ingredient: '', amount: '' ,}
+    ])
+
     const {
       category,
       title,
@@ -15,8 +19,13 @@ const CreateRecipe = ({ addRecipe, history }) => {
       prepTime,
       cookTime,
       ingredients,
-      directions,
+      directions
      } = formData;
+
+     const addIngredient = () => {
+       setFormData(ingredients => [...ingredients, 'new ingredient'])
+     }
+
 
     const onChange = e =>
       setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -25,6 +34,7 @@ const CreateRecipe = ({ addRecipe, history }) => {
       e.preventDefault();
       addRecipe(formData, history)
     };
+
 
   return (
     <Fragment>
@@ -128,9 +138,17 @@ const CreateRecipe = ({ addRecipe, history }) => {
             <div>
        
               <div className="md:flex-1 mt-2 mb:mt-0 md:px-3">
-                <button className=" bg-indigo-500 text-white font-semibold py-2 px-4 border border-gray-400 rounded shadow  hover:bg-indigo-400">
+                <button type="button" onClick={addIngredient} className=" bg-indigo-500 text-white font-semibold py-2 px-4 border border-gray-400 rounded shadow  hover:bg-indigo-400">
                   Add Ingredient
                 </button>
+                <div>
+                  {ingredientState.map((ingredient, index) => (
+                    <Fragment>
+                    <input type="text" value={ingredient} name={ingredient} onChange={e => onChange(e)} placeholder="add ingredient"></input>
+                    
+                    </Fragment>
+                  ))}
+                </div>
               </div>
             </div>
             <div className="mt-4">
