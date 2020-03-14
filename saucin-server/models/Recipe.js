@@ -6,6 +6,10 @@ const RecipeSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'user'
   },
+ category: {
+    type: String,
+    required: [true, 'Please select a category for recipe']
+  },
   name: {
     type: String,
     required: true
@@ -40,10 +44,6 @@ const RecipeSchema = new Schema({
   image: {
     type: String,
     default: 'no-photo.jpg'
-  },
-  category: {
-    type: String,
-    required: true
   },
   ingredients: [
     {

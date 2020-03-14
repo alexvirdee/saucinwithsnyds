@@ -33,7 +33,7 @@ const Signup = ({ setAlert, register, isAuthenticated }) => {
 
   return (
     <Fragment>
-      <div className="flex justify-center lg:pt-6 h-screen lg:bg-gray-700 sm:pt-0 xs:bg-white">
+      <div className="flex justify-center lg:pt-6 pb-12 lg:bg-gray-700 sm:pt-0 xs:bg-white">
         <div>
           <form
             onSubmit={e => onSubmit(e)}
