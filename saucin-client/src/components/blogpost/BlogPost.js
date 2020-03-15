@@ -11,7 +11,16 @@ const BlogPost = ({ getBlogPost, blogpost: { post, loading }, match }) => {
     }, [getBlogPost])
 
     return loading || post === null ? <Spinner /> : <Fragment>
-        BLOG POST
+       <div class="flex mb-4">
+  <div class="w-full bg-gray-100 h-screen">
+      <div className="text-4xl container mx-auto text-center mt-4">
+          {post.title}
+      </div>
+      <div className="mt-8 text-center">
+          {post.body}
+      </div>
+  </div>
+</div>
     </Fragment>
 }
 

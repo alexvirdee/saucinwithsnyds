@@ -10,6 +10,10 @@ import Cooking from '../../img/vegetables.jpg';
 import Lifestyle from '../../img/lifestyle.jpg';
 import General from '../../img/general.jpg';
 
+// Lazy load 
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
+
 const CommunityPosts = ({
   getCommunityPosts,
   communitypost: { posts, loading }
@@ -35,7 +39,7 @@ const CommunityPosts = ({
           <div className="cursor-pointer category-overlay">
             <Fragment>
               <Link to="/communityposts/category/cooking">
-              <img src={Cooking}></img>
+              <LazyLoadImage effect="blur" src={Cooking}></LazyLoadImage>
               <div className="content">
                 <div className="recipe-category-text pacifico">Cooking</div>
               </div>
@@ -45,7 +49,7 @@ const CommunityPosts = ({
           <div className="cursor-pointer category-overlay">
             <Fragment>
             <Link to="/communityposts/category/lifestyle">
-              <img src={Lifestyle}></img>
+              <LazyLoadImage effect="blur" src={Lifestyle}></LazyLoadImage>
               <div className="content">
                 <div className="recipe-category-text pacifico">Lifestyle</div>
               </div>
@@ -55,7 +59,7 @@ const CommunityPosts = ({
           <div className="cursor-pointer category-overlay">
             <Fragment>
             <Link to="/communityposts/category/general">
-              <img src={General}></img>
+              <LazyLoadImage effect="blur" src={General}></LazyLoadImage>
               <div className="content">
                 <div className="recipe-category-text pacifico">General</div>
               </div>
