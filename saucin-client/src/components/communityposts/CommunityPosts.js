@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import Spinner from '../layout/Spinner';
 import { getCommunityPosts } from '../../actions/communitypost';
 import CommunityPostItem from './CommunityPostItem';
@@ -33,26 +34,32 @@ const CommunityPosts = ({
         <div className="pt-1 grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-1">
           <div className="cursor-pointer category-overlay">
             <Fragment>
+              <Link to="/communityposts/category/cooking">
               <img src={Cooking}></img>
               <div className="content">
                 <div className="recipe-category-text pacifico">Cooking</div>
               </div>
+              </Link>
             </Fragment>
           </div>
           <div className="cursor-pointer category-overlay">
             <Fragment>
+            <Link to="/communityposts/category/lifestyle">
               <img src={Lifestyle}></img>
               <div className="content">
                 <div className="recipe-category-text pacifico">Lifestyle</div>
               </div>
+              </Link>
             </Fragment>
           </div>
           <div className="cursor-pointer category-overlay">
             <Fragment>
+            <Link to="/communityposts/category/general">
               <img src={General}></img>
               <div className="content">
                 <div className="recipe-category-text pacifico">General</div>
               </div>
+              </Link>
             </Fragment>
           </div>
         </div>

@@ -10,6 +10,9 @@ import Alert from './components/layout/Alert';
 import Dashboard from './components/dashboard/Dashboard';
 // import Profile from './components/profile/Profile';
 import CommunityPosts from './components/communityposts/CommunityPosts';
+import CommunityPostsCooking from './components/communityposts/CommunityPostsCooking';
+// import CommunityPostsLifestyle from './components/communityposts/CommunityPostsLifestyle';
+import CommunityPostsGeneral from './components/communityposts/CommunityPostsGeneral';
 import CommunityPost from './components/communitypost/CommunityPost';
 import Blog from './components/blog/Blog';
 import BlogPost from './components/blogpost/BlogPost';
@@ -98,6 +101,21 @@ const App = () => {
                 exact
                 path="/communityposts"
                 component={CommunityPosts}
+              />
+                 <PrivateRoute
+                exact
+                path="/communityposts/category/cooking"
+                component={CommunityPostsCooking}
+              />
+               {/* <PrivateRoute
+                exact
+                path="/communityposts/category/lifestyle"
+                component={CommunityPostsLifestyle}
+              /> */}
+               <PrivateRoute
+                exact
+                path="/communityposts/category/general"
+                component={CommunityPostsGeneral}
               />
                 <PrivateRoute
                 exact
