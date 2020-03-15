@@ -5,23 +5,23 @@ import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import { getCommunityPost, getCommunityPosts } from '../../actions/communitypost';
 
-const CommunityPost = ({ getCommunityPost, post: { post, loading }, match }) => {
+const CommunityPost = ({ getCommunityPost,  communitypost: { post, loading }, match }) => {
     useEffect(() => {
         getCommunityPost(match.params.id);
     }, [getCommunityPost])
 
-   return loading || post === null ? <Spinner /> : <Fragment>
-       POST
+   return loading || post === null ? <Spinner /> :  <Fragment>
+       {post.title}
    </Fragment>
 }
 
 CommunityPost.propTypes = {
     getCommunityPost: PropTypes.func.isRequired,
-    post: PropTypes.object.isRequired,
+    communitypost: PropTypes.object.isRequired
 }
 
 const mapStateToProps = state => ({
-    post: state.post
+    communitypost: state.communitypost
 })
 
 export default connect(mapStateToProps, { getCommunityPost })(CommunityPost);
