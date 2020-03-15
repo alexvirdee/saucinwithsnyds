@@ -30,6 +30,19 @@ exports.getCommunitypost = asyncHandler(async (req, res, next) => {
   res.json(communitypost);
 });
 
+
+// @desc    Get All Community Posts by Category 'Cooking'
+// @route   get /api/v1/communityposts/category/cooking
+// @access  Public
+exports.getCommunitypostsCooking = asyncHandler(async (req, res, next) => {
+  const communityposts = await Communitypost.find({category: 'cooking'}).sort({ date: -1 });
+
+  res.json(communityposts);
+});
+
+
+
+
 // @desc    Create a New Post to the community page
 // @route   POST /api/v1/communityposts
 // @access  Private * Only a logged in user can contribute to the community *
@@ -38,6 +51,7 @@ exports.createCommunitypost = asyncHandler(async (req, res, next) => {
 
   const newPost = new Communitypost({
     title: req.body.title,
+    category: req.body.category,
     user: user.id,
     name: user.name,
     avatar: user.avatar,

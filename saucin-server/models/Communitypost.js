@@ -10,6 +10,9 @@ const CommunitypostSchema = new Schema({
     type: String,
     required: true
   },
+  category: {
+    type: String,
+  },
   body: {
     type: String,
     required: true
@@ -19,9 +22,6 @@ const CommunitypostSchema = new Schema({
     default: 'no-photo.jpg'
   },
   name: {
-    type: String
-  },
-  category: {
     type: String
   },
   avatar: {

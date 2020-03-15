@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { setAlert } from './alert';
-import { GET_BLOG_POSTS, BLOG_POST_ERROR, ADD_BLOG_POST } from './types';
+import { GET_BLOG_POSTS, BLOG_POST_ERROR, ADD_BLOG_POST, GET_BLOG_POST } from './types';
 
 // Get all blog posts
 export const getBlogPosts = () => async dispatch => {
@@ -46,3 +46,20 @@ export const addBlogPost = (formData, history) => async dispatch => {
       })
   }
 }
+
+// Get single blog post
+export const getBlogPost = id => async dispatch => {
+  try {
+    const res = await axios.get(`/api/v1/blogposts/${id}`);
+
+    dispatch({
+      type: GET_BLOG_POST,
+      payload: res.data
+    });
+  } catch (err) {
+    dispatch({
+      type: BLOG_POST_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+};

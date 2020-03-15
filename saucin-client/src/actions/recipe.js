@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { setAlert } from './alert';
-import { RECIPE_ERROR, GET_RECIPES, ADD_RECIPE } from './types';
+import { RECIPE_ERROR, GET_RECIPES, ADD_RECIPE, GET_RECIPE } from './types';
 
 // Get All Recipes
 export const getRecipes = () => async dispatch => {
@@ -47,5 +47,23 @@ export const addRecipe = (formData, history) => async dispatch => {
             type: RECIPE_ERROR,
             payload: { msg: err.response, status: err.response }
         })
+    }
+}
+
+// Get Single Recipe
+export const getRecipe = id => async dispatch => {
+    try {
+        const res = await axios.get(`/api/v1/recipes/${id}`);
+        
+        dispatch({
+            type: GET_RECIPE,
+            payload: res.data
+        })
+
+    } catch (err) {
+        dispatch({
+            type: RECIPE_ERROR,
+            payload: { msg: err.response, status: err.response }
+        });
     }
 }

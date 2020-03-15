@@ -7,8 +7,7 @@ const RecipeSchema = new Schema({
     ref: 'user'
   },
  category: {
-    type: String,
-    required: [true, 'Please select a category for recipe']
+    type: String
   },
   name: {
     type: String,

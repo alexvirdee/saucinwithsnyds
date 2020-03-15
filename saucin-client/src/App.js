@@ -12,6 +12,7 @@ import Dashboard from './components/dashboard/Dashboard';
 import CommunityPosts from './components/communityposts/CommunityPosts';
 import CommunityPost from './components/communitypost/CommunityPost';
 import Blog from './components/blog/Blog';
+import BlogPost from './components/blogpost/BlogPost';
 import CreateProfile from './components/profile-forms/CreateProfile';
 import EditProfile from './components/profile-forms/EditProfile';
 import CreateRecipe from './components/profile-forms/CreateRecipe';
@@ -20,6 +21,7 @@ import CreateCommunityPost from './components/profile-forms/CreateCommunityPost'
 import Instagram from './components/socials/Instagram';
 import YouTube from './components/socials/YouTube';
 import Recipes from './components/recipes/Recipes';
+import Recipe from './components/recipe/Recipe';
 import Store from './components/e-commerce/Store';
 import PrivateRoute from './components/routing/PrivateRoute';
 import Footer from './components/layout/Footer';
@@ -61,9 +63,11 @@ const App = () => {
                 component={Profile}
               /> */}
               <PrivateRoute exact path="/blog" component={Blog} />
+              <PrivateRoute exact path="/blogposts/:id" component={BlogPost} />
               <PrivateRoute exact path="/instagram" component={Instagram} />
               <PrivateRoute exact path="/youtube" component={YouTube} />
               <PrivateRoute exact path="/recipes" component={Recipes} />
+              <PrivateRoute exact path="/recipes/:id" component={Recipe} />
               <PrivateRoute exact path="/store" component={Store} />
               <PrivateRoute
                 exact

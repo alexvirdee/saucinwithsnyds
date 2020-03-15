@@ -14,7 +14,7 @@ const RecipeItem = ({ auth, recipe: { _id,title, category, description, cookTime
               <div className="text-gray-900 font-bold text-xl mb-2 pacifico">{title}</div>
               <div className="font-bold text-xl mb-2 text-green-600">Category: {category}</div>
         
-              <div classNmae="cook-information mt-2">
+              <div className="cook-information mt-2">
               <p className="text-sm font-bold">Description: {description}</p> 
               <p className="text-sm font-bold">Time to Prep: {prepTime} minutes</p>
     <p className="text-sm font-bold">Time to Cook: {cookTime} minutes</p>
