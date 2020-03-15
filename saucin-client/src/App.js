@@ -10,6 +10,7 @@ import Alert from './components/layout/Alert';
 import Dashboard from './components/dashboard/Dashboard';
 // import Profile from './components/profile/Profile';
 import CommunityPosts from './components/communityposts/CommunityPosts';
+import CommunityPost from './components/communitypost/CommunityPost';
 import Blog from './components/blog/Blog';
 import CreateProfile from './components/profile-forms/CreateProfile';
 import EditProfile from './components/profile-forms/EditProfile';
@@ -93,6 +94,11 @@ const App = () => {
                 exact
                 path="/communityposts"
                 component={CommunityPosts}
+              />
+                <PrivateRoute
+                exact
+                path="/communityposts/:id"
+                component={CommunityPost}
               />
             </Switch>
           </section>
