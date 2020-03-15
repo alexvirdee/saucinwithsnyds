@@ -99,7 +99,10 @@ exports.getUserProfile = asyncHandler(async (req, res, next) => {
     );
   }
 
-  res.json(profile);
+  res.status(200).json({
+    success: true,
+    data: profile
+  })
 });
 
 // @route  DELETE api/v1/profile

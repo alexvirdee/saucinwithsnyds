@@ -8,7 +8,7 @@ import Login from './components/auth/Login';
 import Signup from './components/auth/Signup';
 import Alert from './components/layout/Alert';
 import Dashboard from './components/dashboard/Dashboard';
-import Profile from './components/profile/Profile';
+// import Profile from './components/profile/Profile';
 import CommunityPosts from './components/communityposts/CommunityPosts';
 import Blog from './components/blog/Blog';
 import CreateProfile from './components/profile-forms/CreateProfile';
@@ -54,11 +54,11 @@ const App = () => {
               <Route exact path="/signup" component={Signup} />
               <Route exact path="/login" component={Login} />
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
-              <PrivateRoute
+              {/* <PrivateRoute
                 exact
                 path="/profile/user/:id"
                 component={Profile}
-              />
+              /> */}
               <PrivateRoute exact path="/blog" component={Blog} />
               <PrivateRoute exact path="/instagram" component={Instagram} />
               <PrivateRoute exact path="/youtube" component={YouTube} />
