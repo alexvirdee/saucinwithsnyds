@@ -40,7 +40,23 @@ exports.getCommunitypostsCooking = asyncHandler(async (req, res, next) => {
   res.json(communityposts);
 });
 
+// @desc    Get All Community Posts by Category 'lifestyle'
+// @route   get /api/v1/communityposts/category/cooking
+// @access  Public
+exports.getCommunitypostsLifestyle = asyncHandler(async (req, res, next) => {
+  const communityposts = await Communitypost.find({category: 'lifestyle'}).sort({ date: -1 });
 
+  res.json(communityposts);
+});
+
+// @desc    Get All Community Posts by Category 'Cooking'
+// @route   get /api/v1/communityposts/category/cooking
+// @access  Public
+exports.getCommunitypostsGeneral = asyncHandler(async (req, res, next) => {
+  const communityposts = await Communitypost.find({category: 'general'}).sort({ date: -1 });
+
+  res.json(communityposts);
+});
 
 
 // @desc    Create a New Post to the community page

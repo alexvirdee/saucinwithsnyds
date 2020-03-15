@@ -10,7 +10,9 @@ const {
   commentCommunitypost,
   deleteComment,
   uploadCommunityPostPhoto,
-  getCommunitypostsCooking
+  getCommunitypostsCooking,
+  getCommunitypostsLifestyle,
+  getCommunitypostsGeneral
 } = require('../../controllers/communityposts');
 
 const Communitypost = require('../../models/Communitypost');
@@ -27,6 +29,12 @@ router
 
 router.route('/category/cooking')
   .get(getCommunitypostsCooking);
+  
+  router.route('/category/lifestyle')
+  .get(getCommunitypostsLifestyle);
+
+  router.route('/category/general')
+  .get(getCommunitypostsGeneral);
 
 router.route('/like/:id').put(protect, likeCommunitypost);
 
