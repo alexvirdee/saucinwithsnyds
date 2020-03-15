@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
@@ -30,34 +31,42 @@ const Recipes = ({ getRecipes, recipe: { recipes, loading } }) => {
       <div className="pt-1 grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-1">
         <div className="cursor-pointer category-overlay">
           <Fragment>
+          <Link to="/recipes/breakfast">
             <img src={Breakfast}></img>
             <div className="content">
               <div className="recipe-category-text pacifico">Breakfast</div>
             </div>
+            </Link>
           </Fragment>
         </div>
         <div className="cursor-pointer category-overlay">
           <Fragment>
+          <Link to="/recipes/lunch">
             <img src={Lunch}></img>
             <div className="content">
               <div className="recipe-category-text pacifico">Lunch</div>
             </div>
+            </Link>
           </Fragment>
         </div>
         <div className="cursor-pointer category-overlay">
           <Fragment>
+          <Link to="/recipes/dinner">
             <img src={Dinner}></img>
             <div className="content">
               <div className="recipe-category-text pacifico">Dinner</div>
             </div>
+            </Link>
           </Fragment>
         </div>
         <div className="cursor-pointer category-overlay">
           <Fragment>
+          <Link to="/recipes/dessert">
             <img src={Dessert}></img>
             <div className="content">
               <div className="recipe-category-text pacifico">Dessert</div>
             </div>
+            </Link>
           </Fragment>
         </div>
       </div>
