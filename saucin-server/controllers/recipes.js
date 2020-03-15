@@ -17,6 +17,58 @@ exports.getRecipes = asyncHandler(async (req, res, next) => {
   });
 });
 
+// @desc     Get all breakfast recipes
+// @route    GET /api/v1/recipes/breakfast
+// @access   Public
+exports.getRecipesBreakfast = asyncHandler(async (req, res, next) => {
+  const recipes = await Recipe.find({category: 'breakfast'}).sort({ date: -1 });
+
+  res.status(200).json({
+    success: true,
+    count: recipes.length,
+    data: recipes
+  });
+});
+
+// @desc     Get all lunch recipes
+// @route    GET /api/v1/recipes/lunch
+// @access   Public
+exports.getRecipesLunch = asyncHandler(async (req, res, next) => {
+  const recipes = await Recipe.find({category: 'lunch'}).sort({ date: -1 });
+
+  res.status(200).json({
+    success: true,
+    count: recipes.length,
+    data: recipes
+  });
+});
+
+// @desc     Get all dinner recipes
+// @route    GET /api/v1/recipes/dinner
+// @access   Public
+exports.getRecipesDinner = asyncHandler(async (req, res, next) => {
+  const recipes = await Recipe.find({category: 'dinner'}).sort({ date: -1 });
+
+  res.status(200).json({
+    success: true,
+    count: recipes.length,
+    data: recipes
+  });
+});
+
+// @desc     Get all dessert recipes
+// @route    GET /api/v1/recipes/dessert
+// @access   Public
+exports.getRecipesDessert = asyncHandler(async (req, res, next) => {
+  const recipes = await Recipe.find({category: 'dessert'}).sort({ date: -1 });
+
+  res.status(200).json({
+    success: true,
+    count: recipes.length,
+    data: recipes
+  });
+});
+
 // @desc     Get all logged in users recipes
 // @route    GET /api/v1/recipes
 // @access   Public
@@ -65,6 +117,7 @@ exports.createRecipe = asyncHandler(async (req, res, next) => {
 
   const newRecipe = new Recipe({
     title: req.body.title,
+    category: req.body.category,
     name: user.name,
     user: user.id,
     avatar: user.avatar,

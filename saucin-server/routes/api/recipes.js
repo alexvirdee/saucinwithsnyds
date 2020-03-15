@@ -6,7 +6,11 @@ const {
   createRecipe,
   updateRecipe,
   deleteRecipe,
-  recipePhotoUpload
+  recipePhotoUpload,
+  getRecipesBreakfast,
+  getRecipesLunch,
+  getRecipesDinner,
+  getRecipesDessert
 } = require('../../controllers/recipes');
 
 const Recipe = require('../../models/Recipe');
@@ -19,6 +23,22 @@ router
   .route('/')
   .get(getRecipes)
   .post(protect, authorize('publisher', 'admin'), createRecipe);
+
+router  
+  .route('/breakfast')
+  .get(getRecipesBreakfast)
+
+  router  
+  .route('/lunch')
+  .get(getRecipesLunch)
+
+  router  
+  .route('/dinner')
+  .get(getRecipesDinner)
+
+  router  
+  .route('/dessert')
+  .get(getRecipesDessert)
 
 router.route('/me').get(getMyRecipes);
 

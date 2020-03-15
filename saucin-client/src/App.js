@@ -11,7 +11,7 @@ import Dashboard from './components/dashboard/Dashboard';
 // import Profile from './components/profile/Profile';
 import CommunityPosts from './components/communityposts/CommunityPosts';
 import CommunityPostsCooking from './components/communityposts/CommunityPostsCooking';
-// import CommunityPostsLifestyle from './components/communityposts/CommunityPostsLifestyle';
+import CommunityPostsLifestyle from './components/communityposts/CommunityPostsLifestyle';
 import CommunityPostsGeneral from './components/communityposts/CommunityPostsGeneral';
 import CommunityPost from './components/communitypost/CommunityPost';
 import Blog from './components/blog/Blog';
@@ -107,11 +107,11 @@ const App = () => {
                 path="/communityposts/category/cooking"
                 component={CommunityPostsCooking}
               />
-               {/* <PrivateRoute
-                exact
-                path="/communityposts/category/lifestyle"
-                component={CommunityPostsLifestyle}
-              /> */}
+              <PrivateRoute
+              exact
+              path="/communityposts/category/lifestyle"
+              component={CommunityPostsLifestyle}
+              />
                <PrivateRoute
                 exact
                 path="/communityposts/category/general"
