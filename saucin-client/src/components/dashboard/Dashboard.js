@@ -9,6 +9,9 @@ import Profile from './Profile';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faUser } from '@fortawesome/free-solid-svg-icons';
 
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
+
 const Dashboard = ({
   getCurrentProfile,
   deleteAccount,
@@ -28,11 +31,12 @@ const Dashboard = ({
           Welcome, {user && user.data.name}
         </div>
         <div className="text-center">
-          <img
+          <LazyLoadImage
+          effect="blur"
             className="rounded-full w-32 h-32 border-2 border-transparent hover:border-indigo-400 inline"
             src={user && user.data.avatar}
             alt="Avatar"
-          ></img>
+          ></LazyLoadImage>
         </div>
         <div>
           {profile != null ? (

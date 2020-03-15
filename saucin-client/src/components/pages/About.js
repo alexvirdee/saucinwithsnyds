@@ -1,15 +1,20 @@
 import React from 'react';
 import profileImage from '../../img/saucin-about-img.jpg';
 
+// Lazy load main img
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
+
 const About = () => {
   return (
     <div className="border-t">
       <div className="flex flex-col items-center justify-center mt-16">
-        <img
+        <LazyLoadImage
           className="rounded-full w-56 h-56 text-center"
           src={profileImage}
           alt="Profile"
-        ></img>
+          effect="blur"
+        ></LazyLoadImage>
         <div className="text-gray-600">
           <div className="container mx-auto text-center pt-12 w-8/12 pb-8">
             <div className="about-txt">

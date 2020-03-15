@@ -12,6 +12,10 @@ import Lunch from '../../img/lunch.jpeg';
 import Dinner from '../../img/dinner.jpg';
 import Dessert from '../../img/dessert.jpg';
 
+// Lazy load 
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
+
 const Recipes = ({ getRecipes, recipe: { recipes, loading } }) => {
   useEffect(() => {
     getRecipes();
@@ -32,7 +36,7 @@ const Recipes = ({ getRecipes, recipe: { recipes, loading } }) => {
         <div className="cursor-pointer category-overlay">
           <Fragment>
           <Link to="/recipes/breakfast">
-            <img src={Breakfast}></img>
+            <LazyLoadImage effect="blur" src={Breakfast}></LazyLoadImage>
             <div className="content">
               <div className="recipe-category-text pacifico">Breakfast</div>
             </div>
@@ -42,7 +46,7 @@ const Recipes = ({ getRecipes, recipe: { recipes, loading } }) => {
         <div className="cursor-pointer category-overlay">
           <Fragment>
           <Link to="/recipes/lunch">
-            <img src={Lunch}></img>
+            <LazyLoadImage effect="blur" src={Lunch}></LazyLoadImage>
             <div className="content">
               <div className="recipe-category-text pacifico">Lunch</div>
             </div>
@@ -52,7 +56,7 @@ const Recipes = ({ getRecipes, recipe: { recipes, loading } }) => {
         <div className="cursor-pointer category-overlay">
           <Fragment>
           <Link to="/recipes/dinner">
-            <img src={Dinner}></img>
+            <LazyLoadImage effect="blur" src={Dinner}></LazyLoadImage>
             <div className="content">
               <div className="recipe-category-text pacifico">Dinner</div>
             </div>
@@ -62,7 +66,7 @@ const Recipes = ({ getRecipes, recipe: { recipes, loading } }) => {
         <div className="cursor-pointer category-overlay">
           <Fragment>
           <Link to="/recipes/dessert">
-            <img src={Dessert}></img>
+            <LazyLoadImage effect="blur" src={Dessert}></LazyLoadImage>
             <div className="content">
               <div className="recipe-category-text pacifico">Dessert</div>
             </div>

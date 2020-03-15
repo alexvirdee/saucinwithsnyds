@@ -5,6 +5,10 @@ import { PropTypes } from 'prop-types';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import {} from '@fortawesome/free-solid-svg-icons';
 
+// Lazy load main img
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
+
 import landingImage from '../../img/emerson-vieira-cpkPJ-U9eUM-unsplash.jpg';
 
 const Landing = ({ isAuthenticated }) => {
@@ -15,12 +19,13 @@ const Landing = ({ isAuthenticated }) => {
   return (
     <Fragment>
       <div className="landing grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
-        <div className="inline-flex text-white">
-          <img
+        <div className="inline-flex text-white h-full">
+          <LazyLoadImage
             className="bg-scroll bg-center sm:bg-top md:bg-right lg:bg-bottom xl:bg-left"
             src={landingImage}
             alt="hero"
-          ></img>
+            height={landingImage.height}
+          ></LazyLoadImage>
         </div>
         <div className="m-10">
           <div className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl mb-4 py-6">
