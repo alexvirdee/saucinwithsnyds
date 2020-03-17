@@ -36,9 +36,9 @@ const CreateCommunityPost = ({ addCommunityPost, history }) => {
                 name="category"
               >
                 <option value="0"> Select a category </option>
-                <option value="Cooking">Cooking</option>
-                <option value="Lifestyle">Lifestyle</option>
-                <option value="General">General</option>
+                <option value="cooking">Cooking</option>
+                <option value="lifestyle">Lifestyle</option>
+                <option value="general">General</option>
               </select>
             </div>
             <div className="md:flex mb-8">

@@ -75,7 +75,7 @@ const Recipes = ({ getRecipes, recipe: { recipes, loading } }) => {
         </div>
       </div>
       <Fragment>
-          <div className="recipes mt-1">
+          <div className="recipes mt-1 bg-gray-200">
             {recipes.data !== undefined &&
              recipes.data !== null && 
              recipes.data.map((recipe, index) => {

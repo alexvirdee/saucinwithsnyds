@@ -13,27 +13,27 @@ const CommunityPost = ({ getCommunityPost,  communitypost: { post, loading }, ma
 
    return loading || post === null ? <Spinner /> :  <Fragment>
         
-<div class="flex flex-wrap mt-2 mx-2">
-    <div class="w-full md:w-1/2 lg:w-1/2 px-2 my-2">
-        <div class="p-4">
-        <div class="max-w-sm rounded overflow-hidden shadow-lg">
-  {/* <img class="w-full" src="/img/card-top.jpg" alt="Sunset in the mountains"></img> */}
+<div className="flex flex-wrap mt-2 mx-2">
+    <div className="w-full md:w-1/2 lg:w-1/2 px-2 my-2">
+        <div className="p-4">
+        <div className="max-w-sm rounded overflow-hidden shadow-lg">
+  {/* <img className="w-full" src="/img/card-top.jpg" alt="Sunset in the mountains"></img> */}
   <div className="bg-blue-400 h-48"></div>
-  <div class="px-6 py-4">
-<div class="font-bold text-xl mb-2">{post.title}</div>
-    <p class="text-gray-700 text-base">
+  <div className="px-6 py-4">
+<div className="font-bold text-xl mb-2">{post.title}</div>
+    <p className="text-gray-700 text-base">
       {post.body}
     </p>
   </div>
-  <div class="px-6 py-4">
-<span class="inline-block bg-black rounded-full px-3 py-1 text-sm text-white font-semibold mr-2"><Moment format="MMMM D, YYYY">{post.date}</Moment></span>
+  <div className="px-6 py-4">
+<span className="inline-block bg-black rounded-full px-3 py-1 text-sm text-white font-semibold mr-2"><Moment format="MMMM D, YYYY">{post.date}</Moment></span>
   </div>
 </div>
         </div>
     </div>
 
-    <div class="w-full md:w-1/2 lg:w-1/2 px-2 my-2">
-        <div class="bg-blue-500 p-4">
+    <div className="w-full md:w-1/2 lg:w-1/2 px-2 my-2">
+        <div className="bg-blue-500 p-4">
           Discussion section
         </div>
     </div>

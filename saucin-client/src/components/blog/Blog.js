@@ -24,7 +24,7 @@ const Blog = ({ getBlogPosts, blogpost: { posts, loading } }) => {
           placeholder="Search Blog Posts..."
         ></input>
       </div>
-      <div className="blog-posts">
+      <div className="blog-posts bg-gray-200">
         {posts.map(post => (
           <BlogItem key={post._id} post={post} />
         ))}

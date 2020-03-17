@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -18,9 +18,22 @@ const CommunityPosts = ({
   getCommunityPosts,
   communitypost: { posts, loading }
 }) => {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchPosts, setSearchPosts] = useState([]);
+
+  const handleChange = e => {
+    setSearchTerm(e.target.value);
+  }
+
   useEffect(() => {
+    const results = posts.filter(post => {
+      console.log(post);
+      post.toLowerCase().includes(searchTerm)  
+    }
+    );
+    setSearchPosts(results)
     getCommunityPosts();
-  }, [getCommunityPosts]);
+  }, [getCommunityPosts, searchTerm]);
 
   return (
     loading ? (
@@ -32,6 +45,8 @@ const CommunityPosts = ({
           <input
             className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"
             type="text"
+            value={searchTerm}
+            onChange={handleChange}
             placeholder="Search community posts..."
           ></input>
         </div>
@@ -69,7 +84,7 @@ const CommunityPosts = ({
         </div>
       </Fragment>
       <Fragment>
-        <div className="community-posts">
+        <div className="community-posts bg-gray-200">
           {posts.map(post => (
             <CommunityPostItem key={post._id} post={post} />
           ))}
