@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { setAlert } from './alert';
-import { GET_COMMUNITY_POSTS, COMMUNITY_POST_ERROR, UPDATE_LIKES, ADD_COMMUNITY_POST, GET_COMMUNITY_POST, GET_COMMUNITY_POSTS_COOKING, GET_COMMUNITY_POSTS_LIFESTYLE, GET_COMMUNITY_POSTS_GENERAL } from './types';
+import { GET_COMMUNITY_POSTS, COMMUNITY_POST_ERROR, UPDATE_LIKES, ADD_COMMUNITY_POST, GET_COMMUNITY_POST, GET_COMMUNITY_POSTS_COOKING, GET_COMMUNITY_POSTS_LIFESTYLE, GET_COMMUNITY_POSTS_GENERAL, ADD_COMMUNITY_POST_COMMENT, REMOVE_COMMUNITY_POST_COMMENT } from './types';
 
 // Get all community posts
 export const getCommunityPosts = () => async dispatch => {
@@ -14,7 +14,7 @@ export const getCommunityPosts = () => async dispatch => {
   } catch (err) {
     dispatch({
       type: COMMUNITY_POST_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status }
+      payload: { msg: err.response, status: err.response }
     });
   }
 };
@@ -31,7 +31,7 @@ export const getCommunityPostsCooking = () => async dispatch => {
   } catch (err) {
     dispatch({
       type: COMMUNITY_POST_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status }
+      payload: { msg: err.response, status: err.response }
     });
   }
 };
@@ -48,7 +48,7 @@ export const getCommunityPostsLifestyle = () => async dispatch => {
   } catch (err) {
     dispatch({
       type: COMMUNITY_POST_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status }
+      payload: { msg: err.response, status: err.response }
     });
   }
 };
@@ -65,7 +65,7 @@ export const getCommunityPostsGeneral = () => async dispatch => {
   } catch (err) {
     dispatch({
       type: COMMUNITY_POST_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status }
+      payload: { msg: err.response, status: err.response }
     });
   }
 };
@@ -83,7 +83,7 @@ export const addLike = id => async dispatch => {
   } catch (err) {
     dispatch({
       type: COMMUNITY_POST_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status }
+      payload: { msg: err.response, status: err.response }
     });
   }
 }
@@ -100,7 +100,7 @@ export const removeLike = id => async dispatch => {
   } catch (err) {
     dispatch({
       type: COMMUNITY_POST_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status }
+      payload: { msg: err.response, status: err.response }
     })
   }
 }
@@ -128,7 +128,7 @@ export const addCommunityPost = (formData, history) => async dispatch => {
   } catch (err) {
       dispatch({
         type: COMMUNITY_POST_ERROR,
-        payload: { msg: err.response.statusText, status: err.response.status }
+        payload: { msg: err.response, status: err.response }
       })
   }
 }
@@ -145,7 +145,51 @@ export const getCommunityPost = id => async dispatch => {
   } catch (err) {
     dispatch({
       type: COMMUNITY_POST_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status }
+      payload: { msg: err.response, status: err.response }
     });
   }
 };
+
+// Function to add a comment to a community post
+export const addCommunityPostComment = (postId, formData) => async dispatch => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }
+
+  try {
+    const res = await axios.post(`/api/v1/communityposts/comment/${postId}`, formData, config);
+
+    dispatch({
+      type: ADD_COMMUNITY_POST_COMMENT,
+      payload: res.data
+    });
+
+    dispatch(setAlert('Comment Added', 'bg-green-500 text-white'))
+  } catch (err) {
+      dispatch({
+        type: COMMUNITY_POST_ERROR,
+        payload: { msg: err.response, status: err.response }
+      })
+  }
+}
+
+// Function to remove a comment from community post
+export const removeCommunityPostComment = (postId, commentId) => async dispatch => {
+  try {
+    const res = await axios.post(`/api/v1/communityposts/comment/${postId}/${commentId}`);
+
+    dispatch({
+      type: REMOVE_COMMUNITY_POST_COMMENT,
+      payload: commentId
+    });
+
+    dispatch(setAlert('Comment Added', 'bg-green-500 text-white'))
+  } catch (err) {
+      dispatch({
+        type: COMMUNITY_POST_ERROR,
+        payload: { msg: err.response, status: err.response }
+      })
+  }
+}

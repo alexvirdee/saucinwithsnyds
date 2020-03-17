@@ -6,7 +6,9 @@ import {
   GET_COMMUNITY_POST,
   GET_COMMUNITY_POSTS_COOKING,
   GET_COMMUNITY_POSTS_LIFESTYLE,
-  GET_COMMUNITY_POSTS_GENERAL
+  GET_COMMUNITY_POSTS_GENERAL,
+  ADD_COMMUNITY_POST_COMMENT,
+  REMOVE_COMMUNITY_POST_COMMENT
 } from '../actions/types';
 
 const initialState = {
@@ -49,6 +51,21 @@ export default function(state = initialState, action) {
         ),
         loading: false
       };
+    case ADD_COMMUNITY_POST_COMMENT:
+      return {
+        ...state,
+        post: { ...state.post, comments: payload },
+        loading: false
+      };
+    case REMOVE_COMMUNITY_POST_COMMENT:
+      return {
+        ...state,
+        post: {
+          ...state.post,
+          comments: state.post.comments.filter(comment => comment._id !== payload)
+        },
+        loading: false
+      }
     default:
       return state;
   }
