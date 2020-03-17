@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
 import { connect } from 'react-redux';
 
-const RecipeItem = ({ auth, recipe: { _id,title, category, description, cookTime, prepTime, servings } }) => {
+const RecipeItem = ({ auth, recipe: { _id, title, category, description, cookTime, prepTime, servings } }) => {
     return (
         <Link to={`/recipes/${_id}`}>
             <Fragment>
