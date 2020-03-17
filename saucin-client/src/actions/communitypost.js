@@ -178,14 +178,14 @@ export const addCommunityPostComment = (postId, formData) => async dispatch => {
 // Function to remove a comment from community post
 export const removeCommunityPostComment = (postId, commentId) => async dispatch => {
   try {
-    const res = await axios.post(`/api/v1/communityposts/comment/${postId}/${commentId}`);
+    const res = await axios.delete(`/api/v1/communityposts/comment/${postId}/${commentId}`);
 
     dispatch({
       type: REMOVE_COMMUNITY_POST_COMMENT,
       payload: commentId
     });
 
-    dispatch(setAlert('Comment Added', 'bg-green-500 text-white'))
+    dispatch(setAlert('Comment Deleted', 'bg-red-500 text-white'))
   } catch (err) {
       dispatch({
         type: COMMUNITY_POST_ERROR,

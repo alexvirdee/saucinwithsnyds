@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import { getCommunityPost, getCommunityPosts } from '../../actions/communitypost';
 import CommunityPostCommentForm from './CommunityPostForm';
+import CommunityPostCommentItem from './CommunityPostCommentItem';
 
 const CommunityPost = ({ getCommunityPost,  communitypost: { post, loading }, match }) => {
     useEffect(() => {
@@ -19,7 +20,7 @@ const CommunityPost = ({ getCommunityPost,  communitypost: { post, loading }, ma
         <div className="p-4">
         <div className="max-w-sm rounded overflow-hidden shadow-lg">
   {/* <img className="w-full" src="/img/card-top.jpg" alt="Sunset in the mountains"></img> */}
-  <div className="bg-blue-400 h-48"></div>
+  <div className="bg-black h-48"></div>
   <div className="px-6 py-4">
 <div className="font-bold text-xl mb-2">{post.title}</div>
     <p className="text-gray-700 text-base">
@@ -36,6 +37,11 @@ const CommunityPost = ({ getCommunityPost,  communitypost: { post, loading }, ma
     <div className="w-full md:w-1/2 lg:w-1/2 px-2 my-2">
         <div className="p-6">
           <CommunityPostCommentForm postId={post._id} />
+          <div className="comments">
+            {post.comments.map((comment) => (
+              <CommunityPostCommentItem key={comment._id} comment={comment} postId={post._id} />
+            ))}
+          </div>
         </div>
     </div>
 </div>

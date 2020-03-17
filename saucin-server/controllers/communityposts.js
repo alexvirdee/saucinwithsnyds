@@ -226,11 +226,13 @@ exports.commentCommunitypost = asyncHandler(async (req, res, next) => {
   res.json(communitypost.comments);
 });
 
-// @route     DELETE api/v1/communityposts/comment/:id
+// @route     DELETE api/v1/communityposts/comment/:id/:comment_id
 // @desc      Remove Comment from a Community Post
 // @access    Private
 exports.deleteComment = asyncHandler(async (req, res, next) => {
   const communitypost = await Communitypost.findById(req.params.id);
+
+  console.log(communitypost);
 
   // Pull out comment
   const comment = communitypost.comments.find(

@@ -42,7 +42,7 @@ router.route('/unlike/:id').put(protect, unlikeCommunitypost);
 
 router.route('/comment/:id').post(protect, commentCommunitypost);
 
-router.route('/commend/:id/:comment_id').delete(protect, deleteComment);
+router.route('/comment/:id/:comment_id').delete(protect, deleteComment);
 
 router
   .route('/:id')
