@@ -8,7 +8,7 @@ const RecipeItem = ({ auth, recipe: { _id, title, category, description, cookTim
     return (
         <Link to={`/recipes/${_id}`}>
             <Fragment>
-        <div className="max-w-sm w-full sm:max-w-full md:max-w-full lg:max-w-full sm:flex-initial lg:flex-initial">
+        <div className="max-w-full w-full sm:max-w-full md:max-w-full lg:max-w-full sm:flex-initial lg:flex-initial">
           <div className="hover:bg-blue-100 w-full border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 leading-normal">
             <div className="mb-8">
               <div className="text-gray-900 font-bold text-xl mb-2 pacifico">{title}</div>

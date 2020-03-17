@@ -28,7 +28,7 @@ const CommunityPosts = ({
   useEffect(() => {
     const results = posts.filter(post => {
       console.log(post);
-      post.toLowerCase().includes(searchTerm)  
+      post.toString().toLowerCase().includes(searchTerm)  
     }
     );
     setSearchPosts(results)
@@ -84,7 +84,7 @@ const CommunityPosts = ({
         </div>
       </Fragment>
       <Fragment>
-        <div className="community-posts bg-gray-200">
+        <div className="community-posts">
           {posts.map(post => (
             <CommunityPostItem key={post._id} post={post} />
           ))}

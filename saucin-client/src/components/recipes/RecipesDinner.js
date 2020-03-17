@@ -5,6 +5,12 @@ import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import { getRecipesDinner } from '../../actions/recipe';
 
+// Lazy load 
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
+
+import Dinner from '../../img/dinner-category.jpg'
+
 const RecipesDinner = ({ getRecipesDinner, recipe: { recipes, loading } }) => {
     useEffect(() => {
         getRecipesDinner();
@@ -15,17 +21,36 @@ const RecipesDinner = ({ getRecipesDinner, recipe: { recipes, loading } }) => {
             <Spinner />
         ) : (
             <Fragment>
-                      <div className="text-4xl">
-          Dinner recipes
-          {recipes.data.map((recipe, index) => {
+            <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
+            <div clasName="heading-image first-column">
+            <LazyLoadImage className="lg:h-screen md:h-screen sm:h-1/2 w-full" effect="blur" src={Dinner}></LazyLoadImage>
+            </div>
+            <div className="dinner-recipes second-column">
+            {recipes.data.map((recipe, index) => {
                 return (
-                    <div key={index} className="text-4xl">
-                        {recipe.title}
+                    <div key={index}>
+                        <div class="max-w-full rounded overflow-hidden shadow-lg mt-4">
+  <div class="px-6 py-4">
+                <div class="font-bold text-xl mb-2">{recipe.title}</div>
+    <p class="text-gray-700 text-base">
+      {recipe.description}
+    </p>
+  </div>
+  <div class="px-6 py-4">
+  <Link
+                  to={`/recipes/${recipe._id}`}
+                  className="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-1 px-4 rounded mt-2 border-b-4 rounded"
+                >
+                  View Recipe
+                </Link>
+  </div>
+</div>
                         </div>
                 )
             })}
-        </div>
-            </Fragment>
+            </div>
+            </div>
+        </Fragment>
         )
     )
 }
