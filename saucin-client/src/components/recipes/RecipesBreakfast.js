@@ -5,15 +5,27 @@ import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import { getRecipesBreakfast } from '../../actions/recipe';
 
-const RecipesBreakfast = ({ getRecipesBreakfast }) => {
+const RecipesBreakfast = ({ getRecipesBreakfast, recipe: { recipes, loading } }) => {
     useEffect(() => {
         getRecipesBreakfast();
       }, [getRecipesBreakfast]);
 
     return (
-        <div>
+        loading ? (
+            <Spinner />
+        ) : ( <Fragment>
+            <div className="text-4xl">
             Breakfast recipes
+            {recipes.data.map((recipe, index) => {
+                return (
+                    <div key={index} className="text-4xl">
+                        {recipe.title}
+                        </div>
+                )
+            })}
         </div>
+        </Fragment>
+        )
     )
 }
 
@@ -23,7 +35,7 @@ RecipesBreakfast.propTypes = {
 }
 
 const mapStateToProps = state => ({
-    recipe: state.recipes
+    recipe: state.recipe
 })
 
 export default connect(mapStateToProps, { getRecipesBreakfast })(RecipesBreakfast);
