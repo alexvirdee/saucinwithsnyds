@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import { getCommunityPost, getCommunityPosts } from '../../actions/communitypost';
+import CommunityPostCommentForm from './CommunityPostForm';
 
 const CommunityPost = ({ getCommunityPost,  communitypost: { post, loading }, match }) => {
     useEffect(() => {
@@ -33,8 +34,8 @@ const CommunityPost = ({ getCommunityPost,  communitypost: { post, loading }, ma
     </div>
 
     <div className="w-full md:w-1/2 lg:w-1/2 px-2 my-2">
-        <div className="bg-blue-500 p-4">
-          Discussion section
+        <div className="p-6">
+          <CommunityPostCommentForm postId={post._id} />
         </div>
     </div>
 </div>
