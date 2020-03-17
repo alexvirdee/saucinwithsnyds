@@ -10,8 +10,8 @@ const Recipe = ({ getRecipe, recipe: { recipe, loading }, match }) => {
     }, [getRecipe])
 
     return loading || recipe === null ? <Spinner /> : <Fragment>
-        <div className="flex justify-center bg-blue-200">
-       <div class="max-w-sm rounded overflow-hidden shadow-lg bg-white mt-8">
+        <div className="flex justify-center sm:bg-white lg:bg-blue-800">
+       <div class="max-w-sm rounded overflow-hidden shadow-lg bg-white mt-8 mb-12">
   <img class="w-full" src={recipe.data.image} alt="recipe"></img>
   <div class="px-6 py-4">
 <div class="font-bold text-xl mb-2 pacifico">{recipe.data.title}</div>
@@ -23,17 +23,38 @@ const Recipe = ({ getRecipe, recipe: { recipe, loading }, match }) => {
     </p>
   </div>
   <div class="px-6 py-4">
-<span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 m-2">Servings: {recipe.data.servings}</span>
-<span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 m-2">Prep Time: {recipe.data.prepTime}</span>
-<span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 m-2">Cook Time: {recipe.data.cookTime}</span>
+<span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 m-1">Servings: {recipe.data.servings}</span>
+<span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 m-1">Prep Time: {recipe.data.prepTime}</span>
+<span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">Cook Time: {recipe.data.cookTime}</span>
   </div>
   <div class="px-6 py-4">
 <div class="font-bold text-xl mb-2 pacifico">Ingredients</div>
     <p class="text-gray-700 text-base">
-      {recipe.data.ingredients.ingredient}
-      {recipe.data.ingredients.amount}
+      {recipe.data.ingredients.map((ingredient, index) => {
+          return (
+              <div key={index} className="ingredients-list">
+                  <ul>
+          <li>{ingredient.amount} {ingredient.ingredient}</li>
+                    </ul>
+              </div>
+          )
+      })}
     </p>
   </div>
+  <div className="px-6 py-4">
+  <div class="font-bold text-xl mb-2 pacifico">Directions</div>
+    <p class="text-gray-700 text-base">
+      {recipe.data.directions.map((direction, index) => {
+          return (
+              <div key={index} className="directions">
+                  <ul>
+          <li><span className="font-bold"> {direction.step}: </span> {direction.direction}</li>
+                    </ul>
+              </div>
+          )
+      })}
+    </p>
+</div>
 </div>
 </div>
     </Fragment>
