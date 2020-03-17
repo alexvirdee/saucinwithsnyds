@@ -14,7 +14,7 @@ const CommunityPostCommentItem = ({
     removeCommunityPostComment
 }) => {
     return (
-        <div className="comment mt-2 flex border border-2 p-3">
+        <div className="comment mt-2 flex space-between border border-2 p-3">
             <div>
             <img
               className="w-10 h-10 rounded-full mr-4"
@@ -23,16 +23,16 @@ const CommunityPostCommentItem = ({
             ></img>
              <p className="text-gray-500">{name}</p>
              <p className="text-gray-500"><Moment format="MM/DD/YYYY">{date}</Moment></p>
-           </div>    
-    <div className="pl-12 text-md">
-        {text}
-    </div>
-    <div className="delete-comment">
+             <div className="delete-comment">
        {!auth.loading && user === auth.user.data._id && (
-               <button onClick={e => removeCommunityPostComment(postId, _id)} type="button" className="cursor-pointer ml-4 bg-red-700 hover:bg-red-600 text-white font-bold py-1 px-4 rounded border-b-4 rounded">
+               <button onClick={e => removeCommunityPostComment(postId, _id)} type="button" className="mt-2 cursor-pointer bg-red-700 hover:bg-red-600 text-white font-bold py-1 px-4 rounded border-b-4 rounded">
                <FontAwesomeIcon icon={faTrashAlt}></FontAwesomeIcon> Delete 
               </button>
        )}
+    </div>
+           </div>    
+    <div className="pl-12 text-md">
+        {text}
     </div>
         </div>
     )

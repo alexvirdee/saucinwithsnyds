@@ -27,10 +27,10 @@ const CommunityPostsLifestyle = ({
         {posts.map((post, index) => {
           return (
             <div key={index} className="post flex-1 mt-8 hover:bg-gray-100">
-             <div class="max-w-sm rounded overflow-hidden shadow-lg">
-<div class="px-6 py-4">
-          <div class="font-bold text-md mb-2">{post.title}</div>
-          <div class="mb-2">{post.body}</div>
+             <div className="max-w-sm rounded overflow-hidden shadow-lg">
+<div className="px-6 py-4">
+          <div className="font-bold text-md mb-2">{post.title}</div>
+          <div className="mb-2">{post.body}</div>
           <div className="bottom-card flex mt-4">
           <img
             className="w-8 h-8 rounded-full mr-4 mt-2"

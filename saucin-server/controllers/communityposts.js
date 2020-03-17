@@ -232,8 +232,6 @@ exports.commentCommunitypost = asyncHandler(async (req, res, next) => {
 exports.deleteComment = asyncHandler(async (req, res, next) => {
   const communitypost = await Communitypost.findById(req.params.id);
 
-  console.log(communitypost);
-
   // Pull out comment
   const comment = communitypost.comments.find(
     comment => comment.id === req.params.comment_id
