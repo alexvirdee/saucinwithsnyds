@@ -1,4 +1,4 @@
-import { GET_RECIPES, RECIPE_ERROR, ADD_RECIPE, GET_RECIPE, GET_RECIPES_BREAKFAST } from '../actions/types';
+import { GET_RECIPES, RECIPE_ERROR, ADD_RECIPE, GET_RECIPE, GET_RECIPES_BREAKFAST, GET_RECIPES_LUNCH, GET_RECIPES_DINNER, GET_RECIPES_DESSERT } from '../actions/types';
 
 const initialState = {
     recipes: [],
@@ -12,6 +12,9 @@ export default function(state = initialState, action) {
 
     switch (type) {
         case GET_RECIPES_BREAKFAST:
+        case GET_RECIPES_LUNCH:
+        case GET_RECIPES_DINNER:
+        case GET_RECIPES_DESSERT:
         case GET_RECIPES:
             return {
                 ...state,
