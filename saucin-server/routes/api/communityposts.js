@@ -22,6 +22,7 @@ const router = express.Router();
 const advancedResults = require('../../middleware/advancedResults');
 const { protect } = require('../../middleware/auth');
 
+
 router
   .route('/')
   .get(getCommunityposts)

@@ -8,14 +8,14 @@ const CommunitypostSchema = new Schema({
   },
   title: {
     type: String,
-    required: true
+    
   },
   category: {
     type: String,
   },
   body: {
     type: String,
-    required: true
+   
   },
   image: {
     type: String,
