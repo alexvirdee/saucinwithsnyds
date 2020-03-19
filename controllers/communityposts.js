@@ -62,7 +62,7 @@ exports.getCommunitypostsGeneral = asyncHandler(async (req, res, next) => {
 // @desc    Create a New Post to the community page
 // @route   POST /api/v1/communityposts
 // @access  Private * Only a logged in user can contribute to the community *
-exports.createCommunitypost = upload.single('photo'), asyncHandler(async(req, res, next) => {
+exports.createCommunitypost = asyncHandler(async(req, res, next) => {
   const user = await User.findById(req.user.id).select('-password');
 
   const newPost = new Communitypost({

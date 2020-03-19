@@ -6,7 +6,7 @@
     "start": "NODE_ENV=production node server",
     "clean": "rm -rf node_modules tmp dist",
     "dev": "nodemon server",
-    "client": "npm start --prefix ../saucin-client",
+    "client": "npm start --prefix ./saucin-client",
     "reactandnode": "concurrently \"npm run dev\" \"npm run client\""
   },
   "dependencies": {
