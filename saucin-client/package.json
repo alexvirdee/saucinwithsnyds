@@ -26,8 +26,8 @@
     "uuid": "^7.0.2"
   },
   "scripts": {
-    "start": "npm run watch:css && react-scripts start",
-    "build": "npm run build:css && react-scripts build",
+    "start": "npm run watch:postcss && react-scripts start",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "clean": "rm -rf node_modules",
     "eject": "react-scripts eject",

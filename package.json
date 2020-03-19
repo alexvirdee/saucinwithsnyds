@@ -3,11 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "NODE_ENV=production node server",
+    "start": "NODE_ENV=production && npm install && node server",
     "clean": "rm -rf node_modules tmp dist",
     "dev": "nodemon server",
     "client": "npm start --prefix ./saucin-client",
-    "reactandnode": "concurrently \"npm run dev\" \"npm run client\""
+    "reactandnode": "concurrently \"npm run dev\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false && cd saucin-client && npm install && npm run build"
   },
   "dependencies": {
     "axios": "^0.19.2",

@@ -27,20 +27,28 @@ connectDB();
 
 const app = express();
 
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('saucin-client/build'));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve('saucin-client/build/index.html'));
+  })
+}
+
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
+// app.set('views', path.join(__dirname, 'views'));
+// app.set('view engine', 'hbs');
 
 app.use(express.json({ extended: false }));
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-// Set static folder
-app.use(express.static(path.join(__dirname, 'public')));
-
 // Developer loggin middleware for http requests
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
+
+  // Set static folder
+app.use(express.static(path.join(__dirname, 'public')));
 }
 
 // File Uploading
@@ -62,7 +70,7 @@ app.use(errorHandler);
 
 const PORT = process.env.PORT || 8080;
 
-app.get('/', (req, res) => res.send('API is running'));
+// app.get('/', (req, res) => res.send('API is running'));
 
 const server = app.listen(
   PORT,
