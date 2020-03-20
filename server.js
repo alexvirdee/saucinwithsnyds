@@ -31,7 +31,7 @@ if (process.env.NODE_ENV === 'production') {
   app.use(express.static('saucin-client/build'));
 
   app.get("*", (req, res) => {
-    res.sendFile(path.resolve('saucin-client/build/index.html'));
+    res.sendFile(__dirname, '/saucin-client/build/index.html');
   })
 }
 
