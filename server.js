@@ -27,14 +27,6 @@ connectDB();
 
 const app = express();
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('saucin-client/build'));
-
-  app.get("*", (req, res) => {
-    res.sendFile(__dirname, '/saucin-client/build/index.html');
-  })
-}
-
 // view engine setup
 // app.set('views', path.join(__dirname, 'views'));
 // app.set('view engine', 'hbs');
@@ -64,6 +56,14 @@ app.use('/api/v1/recipes', recipes);
 app.use('/api/v1/contact', contact);
 app.use('/api/v1/instagram', instagram);
 app.use('/api/v1/youtube', youtube);
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('saucin-client/build'));
+
+  app.get("*", (req, res) => {
+    res.sendFile(__dirname, '/saucin-client/build/index.html');
+  })
+}
 
 // error handler
 app.use(errorHandler);
